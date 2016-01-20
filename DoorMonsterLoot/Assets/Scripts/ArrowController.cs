@@ -1,0 +1,26 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class ArrowController : MonoBehaviour {
+
+    public GameObject Player;
+	// Use this for initialization
+	void Start () {
+	    
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
+    void OnMouseDown()
+    {
+        PlayerController other = (PlayerController)Player.GetComponent<PlayerController>();
+        other.StartRunning();
+
+        Destroy(gameObject);
+
+        GameManager.instance.InstantiateNextDoors();
+    }
+}

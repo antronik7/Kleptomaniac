@@ -1,0 +1,138 @@
+fileFormatVersion: 2
+guid: f9f760e5edf1f0d4eb1204fe85dfb563
+timeCreated: 1453251909
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: arrow
+    21300002: healthBar1
+    21300004: healthBar2
+    21300006: healthBar3
+    21300008: healthBar4
+    21300010: healthBar5
+    21300012: healthBar6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 21
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: arrow
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 146
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 93
+        width: 16
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar5
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: healthBar6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
