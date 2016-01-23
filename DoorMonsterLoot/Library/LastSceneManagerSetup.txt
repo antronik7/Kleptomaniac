@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TestMiniGame.unity
+- path: Assets/Scenes/StayInZone.unity
   isLoaded: 1
   isActive: 1
