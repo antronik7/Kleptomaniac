@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1453253740
+timeCreated: 1453576643
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,9 @@ TextureImporter:
     21300036: two
     21300038: Test
     21300040: spriteSheet1_0
+    21300042: floor3
+    21300044: spike1
+    21300046: boulder1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +41,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -63,7 +66,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 21
   alphaIsTransparency: 1
@@ -84,8 +87,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: wall1
       rect:
         serializedVersion: 2
@@ -94,8 +98,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: floor2
       rect:
         serializedVersion: 2
@@ -104,8 +109,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: background1
       rect:
         serializedVersion: 2
@@ -114,8 +120,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: background2
       rect:
         serializedVersion: 2
@@ -124,8 +131,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: background3
       rect:
         serializedVersion: 2
@@ -134,8 +142,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: door1
       rect:
         serializedVersion: 2
@@ -144,8 +153,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: door2
       rect:
         serializedVersion: 2
@@ -154,8 +164,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: window1
       rect:
         serializedVersion: 2
@@ -164,8 +175,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: window2
       rect:
         serializedVersion: 2
@@ -174,8 +186,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: door3
       rect:
         serializedVersion: 2
@@ -184,8 +197,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: door4
       rect:
         serializedVersion: 2
@@ -194,8 +208,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: hero1
       rect:
         serializedVersion: 2
@@ -204,8 +219,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: hero2
       rect:
         serializedVersion: 2
@@ -214,8 +230,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: hero3
       rect:
         serializedVersion: 2
@@ -224,8 +241,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: hero4
       rect:
         serializedVersion: 2
@@ -234,8 +252,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: hero5
       rect:
         serializedVersion: 2
@@ -244,8 +263,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: one
       rect:
         serializedVersion: 2
@@ -254,8 +274,9 @@ TextureImporter:
         width: 9
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: two
       rect:
         serializedVersion: 2
@@ -264,8 +285,9 @@ TextureImporter:
         width: 9
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Test
       rect:
         serializedVersion: 2
@@ -274,8 +296,9 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: spriteSheet1_0
       rect:
         serializedVersion: 2
@@ -284,8 +307,43 @@ TextureImporter:
         width: 19
         height: 19
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: floor3
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 508
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spike1
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 117
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: boulder1
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 117
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
