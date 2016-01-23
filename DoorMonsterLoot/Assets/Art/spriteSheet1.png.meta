@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1453576643
+timeCreated: 1453578935
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,9 +25,7 @@ TextureImporter:
     21300036: two
     21300038: Test
     21300040: spriteSheet1_0
-    21300042: floor3
-    21300044: spike1
-    21300046: boulder1
+    21300042: Coin
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -310,35 +308,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: floor3
+    - name: Coin
       rect:
         serializedVersion: 2
-        x: 279
-        y: 508
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: spike1
-      rect:
-        serializedVersion: 2
-        x: 601
-        y: 117
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: boulder1
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 117
-        width: 21
-        height: 21
+        x: 422
+        y: 628
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

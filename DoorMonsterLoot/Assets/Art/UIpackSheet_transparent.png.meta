@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f9f760e5edf1f0d4eb1204fe85dfb563
-timeCreated: 1453251909
+timeCreated: 1453578554
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,9 @@ TextureImporter:
     21300008: healthBar4
     21300010: healthBar5
     21300012: healthBar6
+    21300014: UIpackSheet_transparent_0
+    21300016: UIpackSheet_transparent_1
+    21300018: UIpackSheet_transparent_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -24,7 +27,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -49,7 +52,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 21
   alphaIsTransparency: 1
@@ -70,8 +73,9 @@ TextureImporter:
         width: 16
         height: 12
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar1
       rect:
         serializedVersion: 2
@@ -80,8 +84,9 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar2
       rect:
         serializedVersion: 2
@@ -90,8 +95,9 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 5
-      pivot: {x: 1, y: .5}
+      pivot: {x: 1, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar3
       rect:
         serializedVersion: 2
@@ -100,8 +106,9 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar4
       rect:
         serializedVersion: 2
@@ -110,8 +117,9 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar5
       rect:
         serializedVersion: 2
@@ -120,8 +128,9 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: healthBar6
       rect:
         serializedVersion: 2
@@ -130,8 +139,43 @@ TextureImporter:
         width: 16
         height: 10
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
