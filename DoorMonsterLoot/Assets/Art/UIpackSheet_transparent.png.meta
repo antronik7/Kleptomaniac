@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f9f760e5edf1f0d4eb1204fe85dfb563
-timeCreated: 1453578554
+timeCreated: 1453586674
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,6 +14,24 @@ TextureImporter:
     21300014: UIpackSheet_transparent_0
     21300016: UIpackSheet_transparent_1
     21300018: UIpackSheet_transparent_2
+    21300020: YallowBar1
+    21300022: YellowBar2
+    21300024: YellowBar3
+    21300026: GreenBar1
+    21300028: GreenBar2
+    21300030: GreenBar3
+    21300032: RedBar1
+    21300034: RedBar2
+    21300036: RedBar3
+    21300038: TapZone1
+    21300040: TapZone2
+    21300042: TapZone3
+    21300044: TapZone4
+    21300046: TapZone5
+    21300048: TapZone6
+    21300050: TapZone7
+    21300052: TapZone8
+    21300054: TapZone9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -36,7 +54,7 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -169,6 +187,204 @@ TextureImporter:
         serializedVersion: 2
         x: 90
         y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YallowBar1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YellowBar2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YellowBar3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone6
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone7
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone9
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 216
         width: 16
         height: 16
       alignment: 0
