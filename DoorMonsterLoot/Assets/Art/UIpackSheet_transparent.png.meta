@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f9f760e5edf1f0d4eb1204fe85dfb563
-timeCreated: 1453586674
+timeCreated: 1453587030
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,7 +14,7 @@ TextureImporter:
     21300014: UIpackSheet_transparent_0
     21300016: UIpackSheet_transparent_1
     21300018: UIpackSheet_transparent_2
-    21300020: YallowBar1
+    21300020: YellowBar1
     21300022: YellowBar2
     21300024: YellowBar3
     21300026: GreenBar1
@@ -193,7 +193,7 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: YallowBar1
+    - name: YellowBar1
       rect:
         serializedVersion: 2
         x: 0
