@@ -16,6 +16,7 @@ public class TestMiniJeu : MonoBehaviour {
     void OnMouseDown()
     {
         ScoreManager.score += 100;
+        ScoreManager.scoreDoors += 1;
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
         //Application.LoadLevel(nomScene);
