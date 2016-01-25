@@ -5,38 +5,53 @@ public class BarDeTempsController : MonoBehaviour {
 
     public GameObject barreDeTemps;
     public GameObject guard;
-    public int startTime;
-    public bool addingTime = false;
+    public static bool addingTime = false;
 
-    private float currentTime;
+    // Use this for initialization
 
-	// Use this for initialization
-	void Start () {
-        currentTime = startTime;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Awake()
+    {
+        
+    }
 
+    void Start () {
+        barreDeTemps.transform.localScale = new Vector2((15 * GameManager.instance.currentTime) / GameManager.instance.startTime, 1);
+        guard.transform.localPosition = new Vector2(6f - (11.5f * GameManager.instance.currentTime) / GameManager.instance.startTime, 3.6f);
+    }
+
+    public static void StartAddTime()
+    {
+        addingTime = true;
+    }
+
+    public static void StartLooseTime()
+    {
+        addingTime = false;
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        transform.position = new Vector2(Camera.main.transform.position.x, transform.position.y);
 
         if (addingTime)
         {
-            if (currentTime < 60f)
+            if (GameManager.instance.currentTime < GameManager.instance.startTime)
             {
-                barreDeTemps.transform.localScale += new Vector3((15 * Time.deltaTime) / startTime, 0, 0);
-                guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / startTime, 0, 0);
+                barreDeTemps.transform.localScale += new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
             }
 
-            currentTime += Time.deltaTime;
+            GameManager.instance.currentTime += Time.deltaTime;
         }
         else
         {
-            barreDeTemps.transform.localScale -= new Vector3((15 * Time.deltaTime) / startTime, 0, 0);
-            guard.transform.position += new Vector3((11.5f * Time.deltaTime) / startTime, 0, 0);
+            barreDeTemps.transform.localScale -= new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+            guard.transform.position += new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
 
-            currentTime -= Time.deltaTime;
+            GameManager.instance.currentTime -= Time.deltaTime;
 
-            if(currentTime < 0.1)
+            if(GameManager.instance.currentTime < 0.1)
             {
                 GameManager.instance.LooseGame();
                 Destroy(gameObject);

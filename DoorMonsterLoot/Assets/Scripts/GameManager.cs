@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
 
     public int idDoorClicked;
 
+    public float currentTime;
+    public float startTime = 30f;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour {
         PosDoor6 = PosDoor6Object.transform.position;
 
         InstantiateDoors();
+
+        currentTime = startTime;
     }
 	
 	// Update is called once per frame

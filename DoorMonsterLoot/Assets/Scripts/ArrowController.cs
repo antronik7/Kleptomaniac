@@ -11,7 +11,7 @@ public class ArrowController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        
 	}
 
     void OnMouseDown()
@@ -22,5 +22,11 @@ public class ArrowController : MonoBehaviour {
         Destroy(gameObject);
 
         GameManager.instance.InstantiateNextDoors();
+
+        GameManager.instance.isDoorOpen1 = true;
+        GameManager.instance.isDoorOpen2 = true;
+        GameManager.instance.isDoorOpen3 = true;
+
+        BarDeTempsController.StartAddTime();
     }
 }
