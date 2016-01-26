@@ -15,6 +15,9 @@ public class SIZWin : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("WIN");
+        ScoreManager.score += 100;
+        ScoreManager.scoreDoors += 1;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
     }
 }
