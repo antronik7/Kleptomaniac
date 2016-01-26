@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour {
 
     public void StartRunning()
     {
-        Debug.Log("Test");
         moveSpeed = 5;
     }
 
@@ -34,6 +33,8 @@ public class PlayerController : MonoBehaviour {
             moveSpeed = 0;
 
             Destroy(other.gameObject);
+
+            BarDeTempsController.StartLooseTime();
         }
     }
 }
