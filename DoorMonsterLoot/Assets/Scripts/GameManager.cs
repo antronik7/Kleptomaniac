@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public  GameObject[] DoorArray;
 
+    public GameObject OpenStairs;
+
     public GameObject PosDoor1Object;
     public GameObject PosDoor2Object;
     public GameObject PosDoor3Object;
@@ -13,12 +15,18 @@ public class GameManager : MonoBehaviour {
     public GameObject PosDoor5Object;
     public GameObject PosDoor6Object;
 
+    public GameObject PosStairs1Object;
+    public GameObject PosStairs2Object;
+
     public Vector3 PosDoor1;
     public Vector3 PosDoor2;
     public Vector3 PosDoor3;
     public Vector3 PosDoor4;
     public Vector3 PosDoor5;
     public Vector3 PosDoor6;
+
+    public Vector3 PosStairs1;
+    public Vector3 PosStairs2;
 
     public bool isDoorOpen1 = true;
     public bool isDoorOpen2 = true;
@@ -32,6 +40,8 @@ public class GameManager : MonoBehaviour {
 
     public float currentTime;
     public float startTime = 30f;
+
+    public int floor = 1;
 
     // Use this for initialization
     void Awake () {
@@ -47,6 +57,9 @@ public class GameManager : MonoBehaviour {
         PosDoor4 = PosDoor4Object.transform.position;
         PosDoor5 = PosDoor5Object.transform.position;
         PosDoor6 = PosDoor6Object.transform.position;
+
+        PosStairs1 = PosStairs1Object.transform.position;
+        PosStairs2 = PosStairs2Object.transform.position;
 
         InstantiateDoors();
 
@@ -172,6 +185,12 @@ public class GameManager : MonoBehaviour {
         else if (idDoorClicked == 3)
         {
             isDoorOpen3 = false;
+        }
+
+        if(ScoreManager.score > 500 * floor)
+        {
+            Instantiate(OpenStairs, PosStairs1, Quaternion.identity);
+            Instantiate(OpenStairs, PosStairs2, Quaternion.identity);
         }
 
         GameObject myDoor = (GameObject)Instantiate(DoorArray[indexDoor1], PosDoor1, Quaternion.identity);
