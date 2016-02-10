@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1453692678
+timeCreated: 1455081610
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,6 +28,12 @@ TextureImporter:
     21300042: Coin
     21300044: boulder1
     21300046: spriteSheet1_1
+    21300048: spriteSheet1_2
+    21300050: spriteSheet1_3
+    21300052: spriteSheet1_4
+    21300054: spriteSheet1_5
+    21300056: spriteSheet1_6
+    21300058: spriteSheet1_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -339,6 +345,72 @@ TextureImporter:
         y: 531
         width: 21
         height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_2
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 600
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_4
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_5
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_7
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 395
+        width: 19
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

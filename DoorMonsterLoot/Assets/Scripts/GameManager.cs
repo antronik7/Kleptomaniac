@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
     public float currentTime;
     public float startTime = 30f;
 
+    public int MaxHealth = 100;
+    public int CurrentHealth = 100;
+
     public int floor = 1;
 
     // Use this for initialization
