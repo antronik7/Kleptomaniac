@@ -21,6 +21,5 @@ public class TapZones : MonoBehaviour {
     void OnMouseDown()
     {
         manager.FromButton();
-        Debug.Log("SWAG");
     }
 }

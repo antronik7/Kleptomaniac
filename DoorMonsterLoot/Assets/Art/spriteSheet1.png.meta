@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1453692678
+timeCreated: 1454703075
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,6 +28,11 @@ TextureImporter:
     21300042: Coin
     21300044: boulder1
     21300046: spriteSheet1_1
+    21300048: Penvert1
+    21300050: Penvert2
+    21300052: Penvert3
+    21300054: Penvert4
+    21300056: particuleDePorte
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -339,6 +344,61 @@ TextureImporter:
         y: 531
         width: 21
         height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Penvert1
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 509
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Penvert2
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 509
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Penvert3
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 486
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Penvert4
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 486
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: particuleDePorte
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 180
+        width: 1
+        height: 1
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
