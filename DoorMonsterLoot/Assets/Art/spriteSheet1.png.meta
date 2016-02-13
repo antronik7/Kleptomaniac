@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
+<<<<<<< HEAD
 timeCreated: 1455081610
+=======
+timeCreated: 1454703075
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,12 +32,20 @@ TextureImporter:
     21300042: Coin
     21300044: boulder1
     21300046: spriteSheet1_1
+<<<<<<< HEAD
     21300048: spriteSheet1_2
     21300050: spriteSheet1_3
     21300052: spriteSheet1_4
     21300054: spriteSheet1_5
     21300056: spriteSheet1_6
     21300058: spriteSheet1_7
+=======
+    21300048: Penvert1
+    21300050: Penvert2
+    21300052: Penvert3
+    21300054: Penvert4
+    21300056: particuleDePorte
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -349,17 +361,27 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: spriteSheet1_2
       rect:
         serializedVersion: 2
         x: 442
         y: 600
         width: 17
+=======
+    - name: Penvert1
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 509
+        width: 21
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: spriteSheet1_3
       rect:
         serializedVersion: 2
@@ -378,10 +400,20 @@ TextureImporter:
         y: 397
         width: 15
         height: 13
+=======
+    - name: Penvert2
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 509
+        width: 21
+        height: 21
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: spriteSheet1_5
       rect:
         serializedVersion: 2
@@ -389,10 +421,20 @@ TextureImporter:
         y: 397
         width: 15
         height: 13
+=======
+    - name: Penvert3
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 486
+        width: 21
+        height: 21
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: spriteSheet1_6
       rect:
         serializedVersion: 2
@@ -400,10 +442,20 @@ TextureImporter:
         y: 397
         width: 15
         height: 13
+=======
+    - name: Penvert4
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 486
+        width: 21
+        height: 21
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: spriteSheet1_7
       rect:
         serializedVersion: 2
@@ -411,6 +463,15 @@ TextureImporter:
         y: 395
         width: 19
         height: 16
+=======
+    - name: particuleDePorte
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 180
+        width: 1
+        height: 1
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

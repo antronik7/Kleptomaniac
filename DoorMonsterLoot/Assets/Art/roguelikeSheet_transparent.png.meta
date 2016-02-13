@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 95d45128db7666e40b3e31246a880218
+<<<<<<< HEAD
 timeCreated: 1453782576
+=======
+timeCreated: 1454539524
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,8 +13,17 @@ TextureImporter:
     21300004: roguelikeSheet_transparent_2
     21300006: roguelikeSheet_transparent_3
     21300008: roguelikeSheet_transparent_4
+<<<<<<< HEAD
     21300010: roguelikeSheet_transparent_5
     21300012: roguelikeSheet_transparent_6
+=======
+    21300010: gold1
+    21300012: gold2
+    21300014: gold3
+    21300016: gold4
+    21300018: gold5
+    21300020: gold6
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -112,22 +125,82 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: roguelikeSheet_transparent_5
       rect:
         serializedVersion: 2
         x: 339
         y: 204
+=======
+    - name: gold1
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 323
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
         width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
     - name: roguelikeSheet_transparent_6
       rect:
         serializedVersion: 2
         x: 425
         y: 255
+=======
+    - name: gold2
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 323
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: gold3
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 323
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: gold4
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 323
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: gold5
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 340
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: gold6
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 340
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
         width: 16
         height: 16
       alignment: 0
