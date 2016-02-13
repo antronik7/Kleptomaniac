@@ -32,8 +32,13 @@ public class SIZWinZone : MonoBehaviour {
         float borneY = 0;
 
         //x + la moitier de la zone jaune (complete)
+<<<<<<< HEAD
         borneX = (x - 50 + 421)/842;
         borneY = (x + 50 + 421)/842;
+=======
+        borneX = (x - 60 + 421)/842;
+        borneY = (x + 60 + 421)/842;
+>>>>>>> master
 
         if(pourcentage >= borneX && pourcentage <= borneY)
         {

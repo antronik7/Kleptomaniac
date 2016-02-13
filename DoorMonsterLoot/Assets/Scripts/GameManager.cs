@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
     public GameObject PosStairs1Object;
     public GameObject PosStairs2Object;
 
+    public GameObject RewardScreen;
+    public GameObject chest;
+
     public Vector3 PosDoor1;
     public Vector3 PosDoor2;
     public Vector3 PosDoor3;
@@ -259,4 +262,23 @@ public class GameManager : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         //Application.LoadLevel("GameOver");
     }
+
+    //section a chri
+    public void spawnRewardScreen()
+    {
+        GameObject RS = (GameObject)Instantiate(RewardScreen, new Vector3(0, 0, 0), Quaternion.identity);
+
+        Vector3[] tab = RS.GetComponent<RZManager>().getPosition();
+
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(chest, tab[i], Quaternion.identity);
+        }
+
+        //IL FAUT ARRETER LE TIMER
+
+        
+
+    }
+    //----------------------------
 }

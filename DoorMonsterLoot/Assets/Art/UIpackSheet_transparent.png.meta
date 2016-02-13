@@ -1,62 +1,46 @@
 fileFormatVersion: 2
-guid: 60b328650e76db24086d3d10a4ec874d
-<<<<<<< HEAD
-<<<<<<< HEAD
-timeCreated: 1455081610
-=======
-timeCreated: 1454703075
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
-timeCreated: 1455130866
->>>>>>> master
+guid: f9f760e5edf1f0d4eb1204fe85dfb563
+timeCreated: 1454531091
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: floor1
-    21300002: wall1
-    21300004: floor2
-    21300006: background1
-    21300008: background2
-    21300010: background3
-    21300012: door1
-    21300014: door2
-    21300016: window1
-    21300018: window2
-    21300020: door3
-    21300022: door4
-    21300024: hero1
-    21300026: hero2
-    21300028: hero3
-    21300030: hero4
-    21300032: hero5
-    21300034: one
-    21300036: two
-    21300038: Test
-    21300040: spriteSheet1_0
-    21300042: Coin
-    21300044: boulder1
-    21300046: spriteSheet1_1
-<<<<<<< HEAD
-<<<<<<< HEAD
-    21300048: spriteSheet1_2
-    21300050: spriteSheet1_3
-    21300052: spriteSheet1_4
-    21300054: spriteSheet1_5
-    21300056: spriteSheet1_6
-    21300058: spriteSheet1_7
-=======
-=======
->>>>>>> master
-    21300048: Penvert1
-    21300050: Penvert2
-    21300052: Penvert3
-    21300054: Penvert4
-    21300056: particuleDePorte
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
-    21300058: particule_rock
->>>>>>> master
+    21300000: arrow
+    21300002: healthBar1
+    21300004: healthBar2
+    21300006: healthBar3
+    21300008: healthBar4
+    21300010: healthBar5
+    21300012: healthBar6
+    21300014: UIpackSheet_transparent_0
+    21300016: UIpackSheet_transparent_1
+    21300018: UIpackSheet_transparent_2
+    21300020: YellowBar1
+    21300022: YellowBar2
+    21300024: YellowBar3
+    21300026: GreenBar1
+    21300028: GreenBar2
+    21300030: GreenBar3
+    21300032: RedBar1
+    21300034: RedBar2
+    21300036: RedBar3
+    21300038: TapZone1
+    21300040: TapZone2
+    21300042: TapZone3
+    21300044: TapZone4
+    21300046: TapZone5
+    21300048: TapZone6
+    21300050: TapZone7
+    21300052: TapZone8
+    21300054: TapZone9
+    21300056: UIpackSheet_transparent_3
+    21300058: UIpackSheet_transparent_4
+    21300060: UIpackSheet_transparent_5
+    21300062: UIpackSheet_transparent_6
+    21300064: UIpackSheet_transparent_7
+    21300066: UIpackSheet_transparent_8
+    21300068: UIpackSheet_transparent_9
+    21300070: UIpackSheet_transparent_10
+    21300072: UIpackSheet_transparent_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -108,422 +92,409 @@ TextureImporter:
     allowsAlphaSplitting: 0
   spriteSheet:
     sprites:
-    - name: floor1
+    - name: arrow
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 146
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 93
+        width: 16
+        height: 10
+      alignment: 5
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar5
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: healthBar6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 129
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_1
       rect:
         serializedVersion: 2
         x: 72
-        y: 439
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: wall1
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 416
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: floor2
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 416
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: background1
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 140
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: background2
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 117
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: background3
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 48
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: door1
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 140
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: door2
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 117
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: window1
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 48
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: window2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 2
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: door3
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 140
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: door4
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 25
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: hero1
-      rect:
-        serializedVersion: 2
-        x: 485
-        y: 669
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: hero2
-      rect:
-        serializedVersion: 2
-        x: 555
-        y: 669
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: hero3
-      rect:
-        serializedVersion: 2
-        x: 578
-        y: 669
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: hero4
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 669
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: hero5
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 669
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: one
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 352
-        width: 9
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: two
-      rect:
-        serializedVersion: 2
-        x: 377
-        y: 352
-        width: 9
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: Test
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 577
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: spriteSheet1_0
-      rect:
-        serializedVersion: 2
-        x: 556
-        y: 555
-        width: 19
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: Coin
-      rect:
-        serializedVersion: 2
-        x: 422
-        y: 628
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: boulder1
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 117
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: spriteSheet1_1
-      rect:
-        serializedVersion: 2
-        x: 325
-        y: 531
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - name: spriteSheet1_2
-      rect:
-        serializedVersion: 2
-        x: 442
-        y: 600
-        width: 17
-=======
-=======
->>>>>>> master
-    - name: Penvert1
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 509
-        width: 21
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
->>>>>>> master
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - name: spriteSheet1_3
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 397
-        width: 15
-        height: 13
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: spriteSheet1_4
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 397
-        width: 15
-        height: 13
-=======
-=======
->>>>>>> master
-    - name: Penvert2
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 509
-        width: 21
-        height: 21
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
->>>>>>> master
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - name: spriteSheet1_5
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 397
-        width: 15
-        height: 13
-=======
-=======
->>>>>>> master
-    - name: Penvert3
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 486
-        width: 21
-        height: 21
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
->>>>>>> master
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - name: spriteSheet1_6
-      rect:
-        serializedVersion: 2
-        x: 443
-        y: 397
-        width: 15
-        height: 13
-=======
-=======
->>>>>>> master
-    - name: Penvert4
-      rect:
-        serializedVersion: 2
-        x: 670
-        y: 486
-        width: 21
-        height: 21
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
->>>>>>> master
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - name: spriteSheet1_7
-      rect:
-        serializedVersion: 2
-        x: 303
-        y: 395
-        width: 19
+        y: 288
+        width: 16
         height: 16
-=======
-=======
->>>>>>> master
-    - name: particuleDePorte
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 180
-        width: 1
-        height: 1
-<<<<<<< HEAD
->>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
-=======
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: particule_rock
+    - name: UIpackSheet_transparent_2
       rect:
         serializedVersion: 2
-        x: 619
-        y: 119
-        width: 1
-        height: 1
->>>>>>> master
+        x: 90
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YellowBar1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YellowBar2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: YellowBar3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 93
+        width: 16
+        height: 10
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: GreenBar3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: RedBar3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 93
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone6
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone7
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: TapZone9
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 252
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 234
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_10
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 216
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
