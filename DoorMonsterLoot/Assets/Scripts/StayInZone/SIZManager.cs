@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SIZManager : MonoBehaviour {
 
+    public GameObject particule;
+
     GameObject pBar;
     ProgressBar PBScript;
 
@@ -15,6 +17,13 @@ public class SIZManager : MonoBehaviour {
 
     GameObject boulder;
     Transform Btrans;
+
+    float leTempsPasser = 0;
+
+    bool inZone = false;
+    bool isPlaying = false;
+
+    int result;
 
     public float x = 0.75F;
     public Vector3 transformation;
@@ -42,6 +51,7 @@ public class SIZManager : MonoBehaviour {
         {
             PBScript.SubstractTime();
             DansLaWinZone();
+            playSound();
         }
 	}
 
@@ -52,7 +62,7 @@ public class SIZManager : MonoBehaviour {
 
     void DansLaWinZone()
     {
-        int result;
+        
         float pourcentage;
 
         pourcentage = PBScript.getFillAmount();
@@ -62,12 +72,15 @@ public class SIZManager : MonoBehaviour {
         switch (result)
         {
             case 0:
+                inZone = false;
                 break;
             case 1:
+                inZone = true;
                 transformation.x = x;
                 move();
                 break;
             case 2:
+                inZone = true;
                 transformation.x = x * 1.5F;
                 move();
                 break;
@@ -76,10 +89,55 @@ public class SIZManager : MonoBehaviour {
 
     void move()
     {
-        if (Btrans.position.x < 2.25F)
+        if (Btrans.position.x < 4.25F)
         {
             Btrans.Translate(transformation * Time.deltaTime);
+
+            Debug.Log(Time.deltaTime);
+
+            if (leTempsPasser >= 0.5f)
+            {
+
+                leTempsPasser = 0;
+
+                if (result == 2)
+                {
+                    Instantiate(particule, new Vector3(Btrans.transform.position.x - 0.5f, -1.95f, 0), Quaternion.identity);
+                    Instantiate(particule, new Vector3(Btrans.transform.position.x - 0.5f, -1.95f, 0), Quaternion.identity);
+                    Instantiate(particule, new Vector3(Btrans.transform.position.x - 0.5f, -1.95f, 0), Quaternion.identity);
+
+                }
+                else
+                {
+                    Instantiate(particule, new Vector3(Btrans.transform.position.x - 0.5f, -1.95f, 0), Quaternion.identity);
+                }
+            }
+            else
+            {
+                leTempsPasser += Time.deltaTime;
+            }
         }
         Ptrans.Translate(transformation * Time.deltaTime);
     }
+
+    void playSound()
+    {
+        if (inZone)
+        {
+            if (!isPlaying)
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                isPlaying = true;
+            }
+        }
+        else
+        {
+            if (isPlaying)
+            {
+                gameObject.GetComponent<AudioSource>().Stop();
+                isPlaying = false;
+            }
+        }
+    }
+
 }

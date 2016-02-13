@@ -9,6 +9,7 @@ public class DDManager : MonoBehaviour {
     public GameObject DoorVide;
     public GameObject loot;
     public GameObject BonhommeVert;
+    public GameObject ParticulePorte;
 
     public int difficuty = 0;
 
@@ -100,14 +101,18 @@ public class DDManager : MonoBehaviour {
     public void DestroyDoor(int i)
     {
         Instantiate(DoorVide, tableauDeDoors[i].transform.position, Quaternion.identity);
+        Instantiate(ParticulePorte, tableauDeDoors[i].transform.position, Quaternion.identity);
         tableauDeDoors[i].SetActive(false);
 
         if (i == winner)
         {
             Instantiate(loot, tableauDeDoors[i].transform.position - new Vector3(1.65f,2.3f,0), Quaternion.identity);
+            
             //Win
             ScoreManager.score += 100;
             ScoreManager.scoreDoors += 1;
+
+            GameManager.instance.spawnRewardScreen();
 
             //UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
         }
