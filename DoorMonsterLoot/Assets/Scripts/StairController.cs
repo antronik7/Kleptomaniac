@@ -12,4 +12,10 @@ public class StairController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnMouseDown()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+        //Application.LoadLevel(nomScene);
+    }
 }

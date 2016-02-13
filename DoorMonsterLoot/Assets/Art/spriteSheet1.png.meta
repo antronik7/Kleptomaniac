@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
+<<<<<<< HEAD
+<<<<<<< HEAD
+timeCreated: 1455081610
+=======
+timeCreated: 1454703075
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
 timeCreated: 1455130866
+>>>>>>> master
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -28,12 +36,27 @@ TextureImporter:
     21300042: Coin
     21300044: boulder1
     21300046: spriteSheet1_1
+<<<<<<< HEAD
+<<<<<<< HEAD
+    21300048: spriteSheet1_2
+    21300050: spriteSheet1_3
+    21300052: spriteSheet1_4
+    21300054: spriteSheet1_5
+    21300056: spriteSheet1_6
+    21300058: spriteSheet1_7
+=======
+=======
+>>>>>>> master
     21300048: Penvert1
     21300050: Penvert2
     21300052: Penvert3
     21300054: Penvert4
     21300056: particuleDePorte
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
     21300058: particule_rock
+>>>>>>> master
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -349,17 +372,55 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: spriteSheet1_2
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 600
+        width: 17
+=======
+=======
+>>>>>>> master
     - name: Penvert1
       rect:
         serializedVersion: 2
         x: 647
         y: 509
         width: 21
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
+>>>>>>> master
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: spriteSheet1_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_4
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 397
+        width: 15
+        height: 13
+=======
+=======
+>>>>>>> master
     - name: Penvert2
       rect:
         serializedVersion: 2
@@ -367,10 +428,26 @@ TextureImporter:
         y: 509
         width: 21
         height: 21
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
+>>>>>>> master
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: spriteSheet1_5
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 397
+        width: 15
+        height: 13
+=======
+=======
+>>>>>>> master
     - name: Penvert3
       rect:
         serializedVersion: 2
@@ -378,10 +455,26 @@ TextureImporter:
         y: 486
         width: 21
         height: 21
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
+>>>>>>> master
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: spriteSheet1_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 397
+        width: 15
+        height: 13
+=======
+=======
+>>>>>>> master
     - name: Penvert4
       rect:
         serializedVersion: 2
@@ -389,10 +482,26 @@ TextureImporter:
         y: 486
         width: 21
         height: 21
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
+>>>>>>> master
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+<<<<<<< HEAD
+<<<<<<< HEAD
+    - name: spriteSheet1_7
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 395
+        width: 19
+        height: 16
+=======
+=======
+>>>>>>> master
     - name: particuleDePorte
       rect:
         serializedVersion: 2
@@ -400,6 +509,9 @@ TextureImporter:
         y: 180
         width: 1
         height: 1
+<<<<<<< HEAD
+>>>>>>> 4cfbdb38bb7ed1558e3a39e821564d0f17e1e8e0
+=======
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -411,6 +523,7 @@ TextureImporter:
         y: 119
         width: 1
         height: 1
+>>>>>>> master
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class SIZManager : MonoBehaviour {
 
+<<<<<<< HEAD
+=======
     public GameObject particule;
 
+>>>>>>> master
     GameObject pBar;
     ProgressBar PBScript;
 
@@ -18,6 +21,8 @@ public class SIZManager : MonoBehaviour {
     GameObject boulder;
     Transform Btrans;
 
+<<<<<<< HEAD
+=======
     float leTempsPasser = 0;
 
     bool inZone = false;
@@ -25,6 +30,7 @@ public class SIZManager : MonoBehaviour {
 
     int result;
 
+>>>>>>> master
     public float x = 0.75F;
     public Vector3 transformation;
 
@@ -51,7 +57,10 @@ public class SIZManager : MonoBehaviour {
         {
             PBScript.SubstractTime();
             DansLaWinZone();
+<<<<<<< HEAD
+=======
             playSound();
+>>>>>>> master
         }
 	}
 
@@ -62,7 +71,11 @@ public class SIZManager : MonoBehaviour {
 
     void DansLaWinZone()
     {
+<<<<<<< HEAD
+        int result;
+=======
         
+>>>>>>> master
         float pourcentage;
 
         pourcentage = PBScript.getFillAmount();
@@ -72,15 +85,23 @@ public class SIZManager : MonoBehaviour {
         switch (result)
         {
             case 0:
+<<<<<<< HEAD
+                break;
+            case 1:
+=======
                 inZone = false;
                 break;
             case 1:
                 inZone = true;
+>>>>>>> master
                 transformation.x = x;
                 move();
                 break;
             case 2:
+<<<<<<< HEAD
+=======
                 inZone = true;
+>>>>>>> master
                 transformation.x = x * 1.5F;
                 move();
                 break;
@@ -89,6 +110,14 @@ public class SIZManager : MonoBehaviour {
 
     void move()
     {
+<<<<<<< HEAD
+        if (Btrans.position.x < 2.25F)
+        {
+            Btrans.Translate(transformation * Time.deltaTime);
+        }
+        Ptrans.Translate(transformation * Time.deltaTime);
+    }
+=======
         if (Btrans.position.x < 4.25F)
         {
             Btrans.Translate(transformation * Time.deltaTime);
@@ -140,4 +169,5 @@ public class SIZManager : MonoBehaviour {
         }
     }
 
+>>>>>>> master
 }
