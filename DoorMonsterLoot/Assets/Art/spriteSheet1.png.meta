@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1455130866
+timeCreated: 1455425395
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -34,6 +34,11 @@ TextureImporter:
     21300054: Penvert4
     21300056: particuleDePorte
     21300058: particule_rock
+    21300060: spriteSheet1_2
+    21300062: spriteSheet1_3
+    21300064: spriteSheet1_4
+    21300066: spriteSheet1_5
+    21300068: spriteSheet1_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -411,6 +416,61 @@ TextureImporter:
         y: 119
         width: 1
         height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_2
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 395
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_3
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_4
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_5
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 397
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 397
+        width: 15
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

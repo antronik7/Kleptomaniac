@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f9f760e5edf1f0d4eb1204fe85dfb563
-timeCreated: 1454531091
+timeCreated: 1455419247
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -41,6 +41,16 @@ TextureImporter:
     21300068: UIpackSheet_transparent_9
     21300070: UIpackSheet_transparent_10
     21300072: UIpackSheet_transparent_11
+    21300074: UIpackSheet_transparent_12
+    21300076: UIpackSheet_transparent_13
+    21300078: UIpackSheet_transparent_14
+    21300080: UIpackSheet_transparent_15
+    21300082: UIpackSheet_transparent_16
+    21300084: UIpackSheet_transparent_17
+    21300086: UIpackSheet_transparent_18
+    21300088: UIpackSheet_transparent_19
+    21300090: UIpackSheet_transparent_20
+    21300092: UIpackSheet_transparent_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -493,6 +503,116 @@ TextureImporter:
         serializedVersion: 2
         x: 144
         y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_12
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 145
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_13
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_14
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_15
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 216
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_16
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 198
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_17
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 198
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_18
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 198
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_19
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_20
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 180
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_21
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 180
         width: 16
         height: 16
       alignment: 0
