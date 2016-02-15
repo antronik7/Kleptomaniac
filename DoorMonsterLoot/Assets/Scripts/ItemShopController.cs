@@ -4,6 +4,7 @@ using System.Collections;
 public class ItemShopController : MonoBehaviour {
 
     public int prix;
+    public GameObject item;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,8 @@ public class ItemShopController : MonoBehaviour {
     void OnMouseDown()
     {
         ScoreManager.score -= prix;
+
+        IventoryManager.instance.addToInventory(item);
 
         Destroy(gameObject);
     }
