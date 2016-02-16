@@ -110,9 +110,11 @@ public class DDManager : MonoBehaviour {
         {
             Instantiate(loot, tableauDeDoors[i].transform.position - new Vector3(1.65f,2.3f,0), Quaternion.identity);
 
-            //Win
-            ScoreManager.score += 100;
-            ScoreManager.scoreDoors += 1;
+            for (int j = 0; j < tableauDeDoors.Length; j++)
+            {
+                tableauDeDoors[j].GetComponent<PolygonCollider2D>().enabled = false;
+                //Destroy(tableauDeDoors[j].gameObject);
+            }
 
             GameManager.instance.spawnRewardScreen();
 

@@ -4,6 +4,8 @@ using System.Collections;
 public class RZChestClick : MonoBehaviour {
 
     public GameObject openChest;
+    public GameObject Reward;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +20,10 @@ public class RZChestClick : MonoBehaviour {
     void OnMouseDown()
     {
         openChest.SetActive(true);
+        
+        GameObject R = (GameObject)Instantiate(Reward, gameObject.transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        R.GetComponent<RZChestMoney>().GetReward();
+
         gameObject.SetActive(false);
     }
 }

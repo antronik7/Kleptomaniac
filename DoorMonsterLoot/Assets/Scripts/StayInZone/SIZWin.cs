@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SIZWin : MonoBehaviour {
 
+    public GameObject canvas;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,9 +17,7 @@ public class SIZWin : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        ScoreManager.score += 100;
-        ScoreManager.scoreDoors += 1;
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
+        GameManager.instance.spawnRewardScreen();
+        canvas.SetActive(false);
     }
 }

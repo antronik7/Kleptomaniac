@@ -11,11 +11,18 @@ public class RZManager : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (gameObject.transform.localScale.x < 1)
+        { 
+            gameObject.transform.localScale += new Vector3(0.1f, 0.1f, 0);
+           
+        }
+
+    }
     
     public Vector3[] getPosition()
     {

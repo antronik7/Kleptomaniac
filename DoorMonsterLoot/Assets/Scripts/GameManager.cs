@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour {
 
     public GameObject RewardScreen;
     public GameObject chest;
+    GameObject[] tabChest = new GameObject[3];
+    GameObject RS;
+
 
     public Vector3 PosDoor1;
     public Vector3 PosDoor2;
@@ -266,19 +270,30 @@ public class GameManager : MonoBehaviour {
     //section a chri
     public void spawnRewardScreen()
     {
-        GameObject RS = (GameObject)Instantiate(RewardScreen, new Vector3(0, 0, 0), Quaternion.identity);
+        RS = (GameObject)Instantiate(RewardScreen, new Vector3(0, 0, 0), Quaternion.identity);
 
         Vector3[] tab = RS.GetComponent<RZManager>().getPosition();
 
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(chest, tab[i], Quaternion.identity);
+            tabChest[i] = (GameObject)Instantiate(chest, tab[i], Quaternion.identity);
+            tabChest[i].transform.SetParent(RS.transform);
         }
 
         //IL FAUT ARRETER LE TIMER
 
-        
-
     }
+ 
+    public void disableChest()
+    {
+        for (int i = 0; i < tabChest.Length; i++)
+        {
+            tabChest[i].GetComponentInChildren<BoxCollider2D>().enabled = false;
+        }
+
+        RS.GetComponentInChildren<BoxCollider2D>().enabled = true;
+        RS.GetComponentInChildren<MeshRenderer>().enabled = true;
+    }
+
     //----------------------------
 }
