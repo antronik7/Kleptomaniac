@@ -15,7 +15,10 @@ public class StairController : MonoBehaviour {
 
     void OnMouseDown()
     {
+        GameManager.instance.StopTime = true;
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
+
         //Application.LoadLevel(nomScene);
     }
 }

@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour {
 
     public int floor = 1;
 
+    public bool StopTime = false;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
