@@ -34,27 +34,30 @@ public class BarDeTempsController : MonoBehaviour {
 
         transform.position = new Vector2(Camera.main.transform.position.x, transform.position.y);
 
-        if (addingTime)
+        if (!GameManager.instance.StopTime)
         {
-            if (GameManager.instance.currentTime < GameManager.instance.startTime)
+            if (addingTime)
             {
-                barreDeTemps.transform.localScale += new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
-                guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                if (GameManager.instance.currentTime < GameManager.instance.startTime)
+                {
+                    barreDeTemps.transform.localScale += new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                    guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                }
+
+                GameManager.instance.currentTime += Time.deltaTime;
             }
-
-            GameManager.instance.currentTime += Time.deltaTime;
-        }
-        else
-        {
-            barreDeTemps.transform.localScale -= new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
-            guard.transform.position += new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
-
-            GameManager.instance.currentTime -= Time.deltaTime;
-
-            if(GameManager.instance.currentTime < 0.1)
+            else
             {
-                GameManager.instance.LooseGame();
-                Destroy(gameObject);
+                barreDeTemps.transform.localScale -= new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                guard.transform.position += new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+
+                GameManager.instance.currentTime -= Time.deltaTime;
+
+                if (GameManager.instance.currentTime < 0.1)
+                {
+                    GameManager.instance.LooseGame();
+                    Destroy(gameObject);
+                }
             }
         }
 	}
