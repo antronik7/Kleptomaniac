@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour {
 
     public bool StopTime = false;
 
+    public int characterDmg = 2;
+    public int characterDef = 1;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
