@@ -381,11 +381,11 @@ public class controleurPersonnage : MonoBehaviour {
     //Fonction qui fera appel au singleton de gameManager pour aller chercher les information du joueurs
     void getInformationJoueur()
     {
-        vieDuJoueurMaximum = GameManager.instance.MaxHealth;
+        vieDuJoueurMaximum = 100;//GameManager.instance.MaxHealth;
 
-        vieDuJoueurRestante = GameManager.instance.currentTime;
+        vieDuJoueurRestante = 100;//GameManager.instance.currentTime;
 
-        defenseDuJoueur = GameManager.instance.characterDef;
+        defenseDuJoueur = 1;//GameManager.instance.characterDef;
     }
 
     //Fonction pour trouver la bar de vie du personnage ainsi que son script
