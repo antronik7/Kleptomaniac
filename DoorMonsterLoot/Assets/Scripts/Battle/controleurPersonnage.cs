@@ -28,14 +28,14 @@ public class controleurPersonnage : MonoBehaviour {
     public Vector2[] lesPositionMaximumPourEvitement;
 
     //Variable pour contenir la vie du personnage (normalement elle devrait etre assigner par le gameManagerPrincipal)
-    public float vieDuJoueurMaximum= 0;
+    public int vieDuJoueurMaximum= 0;
 
-    public float vieDuJoueurRestante = 0;
+    public int vieDuJoueurRestante = 0;
 
     //Variable pour contenir la defense du personnage (normalement elle devrait etre assigner par le gameManagerPrincipal)
-    public float defenseDuJoueur = 0;
+    public int defenseDuJoueur = 0;
 
-    public float dommageRecu = 0;
+    public int dommageRecu = 0;
 
     //Variable que l'on verifie si l'aller a ete effectue
     bool allerFait = false;
@@ -365,7 +365,10 @@ public class controleurPersonnage : MonoBehaviour {
             else
             {
                 vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
+
             }
+
+            GameManager.instance.CurrentHealth = vieDuJoueurRestante;
 
           //  progresBarVieJoueurScript.setFillAmount(vieDuJoueurRestante / vieDuJoueurMaximum);
 
@@ -373,6 +376,8 @@ public class controleurPersonnage : MonoBehaviour {
             {
                 //On doit avertir le gameMangerCombat que je suis mort
                 Destroy(gameObject);
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
             }
 
         }
@@ -381,11 +386,11 @@ public class controleurPersonnage : MonoBehaviour {
     //Fonction qui fera appel au singleton de gameManager pour aller chercher les information du joueurs
     void getInformationJoueur()
     {
-        vieDuJoueurMaximum = 100;//GameManager.instance.MaxHealth;
+        vieDuJoueurMaximum = GameManager.instance.MaxHealth;
 
-        vieDuJoueurRestante = 100;//GameManager.instance.currentTime;
+        vieDuJoueurRestante = GameManager.instance.CurrentHealth;
 
-        defenseDuJoueur = 1;//GameManager.instance.characterDef;
+        defenseDuJoueur = GameManager.instance.characterDef;
     }
 
     //Fonction pour trouver la bar de vie du personnage ainsi que son script

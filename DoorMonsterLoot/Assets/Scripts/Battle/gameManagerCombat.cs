@@ -45,7 +45,7 @@ public class gameManagerCombat : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-      //  SpawnerLeMonstre();
+         SpawnerLeMonstre();
       
        // SpawnerLeTresor();
 
@@ -84,7 +84,19 @@ public class gameManagerCombat : MonoBehaviour {
     //Fonction qui spawner le monstre. Cette fonction devrait prendre en concideration l'etage
     void SpawnerLeMonstre()
     {
-       // idDuTresorSpawner = Random.Range(1, 3);
+        switch (GameManager.instance.floor)
+        {
+            case 0: idDuMonstreSpawner = 0;
+                break;
+
+            case 1: idDuMonstreSpawner = /*Random.Range(1, 3) - 1;*/ 0;
+                break;
+
+            default:
+                idDuMonstreSpawner = 0;
+                break;
+        }
+
 
         //Instantiate le monstre
         Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, 0), Quaternion.identity);
@@ -94,7 +106,20 @@ public class gameManagerCombat : MonoBehaviour {
     //Fonction qui spawner le tresor. Cette fonction devrait prendre en concideration l'etage et le monstre spawner
     void SpawnerLeTresor()
     {
-        idDuTresorSpawner = Random.Range(1, 3) - 1;
+        switch (GameManager.instance.floor)
+        {
+            case 0:
+                idDuTresorSpawner = Random.Range(1, 3) - 1;
+                break;
+
+            case 1:
+                idDuTresorSpawner = Random.Range(1, 3) - 1;
+                break;
+
+            default:
+                idDuTresorSpawner = 1;
+                break;
+        }
 
         //Instantiate le tresor
         Instantiate(listeTresor[idDuTresorSpawner], new Vector2(7, 0), Quaternion.identity);
