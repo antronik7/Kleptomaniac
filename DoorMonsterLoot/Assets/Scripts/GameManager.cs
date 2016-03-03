@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour {
 
     public bool StopTime = false;
 
+    public int characterDmg = 2;
+    public int characterDef = 1;
+
+    public int nbrAAvoir = 1;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
@@ -199,7 +204,7 @@ public class GameManager : MonoBehaviour {
             isDoorOpen3 = false;
         }
 
-        if(ScoreManager.score > 500 * floor)
+        if(ScoreManager.score > nbrAAvoir * floor)
         {
             Instantiate(OpenStairs, PosStairs1, Quaternion.identity);
             Instantiate(OpenStairs, PosStairs2, Quaternion.identity);
