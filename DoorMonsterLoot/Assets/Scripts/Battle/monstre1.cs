@@ -10,7 +10,7 @@ public class monstre1 : MonoBehaviour {
     gameManagerCombat gameManagerCombatScript;
 
     public BoxCollider2D maBoxCollider;
-    //public Animator monAnimator;
+    public Animator monAnimator;
 
     //Variable qui contient les degat d'un attaque du joueur
     int attaqueJoueur;
@@ -58,15 +58,13 @@ public class monstre1 : MonoBehaviour {
         maBoxCollider = gameObject.GetComponent<BoxCollider2D>();
 
         //Aller chercher mon animator
-        //monAnimator = GetComponent<Animator>();
+        monAnimator = GetComponent<Animator>();
 
         //Pour le moment dans la state de transition on veut desactiver le boxCollider2D
         maBoxCollider.enabled = false;
 
         //Affecter la valeur de la variable de la vie courant
         vieCourante = vieMaximum;
-
-
     }
 	
 	// Update is called once per frame
@@ -121,6 +119,26 @@ public class monstre1 : MonoBehaviour {
 
             else
             {
+                //Je dois faire la bonne animation pour revenir a ma state normale
+
+                switch (idState)
+                {
+                    case 1:
+                        Debug.Log("J'etais dans la state 1");
+                        animationTransitionAtkUp();
+                        break;
+
+                    case 2:
+                        Debug.Log("J'etais dans la state 2");
+                        animationTransitionAtkCenter();
+                        break;
+
+                    case 3:
+                        Debug.Log("J'etais dans la state 3");
+                        animationTransitionAtkDown();
+                        break;
+                }
+
                 idState = 0;
                 State0();
             }
@@ -151,9 +169,9 @@ public class monstre1 : MonoBehaviour {
 
     public void State1()
     {
-        // Debug.Log("State : 1");
+         Debug.Log("State : 1");
 
-        //monAnimator.SetInteger("idState", 1);
+        monAnimator.SetInteger("idState", 1);
 
         tempsEntreChaqueState = DeciderCombienDeTempsEntreChaqueState(); //ICICICICIC Changer la focntoin pour quelle fonctionne avec la vie d'antoine
 
@@ -174,9 +192,9 @@ public class monstre1 : MonoBehaviour {
 
     public void State2()
     {
-        // Debug.Log("State : 2");
+         Debug.Log("State : 2");
 
-        //monAnimator.SetInteger("idState", 2);
+        monAnimator.SetInteger("idState", 2);
 
         tempsEntreChaqueState = DeciderCombienDeTempsEntreChaqueState(); //ICICICICIC Changer la focntoin pour quelle fonctionne avec la vie d'antoine
 
@@ -197,9 +215,9 @@ public class monstre1 : MonoBehaviour {
 
     public void State3()
     {
-        //  Debug.Log("State : 3");
+          Debug.Log("State : 3");
 
-       // monAnimator.SetInteger("idState", 3);
+        monAnimator.SetInteger("idState", 3);
 
         //Ici j'avais le code pour changer la position du collider selon la state
 
@@ -247,9 +265,6 @@ public class monstre1 : MonoBehaviour {
                 gameManagerCombatScript.leMonstreEstMort();
             }
         }
-
-          Debug.Log(vieCourante);
-
     }
 
     //CETTE FONCTION NE MARCHE PAS AVEC LE CAODE D'ANTOINE, je dois savoir si il y a maniere de savoir c'est quoi la vie courante du monstre avec le system de vie a antoine
@@ -305,4 +320,40 @@ public class monstre1 : MonoBehaviour {
         }
         return tempsARetourner;
     }
+
+    public void animationIdle()
+    {
+        monAnimator.SetInteger("idState", 0);
+    }
+
+    public void animationTransitionAtkUp()
+    {
+        monAnimator.SetInteger("idState", 4);
+    }
+
+    public void animationBoucleAtkUp()
+    {
+        monAnimator.SetInteger("idState", 5);
+    }
+
+    public void animationTransitionAtkDown()
+    {
+        monAnimator.SetInteger("idState", 6);
+    }
+
+    public void animationBoucleAtkDown()
+    {
+        monAnimator.SetInteger("idState", 7);
+    }
+
+    public void animationTransitionAtkCenter()
+    {
+        monAnimator.SetInteger("idState", 8);
+    }
+
+    public void animationBoucleAtkCenter()
+    {
+        monAnimator.SetInteger("idState", 9);
+    }
 }
+
