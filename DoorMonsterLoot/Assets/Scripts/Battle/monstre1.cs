@@ -5,6 +5,10 @@ public class monstre1 : MonoBehaviour {
 
     //Contient tout les informations sur le boss (Vie, attaque  deffence, etc, et les différentes "State"(Animation))
 
+    public GameObject leGameManagerCombat;
+
+    gameManagerCombat gameManagerCombatScript;
+
     public BoxCollider2D maBoxCollider;
     //public Animator monAnimator;
 
@@ -32,8 +36,23 @@ public class monstre1 : MonoBehaviour {
 
     /************************************************/
 
-	// Use this for initialization
-	void Start () {
+    //Les variable pour la healthBar
+    /************************************************/
+    public GameObject maHealthBar;
+    public HealthBarMonstreController HealthBarMonstreControllerScript;
+    /************************************************/
+
+    
+
+
+    
+    // Use this for initialization
+    void Start () {
+
+        leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
+
+        //Fait une reference sur le script du gameManagerCombat pour acceder a des fonctions
+        gameManagerCombatScript = leGameManagerCombat.GetComponent<gameManagerCombat>();
 
         //Aller chercher son boxCollider
         maBoxCollider = gameObject.GetComponent<BoxCollider2D>();
@@ -52,6 +71,15 @@ public class monstre1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        //Initialisation de la healthBar pour le monstre
+        HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
+
+        HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
+
+
+
 
         //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
         tempsAccumule = tempsAccumule + (Time.deltaTime);
@@ -160,7 +188,7 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y + 1), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y + 0.78f), Quaternion.identity);
 
             sensProjectile = 1;
             UneAttaqueEstPrete = true;
@@ -181,14 +209,14 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 1), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 2), Quaternion.identity);
 
             UneAttaqueEstPrete = true;
             sensProjectile = 1;
         }
     }
 
-   /* void OnMouseDown()
+    void OnMouseDown()
     {
         //Debug.Log("Monstre1 OnMouseDown");
 
@@ -205,9 +233,11 @@ public class monstre1 : MonoBehaviour {
 
             //Ajuster la bar de vie du monstre
 
-            vieAEnvoyer = vieCourante / vieMaximum;
+            // vieAEnvoyer = vieCourante / vieMaximum;
 
-            progresBarVieMonstreScript.setFillAmount(vieAEnvoyer);
+            HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
+
+            // progresBarVieMonstreScript.setFillAmount(vieAEnvoyer);
 
 
 
@@ -218,9 +248,9 @@ public class monstre1 : MonoBehaviour {
             }
         }
 
-        //  Debug.Log(vieCourante);
+          Debug.Log(vieCourante);
 
-    }*/
+    }
 
     //CETTE FONCTION NE MARCHE PAS AVEC LE CAODE D'ANTOINE, je dois savoir si il y a maniere de savoir c'est quoi la vie courante du monstre avec le system de vie a antoine
     //

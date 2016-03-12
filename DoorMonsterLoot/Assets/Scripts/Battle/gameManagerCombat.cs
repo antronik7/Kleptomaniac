@@ -45,6 +45,8 @@ public class gameManagerCombat : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        initialiserAttaqueDuPersonnage();
+
          SpawnerLeMonstre();
       
        // SpawnerLeTresor();
@@ -74,32 +76,37 @@ public class gameManagerCombat : MonoBehaviour {
         //Debug.Log("leJoueurALooter : " + lootTemporaire);
     }
 
-    //Fonctoin qui supprime le monstre apres qu'il soit mort. C'est le monstre qui call cette fonction
+    //Fonctoin qui supprime le monstre apres qu'il soit mort. C'est le monstre qui call cette fonction. Elle supprime aussi le projectile s'il en n'a un
     public void leMonstreEstMort()
     {
         Destroy(GameObject.FindGameObjectWithTag("Monstre"));
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
+
+        Application.LoadLevel("Main");
     }
 
 
     //Fonction qui spawner le monstre. Cette fonction devrait prendre en concideration l'etage
     void SpawnerLeMonstre()
     {
-        switch (GameManager.instance.floor)
+        /*switch (GameManager.instance.floor)
         {
             case 0: idDuMonstreSpawner = 0;
                 break;
 
-            case 1: idDuMonstreSpawner = /*Random.Range(1, 3) - 1;*/ 0;
+            case 1: idDuMonstreSpawner = 0; //Random.Range(1, 3) - 1;
                 break;
 
             default:
                 idDuMonstreSpawner = 0;
                 break;
-        }
+        }*/
 
 
         //Instantiate le monstre
         Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, 0), Quaternion.identity);
+
+        
 
     }
 
