@@ -13,16 +13,17 @@ public class gameManagerCombat : MonoBehaviour {
 
 
     //Le gameManagerCombat a donc besoin :
-        //D'un tableau qui contient tous le boss possible a spawner
-        //D'une référence au boss qu'il a decider de spawner
-        //
-        //D'un tableau qui contient tous les tresor possible a spawner
-        //D'une reference au tresor qu'il a spawner
+    //D'un tableau qui contient tous le boss possible a spawner
+    //D'une référence au boss qu'il a decider de spawner
+    //
+    //D'un tableau qui contient tous les tresor possible a spawner
+    //D'une reference au tresor qu'il a spawner
 
     //Le gameMangerCombat n'a pas beson :
-        //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
+    //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
 
-
+    public GameObject hudComplet;
+    public GameObject hudNoInventory;
     public GameObject[] listeMonstre;
     public GameObject[] listeTresor;
 
@@ -82,7 +83,10 @@ public class gameManagerCombat : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Monstre"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
-        Application.LoadLevel("Main");
+        hudComplet.SetActive(false);
+        hudNoInventory.SetActive(true);
+        GameManager.instance.spawnRewardScreen();
+        //Application.LoadLevel("Main");
     }
 
 
