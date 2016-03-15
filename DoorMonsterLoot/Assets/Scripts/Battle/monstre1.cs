@@ -7,6 +7,9 @@ public class monstre1 : MonoBehaviour {
 
     public GameObject leGameManagerCombat;
 
+    public GameObject PrefabDuShield;
+    GameObject UnShield;
+
     gameManagerCombat gameManagerCombatScript;
 
     public BoxCollider2D maBoxCollider;
@@ -157,6 +160,7 @@ public class monstre1 : MonoBehaviour {
 
         //Le monstre n'est pas touchable par le joueur pendant qu'il est dans la state 0
         maBoxCollider.enabled = false;
+        UnShield = (GameObject)Instantiate(PrefabDuShield, gameObject.transform.position, Quaternion.identity);
 
         if (UneAttaqueEstPrete == true)
         {
@@ -178,6 +182,7 @@ public class monstre1 : MonoBehaviour {
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        Destroy(UnShield);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
@@ -201,6 +206,7 @@ public class monstre1 : MonoBehaviour {
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        Destroy(UnShield);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
@@ -222,6 +228,7 @@ public class monstre1 : MonoBehaviour {
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        Destroy(UnShield);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
