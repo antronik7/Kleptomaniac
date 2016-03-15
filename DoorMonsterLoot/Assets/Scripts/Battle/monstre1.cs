@@ -102,6 +102,7 @@ public class monstre1 : MonoBehaviour {
                 //Change de state
                 //On fait un random pour trouver dans quel state je vais etre
                 idState = Random.Range(1, 4);
+                
 
                 switch (idState)
                 {
@@ -187,7 +188,7 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 8.5f, gameObject.transform.position.y + 6), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[1], new Vector2(gameObject.transform.position.x - 8.5f, gameObject.transform.position.y + 4), Quaternion.Euler(0,0,90));
 
             UneAttaqueEstPrete = true;
             sensProjectile = 2;
@@ -211,7 +212,7 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y + 0.78f), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[2], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 0.25f), Quaternion.identity);
 
             sensProjectile = 1;
             UneAttaqueEstPrete = true;
@@ -233,7 +234,7 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 2), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 1.5f), Quaternion.identity);
 
             UneAttaqueEstPrete = true;
             sensProjectile = 1;
