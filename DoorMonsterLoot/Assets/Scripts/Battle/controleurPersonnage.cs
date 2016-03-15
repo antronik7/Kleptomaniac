@@ -43,6 +43,10 @@ public class controleurPersonnage : MonoBehaviour {
     //Variable pour avoir l'animator
     private Animator myAnimator;
 
+    private SpriteRenderer mySpriteRenderer;
+    public Sprite recuDommage;
+    bool faireFlasherPersonnageApresRecuDommage = false;
+
 
     // public GameObject progresBarVieJoueur;
 
@@ -70,11 +74,26 @@ public class controleurPersonnage : MonoBehaviour {
         //Trouver l'animator
         myAnimator = GetComponent<Animator>();
 
+        //Trouver le Sprite renderer
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 	
 	// Update is called once per frame
     void Update()
     {
+
+        if(faireFlasherPersonnageApresRecuDommage == true)
+        {
+            if (Time.deltaTime < 5)
+            {
+                mySpriteRenderer.color = new Color(mySpriteRenderer.color.r, mySpriteRenderer.color.g, mySpriteRenderer.color.b, 0);
+            }
+            else
+            {
+                faireFlasherPersonnageApresRecuDommage = false;
+            }
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -453,7 +472,12 @@ public class controleurPersonnage : MonoBehaviour {
 
                 UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
             }
+            else
+            {
+                //myAnimator.SetInteger("StanceBattle", 10);
+                faireFlasherPersonnageApresRecuDommage = true;
 
+            }
         }
     }
 
