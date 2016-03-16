@@ -39,12 +39,24 @@ public class gameManagerCombat : MonoBehaviour {
     //Variable qui sera transmit au gameManager apres le combat. (Sera ajouter au score du joueur)
     public int lootTemporaire = 0;
 
-    
+    //Variable du personnage
+    public GameObject leJoueurCombat;
 
+    //Variable qui contient les gameObjects pour les animations
+    //**********************************************************//
+    public GameObject garde;
+    public GameObject joueurManqueDeTemps;
+    //**********************************************************//
+
+    public GameObject lePanelGameOver;
+
+    GameObject barDeVieMonstre;
 
 
 	// Use this for initialization
 	void Start () {
+
+        GameManager.instance.idScene = 1;
 
         initialiserAttaqueDuPersonnage();
 
@@ -146,6 +158,22 @@ public class gameManagerCombat : MonoBehaviour {
     void initialiserAttaqueDuPersonnage()
     {
         attaqueDuPersonnage = GameManager.instance.characterDmg;
+    }
+
+    public void partiePerduManqueDeTemps()
+    {
+        leJoueurCombat.SetActive(false);
+        joueurManqueDeTemps.SetActive(true);
+        garde.SetActive(true);
+        gameOverCombat();
+    }
+
+    public void gameOverCombat()
+    {
+        barDeVieMonstre = GameObject.FindGameObjectWithTag("BarDeVieMonstre");
+        barDeVieMonstre.SetActive(false);
+        lePanelGameOver.SetActive(true);
+        hudComplet.SetActive(false);
     }
 
 }
