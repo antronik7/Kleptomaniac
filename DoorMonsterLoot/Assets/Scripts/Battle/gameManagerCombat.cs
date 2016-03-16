@@ -182,4 +182,9 @@ public class gameManagerCombat : MonoBehaviour {
         hudComplet.SetActive(false);
     }
 
+
+    public void PotionVie()
+    {
+        leJoueurCombat.GetComponent<controleurPersonnage>().PotionVie();
+    }
 }

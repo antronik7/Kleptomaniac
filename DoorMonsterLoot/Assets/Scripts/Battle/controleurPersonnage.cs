@@ -4,6 +4,8 @@ using System.Collections;
 public class controleurPersonnage : MonoBehaviour {
 
     //Cette classe sert a prendre les inputs du joueur pour les esquives.
+    public GameObject feedbackPotion;
+
 
     //Variable pour le controller du joueur
     private Vector2 touchOrigin = -Vector2.one;
@@ -285,6 +287,17 @@ public class controleurPersonnage : MonoBehaviour {
     {
         Destroy(gameObject);
         gameManagerCombat.GetComponent<gameManagerCombat>().gameOverCombat();
+    }
+
+    public void PotionVie()
+    {
+        vieDuJoueurRestante += 25;
+        if(vieDuJoueurRestante > vieDuJoueurMaximum)
+        {
+            vieDuJoueurRestante = vieDuJoueurMaximum;
+        }
+        GameManager.instance.CurrentHealth = vieDuJoueurRestante;
+        Instantiate(feedbackPotion, new Vector3(gameObject.transform.position.x + 0.35f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
     }
 
 }
