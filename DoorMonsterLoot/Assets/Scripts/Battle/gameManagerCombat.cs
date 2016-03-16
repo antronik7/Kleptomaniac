@@ -13,16 +13,17 @@ public class gameManagerCombat : MonoBehaviour {
 
 
     //Le gameManagerCombat a donc besoin :
-        //D'un tableau qui contient tous le boss possible a spawner
-        //D'une référence au boss qu'il a decider de spawner
-        //
-        //D'un tableau qui contient tous les tresor possible a spawner
-        //D'une reference au tresor qu'il a spawner
+    //D'un tableau qui contient tous le boss possible a spawner
+    //D'une référence au boss qu'il a decider de spawner
+    //
+    //D'un tableau qui contient tous les tresor possible a spawner
+    //D'une reference au tresor qu'il a spawner
 
     //Le gameMangerCombat n'a pas beson :
-        //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
+    //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
 
-
+    public GameObject hudComplet;
+    public GameObject hudNoInventory;
     public GameObject[] listeMonstre;
     public GameObject[] listeTresor;
 
@@ -38,12 +39,28 @@ public class gameManagerCombat : MonoBehaviour {
     //Variable qui sera transmit au gameManager apres le combat. (Sera ajouter au score du joueur)
     public int lootTemporaire = 0;
 
-    
+    //Variable du personnage
+    public GameObject leJoueurCombat;
 
+    //Variable qui contient les gameObjects pour les animations
+    //**********************************************************//
+    public GameObject garde;
+    public GameObject joueurManqueDeTemps;
+    //**********************************************************//
+
+    public GameObject lePanelGameOver;
+
+    GameObject barDeVieMonstre;
+
+    GameObject leMonstreSpawner;
+
+    public bool personnageMort = false;
 
 
 	// Use this for initialization
 	void Start () {
+
+        GameManager.instance.idScene = 1;
 
         initialiserAttaqueDuPersonnage();
 
@@ -82,7 +99,10 @@ public class gameManagerCombat : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Monstre"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
-        Application.LoadLevel("Main");
+        hudComplet.SetActive(false);
+        hudNoInventory.SetActive(true);
+        GameManager.instance.spawnRewardScreen();
+        //Application.LoadLevel("Main");
     }
 
 
@@ -104,7 +124,7 @@ public class gameManagerCombat : MonoBehaviour {
 
 
         //Instantiate le monstre
-        Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, 0), Quaternion.identity);
+        leMonstreSpawner = (GameObject) Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, -0.1f), Quaternion.identity);
 
         
 
@@ -142,6 +162,24 @@ public class gameManagerCombat : MonoBehaviour {
     void initialiserAttaqueDuPersonnage()
     {
         attaqueDuPersonnage = GameManager.instance.characterDmg;
+    }
+
+    public void partiePerduManqueDeTemps()
+    {
+        leJoueurCombat.SetActive(false);
+        joueurManqueDeTemps.SetActive(true);
+        garde.SetActive(true);
+        gameOverCombat();
+    }
+
+    public void gameOverCombat()
+    {
+        personnageMort = true;
+        leMonstreSpawner.GetComponent<BoxCollider2D>().enabled = false;
+        barDeVieMonstre = GameObject.FindGameObjectWithTag("BarDeVieMonstre");
+        barDeVieMonstre.SetActive(false);
+        lePanelGameOver.SetActive(true);
+        hudComplet.SetActive(false);
     }
 
 }

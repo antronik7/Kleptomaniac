@@ -12,13 +12,38 @@ public class DragKey : MonoBehaviour {
     private float minSwipeDistX = 50;
     private Vector2 startPos;
 
+    int layermask;
+    RaycastHit2D hit;
+
     // Use this for initialization
     void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
-	}
+
+        layermask = 1 << 10;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0, layermask);
+
+        if (hit.collider != null)
+        {
+            OnMouseDrag();
+            Debug.Log("OK");
+            screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+            offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+
+            OverObject = true;
+        }
+        else
+        {
+            OverObject = false;
+            myRigidBody.velocity = Vector3.zero;
+        }
+
         /*
         if(Input.GetKey(KeyCode.D))
         {
@@ -122,6 +147,7 @@ public class DragKey : MonoBehaviour {
 
     void OnMouseDrag()
     {
+        Debug.Log("Je drag");
         /*Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 
 
@@ -129,11 +155,11 @@ public class DragKey : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, curPosition, 1);*/
 
         if (OverObject)
-        { 
+        {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            myRigidBody.velocity = ((mousePosition - gameObject.transform.position) + offset).normalized * 500;
+            myRigidBody.velocity = ((mousePosition - gameObject.transform.position) + offset).normalized * 650;
         }
 
         //transform.position = Vector2.Lerp(transform.position, mousePosition, 1f);
@@ -142,6 +168,7 @@ public class DragKey : MonoBehaviour {
 
     void OnMouseExit()
     {
+
         OverObject = false;
         myRigidBody.velocity = Vector3.zero;
     }

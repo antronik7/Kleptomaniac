@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/LabyrithMiniGame.unity
+=======
 - path: Assets/Scenes/Main.unity
+>>>>>>> 268a2db4ebf1e5fdaee43edd7b4ff6ee208becf3
   isLoaded: 1
   isActive: 1
