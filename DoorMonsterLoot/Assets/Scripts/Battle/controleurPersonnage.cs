@@ -284,7 +284,7 @@ public class controleurPersonnage : MonoBehaviour {
     public void afficherGameOver()
     {
         Destroy(gameObject);
-        //gameManagerCombat.gameOverCombat();
+        gameManagerCombat.GetComponent<gameManagerCombat>().gameOverCombat();
     }
 
 }

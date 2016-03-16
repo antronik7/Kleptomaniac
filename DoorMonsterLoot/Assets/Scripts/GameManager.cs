@@ -60,8 +60,8 @@ public class GameManager : MonoBehaviour {
 
     public int nbrAAvoir = 1;
 
-    //Variable pour savoir si on est en combat ou autre scene. Combat = 1, sinon autre valeur a rajouter
-    public int idScene;
+    //Variable pour savoir si on est en combat ou autre scene. Course = 0, Combat = 1, sinon autre valeur a rajouter
+    public int idScene = 0;
 
     //Variable pour le gameManagerCombat. On s'en sert seulment pour caller la fin quand on manque de temps
     GameObject leGameManagerCombat = null;
@@ -282,6 +282,7 @@ public class GameManager : MonoBehaviour {
             case 1:
                 leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
                 leGameManagerCombat.GetComponent<gameManagerCombat>().partiePerduManqueDeTemps();
+                idScene = 0;
                 break;
 
         }
@@ -293,6 +294,8 @@ public class GameManager : MonoBehaviour {
     //section a chri
     public void spawnRewardScreen()
     {
+        StopTime = true;
+
         RS = (GameObject)Instantiate(RewardScreen, new Vector3(0, 0, 0), Quaternion.identity);
 
         Vector3[] tab = RS.GetComponent<RZManager>().getPosition();
@@ -302,6 +305,8 @@ public class GameManager : MonoBehaviour {
             tabChest[i] = (GameObject)Instantiate(chest, tab[i], Quaternion.identity);
             tabChest[i].transform.SetParent(RS.transform);
         }
+
+        //On est dans la scene main apres avoir eu un reward
 
         //IL FAUT ARRETER LE TIMER
 
