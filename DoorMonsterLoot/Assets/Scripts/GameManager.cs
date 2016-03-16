@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour {
 
     public int nbrAAvoir = 1;
 
+    //Variable pour savoir si on est en combat ou autre scene. Combat = 1, sinon autre valeur a rajouter
+    public int idScene;
+
+    //Variable pour le gameManagerCombat. On s'en sert seulment pour caller la fin quand on manque de temps
+    GameObject leGameManagerCombat = null;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
@@ -270,7 +276,17 @@ public class GameManager : MonoBehaviour {
 
     public void LooseGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        //Trouver la bonne animation a faire quand le joueur perd. 1 = combat
+        switch (idScene)
+        {
+            case 1:
+                leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
+                leGameManagerCombat.GetComponent<gameManagerCombat>().partiePerduManqueDeTemps();
+                break;
+
+        }
+
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         //Application.LoadLevel("GameOver");
     }
 

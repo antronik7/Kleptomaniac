@@ -13,16 +13,17 @@ public class gameManagerCombat : MonoBehaviour {
 
 
     //Le gameManagerCombat a donc besoin :
-        //D'un tableau qui contient tous le boss possible a spawner
-        //D'une référence au boss qu'il a decider de spawner
-        //
-        //D'un tableau qui contient tous les tresor possible a spawner
-        //D'une reference au tresor qu'il a spawner
+    //D'un tableau qui contient tous le boss possible a spawner
+    //D'une référence au boss qu'il a decider de spawner
+    //
+    //D'un tableau qui contient tous les tresor possible a spawner
+    //D'une reference au tresor qu'il a spawner
 
     //Le gameMangerCombat n'a pas beson :
-        //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
+    //D'une reference du player car celui-ci va connaitre le gameManagerCombat et va caller une fonction du gameMaangerCombat
 
-
+    public GameObject hudComplet;
+    public GameObject hudNoInventory;
     public GameObject[] listeMonstre;
     public GameObject[] listeTresor;
 
@@ -38,12 +39,26 @@ public class gameManagerCombat : MonoBehaviour {
     //Variable qui sera transmit au gameManager apres le combat. (Sera ajouter au score du joueur)
     public int lootTemporaire = 0;
 
-    
+    //Variable du personnage
+    public GameObject leJoueurCombat;
 
+    //Variable qui contient les gameObjects pour les animations
+    //**********************************************************//
+    public GameObject garde;
+    public GameObject joueurManqueDeTemps;
+    //**********************************************************//
+
+    public GameObject lePanelGameOver;
+
+    GameObject barDeVieMonstre;
 
 
 	// Use this for initialization
 	void Start () {
+
+        GameManager.instance.idScene = 1;
+
+        initialiserAttaqueDuPersonnage();
 
          SpawnerLeMonstre();
       
@@ -74,32 +89,40 @@ public class gameManagerCombat : MonoBehaviour {
         //Debug.Log("leJoueurALooter : " + lootTemporaire);
     }
 
-    //Fonctoin qui supprime le monstre apres qu'il soit mort. C'est le monstre qui call cette fonction
+    //Fonctoin qui supprime le monstre apres qu'il soit mort. C'est le monstre qui call cette fonction. Elle supprime aussi le projectile s'il en n'a un
     public void leMonstreEstMort()
     {
         Destroy(GameObject.FindGameObjectWithTag("Monstre"));
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
+
+        hudComplet.SetActive(false);
+        hudNoInventory.SetActive(true);
+        GameManager.instance.spawnRewardScreen();
+        //Application.LoadLevel("Main");
     }
 
 
     //Fonction qui spawner le monstre. Cette fonction devrait prendre en concideration l'etage
     void SpawnerLeMonstre()
     {
-        switch (GameManager.instance.floor)
+        /*switch (GameManager.instance.floor)
         {
             case 0: idDuMonstreSpawner = 0;
                 break;
 
-            case 1: idDuMonstreSpawner = /*Random.Range(1, 3) - 1;*/ 0;
+            case 1: idDuMonstreSpawner = 0; //Random.Range(1, 3) - 1;
                 break;
 
             default:
                 idDuMonstreSpawner = 0;
                 break;
-        }
+        }*/
 
 
         //Instantiate le monstre
         Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, 0), Quaternion.identity);
+
+        
 
     }
 
@@ -135,6 +158,22 @@ public class gameManagerCombat : MonoBehaviour {
     void initialiserAttaqueDuPersonnage()
     {
         attaqueDuPersonnage = GameManager.instance.characterDmg;
+    }
+
+    public void partiePerduManqueDeTemps()
+    {
+        leJoueurCombat.SetActive(false);
+        joueurManqueDeTemps.SetActive(true);
+        garde.SetActive(true);
+        gameOverCombat();
+    }
+
+    public void gameOverCombat()
+    {
+        barDeVieMonstre = GameObject.FindGameObjectWithTag("BarDeVieMonstre");
+        barDeVieMonstre.SetActive(false);
+        lePanelGameOver.SetActive(true);
+        hudComplet.SetActive(false);
     }
 
 }
