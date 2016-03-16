@@ -254,24 +254,36 @@ public class monstre1 : MonoBehaviour {
         }
         else
         {
+
             vieCourante = vieCourante - attaqueJoueur;
 
+            if(vieCourante < 0)
+            {
+                vieCourante = 0;
+            }
             //Ajuster la bar de vie du monstre
 
-            // vieAEnvoyer = vieCourante / vieMaximum;
 
             HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
-
-            // progresBarVieMonstreScript.setFillAmount(vieAEnvoyer);
-
-
 
             //Si le monstre est mort
             if (vieCourante == 0)
             {
-                gameManagerCombatScript.leMonstreEstMort();
+                if(leProjectile != null)
+                {
+                    //Destroy(leProjectile);
+                }
+                //PrefabDuShield.SetActive(false);
+                animationMort();
+                //gameManagerCombatScript.leMonstreEstMort();
             }
+           
         }
+    }
+
+    public void mort()
+    {
+        gameManagerCombatScript.leMonstreEstMort();
     }
 
     //CETTE FONCTION NE MARCHE PAS AVEC LE CAODE D'ANTOINE, je dois savoir si il y a maniere de savoir c'est quoi la vie courante du monstre avec le system de vie a antoine
@@ -362,5 +374,12 @@ public class monstre1 : MonoBehaviour {
     {
         monAnimator.SetInteger("idState", 9);
     }
+
+    public void animationMort()
+    {
+        monAnimator.SetInteger("idState", 10);
+        PrefabDuShield.SetActive(false);
+    }
 }
+
 
