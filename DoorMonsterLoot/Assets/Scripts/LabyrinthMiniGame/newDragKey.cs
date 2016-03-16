@@ -78,16 +78,21 @@ public class newDragKey : MonoBehaviour {
                 }
                 else
                 {  // no mouse button pressed
-                    dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    dragObj = null;  // dragObj free to drag another object
+                    if (dragObj != null)
+                    {
+                        dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        dragObj = null;  // dragObj free to drag another object
+                    }
                 }
             } 
         }
         else
         {
-            dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            dragObj = null;  // dragObj free to drag another object
-
+            if (dragObj != null)
+            {
+                dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                dragObj = null;  // dragObj free to drag another object
+            }
             OnKey = false;
         }
     }
