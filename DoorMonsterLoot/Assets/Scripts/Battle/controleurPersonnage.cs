@@ -22,6 +22,7 @@ public class controleurPersonnage : MonoBehaviour {
     private bool esquiveEnCours = false;
     private float backUpTempsFreezerPendantEsquive;
 
+    public GameObject gameManagerCombat;
     public int variableDeVitesseEsquive;
     public float tempsFreezerPendantEsquive;
     public float mouvementMinimumPourCapterEsquive;
@@ -223,7 +224,10 @@ public class controleurPersonnage : MonoBehaviour {
             else
             {
                 vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
-
+                if(vieDuJoueurRestante < 0)
+                {
+                    vieDuJoueurRestante = 0;
+                }
             }
 
             GameManager.instance.CurrentHealth = vieDuJoueurRestante;
@@ -233,9 +237,10 @@ public class controleurPersonnage : MonoBehaviour {
             if(vieDuJoueurRestante <= 0)
             {
                 //On doit avertir le gameMangerCombat que je suis mort
-                Destroy(gameObject);
+                
+                myAnimator.SetInteger("StanceBattle", 11);
 
-                UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+                //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
             }
             else
             {
@@ -276,5 +281,10 @@ public class controleurPersonnage : MonoBehaviour {
         myAnimator.SetInteger("StanceBattle", 5);
     }
 
+    public void afficherGameOver()
+    {
+        Destroy(gameObject);
+        //gameManagerCombat.gameOverCombat();
+    }
 
 }
