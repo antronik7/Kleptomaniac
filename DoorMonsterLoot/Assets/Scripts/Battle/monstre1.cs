@@ -73,78 +73,88 @@ public class monstre1 : MonoBehaviour {
 	void Update () {
 
 
-        //Initialisation de la healthBar pour le monstre
-        HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
-
-        HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
-
-
-
-
-        //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
-        tempsAccumule = tempsAccumule + (Time.deltaTime);
-
-        //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
-        if (UneAttaqueEstPrete == true)
+        if (gameManagerCombatScript.personnageMort == false)
         {
-            alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
-            //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
-            leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
+
+            //Initialisation de la healthBar pour le monstre
+            HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
+
+            HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
+
+
+
+
+            //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
+            tempsAccumule = tempsAccumule + (Time.deltaTime);
+
+            //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
+            if (UneAttaqueEstPrete == true)
+            {
+                alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
+                //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
+                leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
+            }
+
+            if (tempsAccumule >= tempsEntreChaqueState)
+            {
+                tempsAccumule = 0;
+
+                //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
+                if (idState == 0)
+                {
+                    //Change de state
+                    //On fait un random pour trouver dans quel state je vais etre
+                    idState = Random.Range(1, 4);
+
+
+                    switch (idState)
+                    {
+                        case 1:
+                            State1();
+                            break;
+
+                        case 2:
+                            State2();
+                            break;
+
+                        case 3:
+                            State3();
+                            break;
+                    }
+                }
+
+                else
+                {
+                    //Je dois faire la bonne animation pour revenir a ma state normale
+
+                    switch (idState)
+                    {
+                        case 1:
+                            Debug.Log("J'etais dans la state 1");
+                            animationTransitionAtkUp();
+                            break;
+
+                        case 2:
+                            Debug.Log("J'etais dans la state 2");
+                            animationTransitionAtkCenter();
+                            break;
+
+                        case 3:
+                            Debug.Log("J'etais dans la state 3");
+                            animationTransitionAtkDown();
+                            break;
+                    }
+
+                    idState = 0;
+                    State0();
+                }
+            }
         }
 
-        if (tempsAccumule >= tempsEntreChaqueState)
+        else
         {
-            tempsAccumule = 0;
-
-            //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
-            if (idState == 0)
-            {
-                //Change de state
-                //On fait un random pour trouver dans quel state je vais etre
-                idState = Random.Range(1, 4);
-                
-
-                switch (idState)
-                {
-                    case 1:
-                        State1();
-                        break;
-
-                    case 2:
-                        State2();
-                        break;
-
-                    case 3:
-                        State3();
-                        break;
-                }
-            }
-
-            else
-            {
-                //Je dois faire la bonne animation pour revenir a ma state normale
-
-                switch (idState)
-                {
-                    case 1:
-                        Debug.Log("J'etais dans la state 1");
-                        animationTransitionAtkUp();
-                        break;
-
-                    case 2:
-                        Debug.Log("J'etais dans la state 2");
-                        animationTransitionAtkCenter();
-                        break;
-
-                    case 3:
-                        Debug.Log("J'etais dans la state 3");
-                        animationTransitionAtkDown();
-                        break;
-                }
-
-                idState = 0;
-                State0();
-            }
+            //Le personnage est mort alors on boucle l'animation du idle
+            animationIdle();
         }
 
 	}
@@ -212,7 +222,7 @@ public class monstre1 : MonoBehaviour {
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[2], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 0.25f), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[2], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 0.15f), Quaternion.identity);
 
             sensProjectile = 1;
             UneAttaqueEstPrete = true;

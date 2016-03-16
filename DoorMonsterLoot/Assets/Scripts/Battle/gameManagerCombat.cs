@@ -52,6 +52,10 @@ public class gameManagerCombat : MonoBehaviour {
 
     GameObject barDeVieMonstre;
 
+    GameObject leMonstreSpawner;
+
+    public bool personnageMort = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -120,7 +124,7 @@ public class gameManagerCombat : MonoBehaviour {
 
 
         //Instantiate le monstre
-        Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, 0), Quaternion.identity);
+        leMonstreSpawner = (GameObject) Instantiate(listeMonstre[idDuMonstreSpawner], new Vector2(4, -0.1f), Quaternion.identity);
 
         
 
@@ -170,6 +174,8 @@ public class gameManagerCombat : MonoBehaviour {
 
     public void gameOverCombat()
     {
+        personnageMort = true;
+        leMonstreSpawner.GetComponent<BoxCollider2D>().enabled = false;
         barDeVieMonstre = GameObject.FindGameObjectWithTag("BarDeVieMonstre");
         barDeVieMonstre.SetActive(false);
         lePanelGameOver.SetActive(true);
