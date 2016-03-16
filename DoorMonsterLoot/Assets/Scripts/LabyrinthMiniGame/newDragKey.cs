@@ -3,8 +3,8 @@ using System.Collections;
 
 public class newDragKey : MonoBehaviour {
 
-    float speed = 700;
-    float maxSpeed = 700;
+    float speed = 650;
+    float maxSpeed = 650;
     Transform dragObj = null;
     RaycastHit2D hit;
     float length;
