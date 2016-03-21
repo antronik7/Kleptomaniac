@@ -276,6 +276,7 @@ public class GameManager : MonoBehaviour {
 
     public void LooseGame()
     {
+        Debug.Log("wtf");
         //Trouver la bonne animation a faire quand le joueur perd. 1 = combat
         switch (idScene)
         {
@@ -284,11 +285,13 @@ public class GameManager : MonoBehaviour {
                 leGameManagerCombat.GetComponent<gameManagerCombat>().partiePerduManqueDeTemps();
                 idScene = 0;
                 break;
+            case 0:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+                Application.LoadLevel("GameOver");
+                break;
+
 
         }
-
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
-        //Application.LoadLevel("GameOver");
     }
 
     //section a chri

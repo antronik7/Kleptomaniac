@@ -3,8 +3,8 @@ using System.Collections;
 
 public class newDragKey : MonoBehaviour {
 
-    float speed = 700;
-    float maxSpeed = 700;
+    float speed = 650;
+    float maxSpeed = 650;
     Transform dragObj = null;
     RaycastHit2D hit;
     float length;
@@ -78,16 +78,21 @@ public class newDragKey : MonoBehaviour {
                 }
                 else
                 {  // no mouse button pressed
-                    dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    dragObj = null;  // dragObj free to drag another object
+                    if (dragObj != null)
+                    {
+                        dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        dragObj = null;  // dragObj free to drag another object
+                    }
                 }
             } 
         }
         else
         {
-            dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            dragObj = null;  // dragObj free to drag another object
-
+            if (dragObj != null)
+            {
+                dragObj.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                dragObj = null;  // dragObj free to drag another object
+            }
             OnKey = false;
         }
     }

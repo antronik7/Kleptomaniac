@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Main.unity
+=======
+- path: Assets/Scenes/RotationMiniGame.unity
+>>>>>>> b48fe3269c895e5cebe2a1a127ef6ccd692c9c46
   isLoaded: 1
   isActive: 1

@@ -15,6 +15,6 @@ public class LockKey : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
+        GameManager.instance.spawnRewardScreen();
     }
 }
