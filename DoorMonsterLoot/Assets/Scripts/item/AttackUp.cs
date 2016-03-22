@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestItem : MonoBehaviour {
+public class AttackUp : MonoBehaviour {
 
     public int index;
     GameObject GameManagerCombat;
@@ -9,19 +9,21 @@ public class TestItem : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         GameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
         scriptGM = GameManagerCombat.GetComponent<gameManagerCombat>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void OnMouseDown()
     {
-        scriptGM.PotionVie();
+        scriptGM.AttackUp();
         IventoryManager.instance.removeFromInventory(index);
         Destroy(gameObject);
     }
