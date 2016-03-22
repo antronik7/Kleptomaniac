@@ -11,9 +11,9 @@ public class ButtonInventoryManager : MonoBehaviour {
 	    if (IventoryManager.instance.isOccupe(index) == true)
         {
             GameObject myItem = Instantiate (IventoryManager.instance.getItem(index), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
-            TestItem testItem = myItem.GetComponent<TestItem>();
+            //TestItem testItem = myItem.GetComponent<TestItem>();
 
-            testItem.index = index;
+            //testItem.index = index;
 
             myItem.transform.parent = gameObject.transform;
 
@@ -29,9 +29,9 @@ public class ButtonInventoryManager : MonoBehaviour {
             if (IventoryManager.instance.isOccupe(index) == true)
             {
                 GameObject myItem = Instantiate(IventoryManager.instance.getItem(index), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
-                TestItem testItem = myItem.GetComponent<TestItem>();
+                //TestItem testItem = myItem.GetComponent<TestItem>();
 
-                testItem.index = index;
+                //testItem.index = index;
 
                 myItem.transform.parent = gameObject.transform;
 
