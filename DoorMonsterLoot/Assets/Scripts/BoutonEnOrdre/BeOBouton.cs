@@ -47,12 +47,14 @@ public class BeOBouton : MonoBehaviour
         if(leScriptBeOManager.BoutonClicker(priorite) == true)
         {
             //Je me detruis
-            Debug.Log("Oui");
+            leScriptBeOManager.bonChoix(transform.position);
+            gameObject.SetActive(false);
+
         }
         else
         {
             //Je fais un son de mauvais
-            Debug.Log("Non");
+            leScriptBeOManager.leJoueurAFaitUneFaute();
 
         }
     }

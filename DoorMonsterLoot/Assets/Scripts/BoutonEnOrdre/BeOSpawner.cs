@@ -24,4 +24,9 @@ public class BeOSpawner : MonoBehaviour {
     {
         dejaChoisi = true;
     }
+
+    public void ReinitialiseLeChoisi()
+    {
+        dejaChoisi = false;
+    }
 }
