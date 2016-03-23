@@ -4,6 +4,12 @@ using System.Collections;
 public class controleurPersonnage : MonoBehaviour {
 
     //Cette classe sert a prendre les inputs du joueur pour les esquives.
+    public GameObject feedbackPotion;
+    public GameObject feedbackShield;
+    public GameObject feedbackAttackUp;
+    GameObject atkUP;
+    GameObject Shield;
+    bool shieldAvtivated;
 
     //Variable pour le controller du joueur
     private Vector2 touchOrigin = -Vector2.one;
@@ -210,44 +216,52 @@ public class controleurPersonnage : MonoBehaviour {
         //Quand le joueur se fait toucher par le monstre
         if (other.tag == "Projectile")
         {
-
-            dommageRecu = other.GetComponent<projectile>().retournerValeurDeDommage();
-
-            Destroy(other.gameObject);
-
-            dommageRecu = dommageRecu - defenseDuJoueur;
-
-            if (dommageRecu < 0)
+            if (!shieldAvtivated)
             {
+                dommageRecu = other.GetComponent<projectile>().retournerValeurDeDommage();
 
-            }
-            else
-            {
-                vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
-                if(vieDuJoueurRestante < 0)
+                Destroy(other.gameObject);
+
+                dommageRecu = dommageRecu - defenseDuJoueur;
+
+                if (dommageRecu < 0)
                 {
-                    vieDuJoueurRestante = 0;
+
+                }
+                else
+                {
+                    vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
+                    if (vieDuJoueurRestante < 0)
+                    {
+                        vieDuJoueurRestante = 0;
+                    }
+                }
+
+
+                GameManager.instance.CurrentHealth = vieDuJoueurRestante;
+
+                //  progresBarVieJoueurScript.setFillAmount(vieDuJoueurRestante / vieDuJoueurMaximum);
+
+                if (vieDuJoueurRestante <= 0)
+                {
+                    //On doit avertir le gameMangerCombat que je suis mort
+
+                    myAnimator.SetInteger("StanceBattle", 11);
+
+                    //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+                }
+                else
+                {
+                    //myAnimator.SetInteger("StanceBattle", 10);
+                    faireFlasherPersonnageApresRecuDommage = true;
+                    Debug.Log("Jai mal");
+
                 }
             }
-
-            GameManager.instance.CurrentHealth = vieDuJoueurRestante;
-
-          //  progresBarVieJoueurScript.setFillAmount(vieDuJoueurRestante / vieDuJoueurMaximum);
-
-            if(vieDuJoueurRestante <= 0)
-            {
-                //On doit avertir le gameMangerCombat que je suis mort
-                
-                myAnimator.SetInteger("StanceBattle", 11);
-
-                //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
-            }
             else
             {
-                //myAnimator.SetInteger("StanceBattle", 10);
-                faireFlasherPersonnageApresRecuDommage = true;
-                Debug.Log("Jai mal");
-
+                shieldAvtivated = false;
+                Destroy(Shield);
             }
         }
     }
@@ -285,6 +299,33 @@ public class controleurPersonnage : MonoBehaviour {
     {
         Destroy(gameObject);
         gameManagerCombat.GetComponent<gameManagerCombat>().gameOverCombat();
+    }
+
+    public void PotionVie()
+    {
+        vieDuJoueurRestante += 25;
+        if(vieDuJoueurRestante > vieDuJoueurMaximum)
+        {
+            vieDuJoueurRestante = vieDuJoueurMaximum;
+        }
+        GameManager.instance.CurrentHealth = vieDuJoueurRestante;
+        Instantiate(feedbackPotion, new Vector3(gameObject.transform.position.x + 0.35f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+    }
+
+    public void ItemShield()
+    {
+        Shield = (GameObject)Instantiate(feedbackShield, new Vector3(gameObject.transform.position.x + 0.14f, gameObject.transform.position.y + 0.26f, gameObject.transform.position.z), Quaternion.identity);
+
+        Shield.transform.parent = gameObject.transform;
+
+        shieldAvtivated = true;
+    }
+
+    public void AttackUp()
+    {
+        atkUP = (GameObject)Instantiate(feedbackAttackUp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.18f, gameObject.transform.position.z), Quaternion.identity);
+
+        atkUP.transform.parent = gameObject.transform;
     }
 
 }

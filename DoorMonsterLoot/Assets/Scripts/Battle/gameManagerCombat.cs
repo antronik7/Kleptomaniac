@@ -56,9 +56,12 @@ public class gameManagerCombat : MonoBehaviour {
 
     public bool personnageMort = false;
 
+    //int initialAttackDMG;
 
 	// Use this for initialization
 	void Start () {
+
+        //initialAttackDMG = attaqueDuPersonnage;
 
         GameManager.instance.idScene = 1;
 
@@ -182,4 +185,25 @@ public class gameManagerCombat : MonoBehaviour {
         hudComplet.SetActive(false);
     }
 
+
+    public void PotionVie()
+    {
+        leJoueurCombat.GetComponent<controleurPersonnage>().PotionVie();
+    }
+
+    public void Shield()
+    {
+        leJoueurCombat.GetComponent<controleurPersonnage>().ItemShield();
+    }
+
+    public void AttackUp()
+    {
+        attaqueDuPersonnage = attaqueDuPersonnage * 2;
+        leJoueurCombat.GetComponent<controleurPersonnage>().AttackUp();
+    }
+
+    public void AttackDown()
+    {
+        attaqueDuPersonnage = attaqueDuPersonnage / 2;
+    }
 }

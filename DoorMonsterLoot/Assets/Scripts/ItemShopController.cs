@@ -18,10 +18,18 @@ public class ItemShopController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        ScoreManager.score -= prix;
+        if (ScoreManager.score >= prix)
+        {
+            ScoreManager.score -= prix;
+            IventoryManager.instance.addToInventory(item);
+            Destroy(gameObject);
 
-        IventoryManager.instance.addToInventory(item);
+        }
+        else
+        {
+            //p-e faire un son pour dire que le joueur peut pas acheter
+        }
 
-        Destroy(gameObject);
+        
     }
 }
