@@ -7,6 +7,8 @@ public class BeOManager : MonoBehaviour {
     public GameObject[] leTableauDeSpawner;
     public GameObject[] leTableauDeBoutonChiffre;
     private Vector3[] leTableauDePositionDesSpawner;
+    public GameObject[] leTableauDeBoutonLettre;
+
 
     //Tableau pour supprimer les bouton si jamais le joueur se trompe pendant un round;
     private GameObject[] leTableauDesBoutonSpawner;
@@ -32,6 +34,8 @@ public class BeOManager : MonoBehaviour {
 
     public GameObject[] indicateurDeRoundGagner;
 
+    private int randomPourSavoirQuelTableauDeBoutonJeSpawn = 0;
+
 	// Use this for initialization
 	void Start () {
 
@@ -40,16 +44,8 @@ public class BeOManager : MonoBehaviour {
         DeciderCombienDeRound();
 
         InitialiserUnePartie();
-
-      
-
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void InitialiserLeTableauDePosition()
     {
 
@@ -97,15 +93,6 @@ public class BeOManager : MonoBehaviour {
 
             indexeExistant = true;
 
-            /*while (leTableauDeBoutonChiffre[k] == null)
-            {
-
-
-                k = UnityEngine.Random.Range(0, 5);
-            }*/
-               
-            //Debug.Log("K :"+ k);
-
             btnQuiVientEtreSpawner = (GameObject) Instantiate(leTableauDeBoutonChiffre[k].gameObject, leTableauDePositionDesSpawner[i], Quaternion.identity);
 
             leTableauPriorite[i] = btnQuiVientEtreSpawner.GetComponent<BeOBouton>().getPriorite();
@@ -113,11 +100,6 @@ public class BeOManager : MonoBehaviour {
             indexeDejaFait[i] = k;
 
             leTableauDesBoutonSpawner[i] = btnQuiVientEtreSpawner;
-
-            //leTableauDeBoutonChiffre[k] = null;
-
-
-
         }
 
         //Supprimer les boutons qui ne sont pu bon 
@@ -128,7 +110,46 @@ public class BeOManager : MonoBehaviour {
         }
 
         Array.Sort(leTableauPriorite);
+    }
 
+    void InitialiserLeMinuJeuBoutonLettre()
+    {
+        //Boncle pour trouver les bouton chiffre a spawner
+        for (int i = 0; i < nbrDeBoutonASpawner; i++)
+        {
+            while (indexeExistant == true)
+            {
+                indexeExistant = false;
+                k = UnityEngine.Random.Range(0, leTableauDeBoutonLettre.Length);
+
+                for (int c = 0; c < i; c++)
+                {
+                    if (indexeDejaFait[c] == k)
+                    {
+                        indexeExistant = true;
+                    }
+                }
+            }
+
+            indexeExistant = true;
+
+            btnQuiVientEtreSpawner = (GameObject)Instantiate(leTableauDeBoutonLettre[k].gameObject, leTableauDePositionDesSpawner[i], Quaternion.identity);
+
+            leTableauPriorite[i] = btnQuiVientEtreSpawner.GetComponent<BeOBouton>().getPriorite();
+
+            indexeDejaFait[i] = k;
+
+            leTableauDesBoutonSpawner[i] = btnQuiVientEtreSpawner;
+        }
+
+        //Supprimer les boutons qui ne sont pu bon 
+        for (int i = 0; i < indexeDejaFait.Length; i++)
+        {
+            //Valeur trop grosse pour un indexe de bouton
+            indexeDejaFait[i] = 999;
+        }
+
+        Array.Sort(leTableauPriorite);
     }
 
     //Fonction qui va etre appaler dans le mouse donw du bouton et qui verifira si on est prioritaire et on se detruit ou pas selon le bool renvoiyer
@@ -175,6 +196,26 @@ public class BeOManager : MonoBehaviour {
 
     void InitialiserUnePartie()
     {
+
+        //Avoir un nbr de bouton selon la difficulte
+
+        if (GameManager.instance.floor <= 2)
+        {
+            nbrDeBoutonASpawner = UnityEngine.Random.Range(4, 8);
+        }
+        else
+        {
+            if (GameManager.instance.floor > 2 && GameManager.instance.floor < 5)
+            {
+                nbrDeBoutonASpawner = UnityEngine.Random.Range(7, 11);
+            }
+
+            else
+            {
+                nbrDeBoutonASpawner = UnityEngine.Random.Range(9, 14);
+            }
+        }
+
         leTableauDePositionDesSpawner = new Vector3[nbrDeBoutonASpawner];
         leTableauPriorite = new int[nbrDeBoutonASpawner];
         indexeDejaFait = new int[nbrDeBoutonASpawner];
@@ -184,18 +225,52 @@ public class BeOManager : MonoBehaviour {
         k = 0;
         l = 0;
 
-        //Aller chercher la progression du joueur pour voir la difficule a mettre pour le mini jeu. Les different tableau avec les differents bouton (chiffre, lettre, chiffre romain etc)
-
         //Faire Spawner les boutons
         InitialiserLeTableauDePosition();
-        InitialiserLeMiniJeuBoutonChiffre();
+
+
+        if (GameManager.instance.floor < 2)
+        {
+            InitialiserLeMiniJeuBoutonChiffre();
+        }
+        else
+        {
+            randomPourSavoirQuelTableauDeBoutonJeSpawn = UnityEngine.Random.Range(0, 2);
+
+            switch (randomPourSavoirQuelTableauDeBoutonJeSpawn)
+            {
+                case 0:
+                    InitialiserLeMiniJeuBoutonChiffre();
+                    break;
+                case 1:
+                    InitialiserLeMinuJeuBoutonLettre();
+                    break;
+                default:
+                    InitialiserLeMiniJeuBoutonChiffre();
+                    break;
+            }
+        }
     }
 
     //Fonction qui regardera combien de round on veut faire gagner au joueur (selon le nombre d'etage complete
     void DeciderCombienDeRound()
     {
-        //Pour le moment je hardcode 2 round
-        nbrDeRoundAFaire = 2;
+        if (GameManager.instance.floor <= 2)
+        {
+            nbrDeRoundAFaire = 2;
+        }
+        else
+        {
+            if(GameManager.instance.floor > 2 && GameManager.instance.floor < 5)
+            {
+                nbrDeRoundAFaire = 3;
+            }
+            
+            else
+            {
+                nbrDeRoundAFaire = 4;
+            }
+        }
 
         //Activer les cercle conteur de round
         for(int i = 0; i < nbrDeRoundAFaire; i++)
@@ -244,3 +319,5 @@ public class BeOManager : MonoBehaviour {
         indicateurDeRoundGagner[nbrDeRoundFait].GetComponent<Animator>().SetBool("roundGagner", false);
     }
 }
+
+
