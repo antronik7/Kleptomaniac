@@ -18,7 +18,6 @@ public class CameraDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(JeVeuxDezoomer);
 
         if (Camera.main.orthographicSize > 4.95f)
         {

@@ -45,6 +45,8 @@ public class SIZManager : MonoBehaviour
 
         boulder = GameObject.FindGameObjectWithTag("boulder");
         Btrans = boulder.GetComponent<Transform>();
+
+        gameObject.GetComponent<AudioSource>().volume = GameManager.instance.volumeGeneral;
     }
 
     // Update is called once per frame

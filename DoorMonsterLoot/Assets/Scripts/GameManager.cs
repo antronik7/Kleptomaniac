@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour {
     //Variable pour le gameManagerCombat. On s'en sert seulment pour caller la fin quand on manque de temps
     GameObject leGameManagerCombat = null;
 
+    //La variable qui concerve le volume choisi par le joueur
+    public float volumeGeneral = 0;
+
     // Use this for initialization
     void Awake () {
         if (instance == null)
@@ -87,6 +90,8 @@ public class GameManager : MonoBehaviour {
         InstantiateDoors();
 
         currentTime = startTime;
+
+        loaderLeVolume();
     }
 	
 	// Update is called once per frame
@@ -327,4 +332,9 @@ public class GameManager : MonoBehaviour {
     }
 
     //----------------------------
+
+    void loaderLeVolume()
+    {
+        volumeGeneral = PlayerPrefs.GetFloat("Volume");
+    }
 }

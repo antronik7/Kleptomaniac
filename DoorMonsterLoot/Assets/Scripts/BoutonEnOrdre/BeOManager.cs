@@ -44,6 +44,8 @@ public class BeOManager : MonoBehaviour {
         DeciderCombienDeRound();
 
         InitialiserUnePartie();
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
     }
 	
     void InitialiserLeTableauDePosition()
