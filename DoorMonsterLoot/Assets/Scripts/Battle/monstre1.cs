@@ -26,6 +26,7 @@ public class monstre1 : MonoBehaviour {
     public float tempsEntreChaqueState = 5;
     public float tempsAccumule = 0;
     public int idState = 0;
+    public int attaqueDuMonstre = 0;
     /************************************************/
 
     //Les variables pour les differents projectiles du monstre 1
@@ -65,8 +66,8 @@ public class monstre1 : MonoBehaviour {
         //Pour le moment dans la state de transition on veut desactiver le boxCollider2D
         maBoxCollider.enabled = false;
 
-        //Affecter la valeur de la variable de la vie courant
-        vieCourante = vieMaximum;
+        //Initialiser les stats du monstre
+        initialiserStatDuMonstre();
     }
 	
 	// Update is called once per frame
@@ -348,6 +349,17 @@ public class monstre1 : MonoBehaviour {
             }
         }
         return tempsARetourner;
+    }
+
+    void initialiserStatDuMonstre()
+    {
+        //Selon l'etage, le monstre a plus de vie      
+        vieMaximum = 50 + (GameManager.instance.floor * Random.Range(1, 20));
+
+        //Affecter la valeur de la variable de la vie courant
+        vieCourante = vieMaximum;
+
+        attaqueDuMonstre = 25 + (GameManager.instance.floor * Random.Range(1, 5));
     }
 
     public void animationIdle()
