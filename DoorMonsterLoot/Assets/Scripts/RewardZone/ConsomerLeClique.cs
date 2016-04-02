@@ -15,6 +15,20 @@ public class ConsomerLeClique : MonoBehaviour {
 
     void OnMouseDown()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
+
+        GameManager.instance.StopTime = false;
+
+        switch (GameManager.instance.idScene)
+        {
+            case 0:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("DoorSelection");
+                break;
+
+            case 1:
+                GameManager.instance.idScene = 0;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+                break;
+
+        }
     }
 }

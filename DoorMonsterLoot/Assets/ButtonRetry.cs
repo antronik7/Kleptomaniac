@@ -17,6 +17,8 @@ public class ButtonRetry : MonoBehaviour {
     {
         Destroy(GameObject.Find("GameManager"));
         Destroy(GameObject.Find("InventoryManager"));
+        ScoreManager.score = 0;
+        ScoreManager.scoreDoors = 0;
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }

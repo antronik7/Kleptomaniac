@@ -6,12 +6,15 @@ public class projectile : MonoBehaviour {
 
     public bool gogogo = false;
     public int sens = 0;
-    public float dommageSiLeJoueurEstTouche = 0;
+    public int dommageSiLeJoueurEstTouche = 0;
+    //public monstre1 scriptDuMonstre;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+
+        setValeurDommage();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,21 +28,24 @@ public class projectile : MonoBehaviour {
             else
             {
                 gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - Time.deltaTime * 20);
-
             }
         }
-
 
         if (gameObject.transform.position.x <= -15 || gameObject.transform.position.y <= -10)
         {
             Debug.Log("Je suis deleter" + Time.time);
             Destroy(gameObject);
         }
-
 	}
 
-    public float retournerValeurDeDommage()
+    public int retournerValeurDeDommage()
     {
         return dommageSiLeJoueurEstTouche;
+    }
+
+    public void setValeurDommage()
+    {
+        dommageSiLeJoueurEstTouche = GameObject.FindGameObjectWithTag("Monstre").GetComponent<monstre1>().attaqueDuMonstre;
+        Debug.Log("Atk du monstre :" + dommageSiLeJoueurEstTouche);
     }
 }

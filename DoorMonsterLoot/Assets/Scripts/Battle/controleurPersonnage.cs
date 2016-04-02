@@ -4,6 +4,12 @@ using System.Collections;
 public class controleurPersonnage : MonoBehaviour {
 
     //Cette classe sert a prendre les inputs du joueur pour les esquives.
+    public GameObject feedbackPotion;
+    public GameObject feedbackShield;
+    public GameObject feedbackAttackUp;
+    GameObject atkUP;
+    GameObject Shield;
+    bool shieldAvtivated;
 
     //Variable pour le controller du joueur
     private Vector2 touchOrigin = -Vector2.one;
@@ -22,33 +28,44 @@ public class controleurPersonnage : MonoBehaviour {
     private bool esquiveEnCours = false;
     private float backUpTempsFreezerPendantEsquive;
 
+    public GameObject gameManagerCombat;
     public int variableDeVitesseEsquive;
     public float tempsFreezerPendantEsquive;
     public float mouvementMinimumPourCapterEsquive;
     public Vector2[] lesPositionMaximumPourEvitement;
 
     //Variable pour contenir la vie du personnage (normalement elle devrait etre assigner par le gameManagerPrincipal)
-    public float vieDuJoueurMaximum= 0;
+    public int vieDuJoueurMaximum= 0;
 
-    public float vieDuJoueurRestante = 0;
+    public int vieDuJoueurRestante = 0;
 
     //Variable pour contenir la defense du personnage (normalement elle devrait etre assigner par le gameManagerPrincipal)
-    public float defenseDuJoueur = 0;
+    public int defenseDuJoueur = 0;
 
-    public float dommageRecu = 0;
+    public int dommageRecu = 0;
 
     //Variable que l'on verifie si l'aller a ete effectue
     bool allerFait = false;
 
+    //Variable pour avoir l'animator
+    private Animator myAnimator;
+
+    private SpriteRenderer mySpriteRenderer;
+    public Sprite recuDommage;
+    bool faireFlasherPersonnageApresRecuDommage = false;
+
+    //Variable qui garde le temps quand on fait flasher le personnage
+    float tempsAccumule =0 ;
+    float tempsAccumele2 = 0;
 
 
-   // public GameObject progresBarVieJoueur;
+    // public GameObject progresBarVieJoueur;
 
-  //  public TimeBar progresBarVieJoueurScript;
+    //  public TimeBar progresBarVieJoueurScript;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         //Aller chercher les infos du joueur avec le singleton du gameManager
         getInformationJoueur();
@@ -65,250 +82,91 @@ public class controleurPersonnage : MonoBehaviour {
         //Trouver la progress bar de vie du joueur et son script
         AllerChercheProgresBarVieJoueur();
 
-	}
+        //Trouver l'animator
+        myAnimator = GetComponent<Animator>();
+
+        //Trouver le Sprite renderer
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+
+    }
 	
 	// Update is called once per frame
     void Update()
     {
 
-        if (faireUnEvitement == true)
+        
+
+
+        if (faireFlasherPersonnageApresRecuDommage == true)
         {
-            //On verifie si le joueur est supposer etre freezer encore
-            if (esquiveEnCours == true)
+            //On garde le temps passe
+            tempsAccumule = tempsAccumule + (Time.deltaTime);
+            if (tempsAccumule < 1)
             {
-                //on Verifie sa fait combien de temps
-                if (tempsFreezerPendantEsquive <= 0)
+                tempsAccumele2 = tempsAccumele2 + Time.deltaTime;
+
+                if(tempsAccumele2 > 0.10)
                 {
-                    esquiveEnCours = false;
-                }
-                else
-                {
-                    tempsFreezerPendantEsquive = tempsFreezerPendantEsquive - Time.deltaTime;
+                    if(mySpriteRenderer.enabled == false)
+                    {
+                        mySpriteRenderer.enabled = true;
+                    }
+                    else
+                    {
+                        mySpriteRenderer.enabled = false;
+                    }
+
+                    tempsAccumele2 = 0;
+
                 }
             }
             else
             {
-                //On verifie si nous fesons un mouvement horizontal ou vertical. Si horizontal n'est pas = a 1 ou -1 alors on fait un mouvement vertical
-                //Si le mouvement est horizontal
-                if (horizontal != 0)
-                {
-                    //Si le mouvement est negatif
-                    if (horizontal == -1)
-                    {
-                        //Si je ne suis pas encore rendu a l'emplacement que l'on desire 
-                        if (gameObject.transform.position.x > (positionJoueurAvantEvitement.x + positionAAller.x))
-                        {
+                faireFlasherPersonnageApresRecuDommage = false;
+                mySpriteRenderer.enabled = true;
+                tempsAccumule = 0;
 
-                            //Tu dois faire le mouvement.
-                            gameObject.transform.Translate(positionAAller * Time.deltaTime * variableDeVitesseEsquive);
-
-                            //Si jamais le mouvement est aller trop loin on remet le joueur a la bonne position
-                            if (gameObject.transform.position.x <= (positionJoueurAvantEvitement.x + positionAAller.x))
-                            {
-                                gameObject.transform.position = positionJoueurAvantEvitement + positionAAller;
-                            }
-
-                        }
-                        else
-                        {
-                            //Tu dois arreter le mouvement.
-                            positionJoueurAvantEvitement = positionAAller;
-
-                            //Si l'aller est deja fait. Alors cela veut dire que nous venons de finir le retour
-
-                            if (allerFait == true)
-                            {
-                                //L'esquive est terminer
-
-                                reinitialisation();
-                            }
-                            else
-                            {
-                                //Il faut indiquer que l'aller est deja fait. Donc la prochain fois qu'on entre dans ce if c'est que le retour est termine.
-                                allerFait = true;
-
-                                //Ici on doit donner le vecteur de retour
-                                positionAAller.x = positionAAller.x * -1;
-                                horizontal = horizontal * -1;
-                                positionJoueurAvantEvitement = gameObject.transform.position;
-                                esquiveEnCours = true;
-                            }
-                        }
-                    }
-                    //Sinon il est positif
-                    else
-                    {
-                        //Si je ne suis pas encore rendu a l'emplacement que l'on desire 
-                        if (gameObject.transform.position.x < (positionJoueurAvantEvitement.x + positionAAller.x))
-                        {
-                            //Tu dois faire le mouvement.
-                            gameObject.transform.Translate(positionAAller * Time.deltaTime * variableDeVitesseEsquive);
-
-                            //Si jamais le mouvement est aller trop loin on remet le joueur a la bonne position
-                            if (gameObject.transform.position.x >= (positionJoueurAvantEvitement.x + positionAAller.x))
-                            {
-                                gameObject.transform.position = positionJoueurAvantEvitement + positionAAller;
-                            }
-                        }
-                        else
-                        {
-                            //Tu dois arreter le mouvement.
-                            positionJoueurAvantEvitement = positionAAller;
-
-                            //Si l'aller est deja fait. Alors cela veut dire que nous venons de finir le retour
-
-                            if (allerFait == true)
-                            {
-                                //L'esquive est terminer
-                                reinitialisation();
-                            }
-                            else
-                            {
-                                //Il faut indiquer que l'aller est deja fait. Donc la prochain fois qu'on entre dans ce if c'est que le retour est termine.
-                                allerFait = true;
-
-                                //Ici on doit donner le vecteur de retour
-                                positionAAller.x = positionAAller.x * -1;
-                                horizontal = horizontal * -1;
-                                positionJoueurAvantEvitement = gameObject.transform.position;
-                                esquiveEnCours = true;
-
-                            }
-                        }
-                    }
-                }
-                //Le mouvement est vertical
-                else
-                {
-                    //Si le mouvement est negatif
-                    if (vertical == -1)
-                    {
-                        //Si je ne suis pas encore rendu a l'emplacement que l'on desire 
-                        if (gameObject.transform.position.y > (positionJoueurAvantEvitement.y + positionAAller.y))
-                        {
-                            //Tu dois faire le mouvement.
-                            gameObject.transform.Translate(positionAAller * Time.deltaTime * variableDeVitesseEsquive);
-
-                            //Si jamais le mouvement est aller trop loin on remet le joueur a la bonne position
-                            if (gameObject.transform.position.y <= (positionJoueurAvantEvitement.y + positionAAller.y))
-                            {
-                                gameObject.transform.position = positionJoueurAvantEvitement + positionAAller;
-                            }
-                        }
-                        else
-                        {
-                            //Tu dois arreter le mouvement.
-                            positionJoueurAvantEvitement = positionAAller;
-
-                            //Si l'aller est deja fait. Alors cela veut dire que nous venons de finir le retour
-
-                            if (allerFait == true)
-                            {
-                                //L'esquive est terminer
-
-                                reinitialisation();
-                            }
-                            else
-                            {
-                                //Il faut indiquer que l'aller est deja fait. Donc la prochain fois qu'on entre dans ce if c'est que le retour est termine.
-                                allerFait = true;
-
-                                //Ici on doit donner le vecteur de retour
-                                positionAAller.y = positionAAller.y * -1;
-                                vertical = vertical * -1;
-                                positionJoueurAvantEvitement = gameObject.transform.position;
-                                esquiveEnCours = true;
-
-                            }
-                        }
-                    }
-                    //Sinon il est positif
-                    else
-                    {
-                        //Si je ne suis pas encore rendu a l'emplacement que l'on desire 
-                        if (gameObject.transform.position.y < (positionJoueurAvantEvitement.y + positionAAller.y))
-                        {
-                            //Tu dois faire le mouvement.
-                            gameObject.transform.Translate(positionAAller * Time.deltaTime * variableDeVitesseEsquive);
-
-                            //Si jamais le mouvement est aller trop loin on remet le joueur a la bonne position
-                            if (gameObject.transform.position.y >= (positionJoueurAvantEvitement.y + positionAAller.y))
-                            {
-                                gameObject.transform.position = positionJoueurAvantEvitement + positionAAller;
-                            }
-                        }
-                        else
-                        {
-                            //Tu dois arreter le mouvement.
-                            //Si l'aller est deja fait. Alors cela veut dire que nous venons de finir le retour
-
-                            if (allerFait == true)
-                            {
-                                //L'esquive est terminer
-                                reinitialisation();
-                            }
-                            else
-                            {
-                                //Il faut indiquer que l'aller est deja fait. Donc la prochain fois qu'on entre dans ce if c'est que le retour est termine.
-                                allerFait = true;
-
-                                //Ici on doit donner le vecteur de retour
-                                positionAAller.y = positionAAller.y * -1;
-                                vertical = vertical * -1;
-                                positionJoueurAvantEvitement = gameObject.transform.position;
-                                esquiveEnCours = true;
-
-                            }
-                        }
-                    }
-                }
             }
         }
-       
-        //Si il n'y a pas de d'esquive a faire alors on prend les input du joueur
-        else
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                positionAncienClick = Input.mousePosition;
-                //Debug.Log("Position de l'ancien click : " + positionAncienClick);
-            }
+            positionAncienClick = Input.mousePosition;
+            //Debug.Log("Position de l'ancien click : " + positionAncienClick);
+        }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                leDeplacementEnX = Input.mousePosition.x - positionAncienClick.x;
-                leDeplacementEnY = Input.mousePosition.y - positionAncienClick.y;
+        if (Input.GetMouseButtonUp(0))
+        {
+            leDeplacementEnX = Input.mousePosition.x - positionAncienClick.x;
+            leDeplacementEnY = Input.mousePosition.y - positionAncienClick.y;
 
-                if (Mathf.Abs(leDeplacementEnX) > Mathf.Abs(leDeplacementEnY) && Mathf.Abs(leDeplacementEnX) > mouvementMinimumPourCapterEsquive)
+            if (Mathf.Abs(leDeplacementEnX) > Mathf.Abs(leDeplacementEnY) && Mathf.Abs(leDeplacementEnX) > mouvementMinimumPourCapterEsquive)
+            {
+                horizontal = leDeplacementEnX > 0 ? 1 : -1;
+
+                if (horizontal == -1)
                 {
-                    horizontal = leDeplacementEnX > 0 ? 1 : -1;
-
-                    if (horizontal == -1)
-                    {
-                        evitementGauche();
-                    }
-                    else
-                    {
-                        //Donner le possibilite d'eviter vers la droite ??
-                    }
+                    evitementGauche();
                 }
                 else
                 {
-                    if (Mathf.Abs(leDeplacementEnY) > mouvementMinimumPourCapterEsquive)
+                    //Donner le possibilite d'eviter vers la droite ??
+                }
+            }
+            else
+            {
+                if (Mathf.Abs(leDeplacementEnY) > mouvementMinimumPourCapterEsquive)
+                {
+                    vertical = leDeplacementEnY > 0 ? 1 : -1;
+                    if (vertical == -1)
                     {
-                        vertical = leDeplacementEnY > 0 ? 1 : -1;
-                        if (vertical == -1)
-                        {
-                            evitementBas();
-                        }
-                        else
-                        {
-                            evitementHaut();
-                        }
+                        evitementBas();
+                    }
+                    else
+                    {
+                        evitementHaut();
                     }
                 }
-
-                faireUnEvitement = true;
             }
         }
     }
@@ -316,19 +174,26 @@ public class controleurPersonnage : MonoBehaviour {
     //Fonction appler quand le joueur veut eviter vers la gauche
     void evitementGauche()
     {
-        positionAAller = lesPositionMaximumPourEvitement[0];
+        Debug.Log("recule");
+
+        //positionAAller = lesPositionMaximumPourEvitement[0];
+        myAnimator.SetInteger("StanceBattle", 2);
     }
 
     //Fonction appler quand le joueur veut eviter vers le bas
     void evitementBas()
     {
-        positionAAller = lesPositionMaximumPourEvitement[1];
+        Debug.Log("Crouch Toi");
+        myAnimator.SetInteger("StanceBattle", 1);
+        //positionAAller = lesPositionMaximumPourEvitement[1];
     }
 
     //Fonction appler quand le joueur veut eviter vers le haut
     void evitementHaut()
     {
-        positionAAller = lesPositionMaximumPourEvitement[2];
+        Debug.Log("Saute mon caliss");
+        myAnimator.SetInteger("StanceBattle", 3);
+        //positionAAller = lesPositionMaximumPourEvitement[2];
     }
 
     //Fonction pour reinitialiser les variable pour l'esquive
@@ -351,41 +216,64 @@ public class controleurPersonnage : MonoBehaviour {
         //Quand le joueur se fait toucher par le monstre
         if (other.tag == "Projectile")
         {
-
-            dommageRecu = other.GetComponent<projectile>().retournerValeurDeDommage();
-
-            Destroy(other.gameObject);
-
-            dommageRecu = dommageRecu - defenseDuJoueur;
-
-            if (dommageRecu < 0)
+            if (!shieldAvtivated)
             {
+                dommageRecu = other.GetComponent<projectile>().retournerValeurDeDommage();
 
+                Destroy(other.gameObject);
+
+                dommageRecu = dommageRecu - defenseDuJoueur;
+
+                if (dommageRecu < 0)
+                {
+
+                }
+                else
+                {
+                    vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
+                    if (vieDuJoueurRestante < 0)
+                    {
+                        vieDuJoueurRestante = 0;
+                    }
+                }
+
+
+                GameManager.instance.CurrentHealth = vieDuJoueurRestante;
+
+                //  progresBarVieJoueurScript.setFillAmount(vieDuJoueurRestante / vieDuJoueurMaximum);
+
+                if (vieDuJoueurRestante <= 0)
+                {
+                    //On doit avertir le gameMangerCombat que je suis mort
+
+                    myAnimator.SetInteger("StanceBattle", 11);
+
+                    //UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+                }
+                else
+                {
+                    //myAnimator.SetInteger("StanceBattle", 10);
+                    faireFlasherPersonnageApresRecuDommage = true;
+                    Debug.Log("Jai mal");
+
+                }
             }
             else
             {
-                vieDuJoueurRestante = vieDuJoueurRestante - dommageRecu;
+                shieldAvtivated = false;
+                Destroy(Shield);
             }
-
-          //  progresBarVieJoueurScript.setFillAmount(vieDuJoueurRestante / vieDuJoueurMaximum);
-
-            if(vieDuJoueurRestante <= 0)
-            {
-                //On doit avertir le gameMangerCombat que je suis mort
-                Destroy(gameObject);
-            }
-
         }
     }
 
     //Fonction qui fera appel au singleton de gameManager pour aller chercher les information du joueurs
     void getInformationJoueur()
     {
-        vieDuJoueurMaximum = 100;//GameManager.instance.MaxHealth;
+        vieDuJoueurMaximum = GameManager.instance.MaxHealth;
 
-        vieDuJoueurRestante = 100;//GameManager.instance.currentTime;
+        vieDuJoueurRestante = GameManager.instance.CurrentHealth;
 
-        defenseDuJoueur = 1;//GameManager.instance.characterDef;
+        defenseDuJoueur = GameManager.instance.characterDef;
     }
 
     //Fonction pour trouver la bar de vie du personnage ainsi que son script
@@ -401,7 +289,43 @@ public class controleurPersonnage : MonoBehaviour {
 
     }
 
+    //Fonction qui arrte l'animation 
+    public void animationIdle()
+    {
+        myAnimator.SetInteger("StanceBattle", 5);
+    }
 
+    public void afficherGameOver()
+    {
+        Destroy(gameObject);
+        gameManagerCombat.GetComponent<gameManagerCombat>().gameOverCombat();
+    }
 
+    public void PotionVie()
+    {
+        vieDuJoueurRestante += 25;
+        if(vieDuJoueurRestante > vieDuJoueurMaximum)
+        {
+            vieDuJoueurRestante = vieDuJoueurMaximum;
+        }
+        GameManager.instance.CurrentHealth = vieDuJoueurRestante;
+        Instantiate(feedbackPotion, new Vector3(gameObject.transform.position.x + 0.35f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+    }
+
+    public void ItemShield()
+    {
+        Shield = (GameObject)Instantiate(feedbackShield, new Vector3(gameObject.transform.position.x + 0.14f, gameObject.transform.position.y + 0.26f, gameObject.transform.position.z), Quaternion.identity);
+
+        Shield.transform.parent = gameObject.transform;
+
+        shieldAvtivated = true;
+    }
+
+    public void AttackUp()
+    {
+        atkUP = (GameObject)Instantiate(feedbackAttackUp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.18f, gameObject.transform.position.z), Quaternion.identity);
+
+        atkUP.transform.parent = gameObject.transform;
+    }
 
 }

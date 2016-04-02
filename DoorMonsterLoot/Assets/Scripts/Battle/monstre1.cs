@@ -5,6 +5,12 @@ public class monstre1 : MonoBehaviour {
 
     //Contient tout les informations sur le boss (Vie, attaque  deffence, etc, et les différentes "State"(Animation))
 
+    public GameObject leGameManagerCombat;
+
+    public GameObject PrefabDuShield;
+
+    gameManagerCombat gameManagerCombatScript;
+
     public BoxCollider2D maBoxCollider;
     public Animator monAnimator;
 
@@ -20,6 +26,7 @@ public class monstre1 : MonoBehaviour {
     public float tempsEntreChaqueState = 5;
     public float tempsAccumule = 0;
     public int idState = 0;
+    public int attaqueDuMonstre = 0;
     /************************************************/
 
     //Les variables pour les differents projectiles du monstre 1
@@ -32,8 +39,23 @@ public class monstre1 : MonoBehaviour {
 
     /************************************************/
 
-	// Use this for initialization
-	void Start () {
+    //Les variable pour la healthBar
+    /************************************************/
+    public GameObject maHealthBar;
+    public HealthBarMonstreController HealthBarMonstreControllerScript;
+    /************************************************/
+
+    
+
+
+    
+    // Use this for initialization
+    void Start () {
+
+        leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
+
+        //Fait une reference sur le script du gameManagerCombat pour acceder a des fonctions
+        gameManagerCombatScript = leGameManagerCombat.GetComponent<gameManagerCombat>();
 
         //Aller chercher son boxCollider
         maBoxCollider = gameObject.GetComponent<BoxCollider2D>();
@@ -44,56 +66,96 @@ public class monstre1 : MonoBehaviour {
         //Pour le moment dans la state de transition on veut desactiver le boxCollider2D
         maBoxCollider.enabled = false;
 
-        //Ici j'allais chercher la bar de vie du monstre le je vais surement juste envoyer lesdommage avec le systeme de vie a antoine
-	
-	}
+        //Initialiser les stats du monstre
+        initialiserStatDuMonstre();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
-        tempsAccumule = tempsAccumule + (Time.deltaTime);
 
-        //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
-        if (UneAttaqueEstPrete == true)
+        if (gameManagerCombatScript.personnageMort == false)
         {
-            alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
-            //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
-            leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
-        }
 
-        if (tempsAccumule >= tempsEntreChaqueState)
-        {
-            tempsAccumule = 0;
+            //Initialisation de la healthBar pour le monstre
+            HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
 
-            //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
-            if (idState == 0)
+            HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
+
+
+
+
+            //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
+            tempsAccumule = tempsAccumule + (Time.deltaTime);
+
+            //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
+            if (UneAttaqueEstPrete == true)
             {
-                //Change de state
-                //On fait un random pour trouver dans quel state je vais etre
-                idState = Random.Range(1, 4);
+                alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
+                //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
+                leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
+            }
 
-                switch (idState)
+            if (tempsAccumule >= tempsEntreChaqueState)
+            {
+                tempsAccumule = 0;
+
+                //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
+                if (idState == 0)
                 {
-                    case 1:
-                        State1();
-                        break;
+                    //Change de state
+                    //On fait un random pour trouver dans quel state je vais etre
+                    idState = Random.Range(1, 4);
 
-                    case 2:
-                        State2();
-                        break;
 
-                    case 3:
-                        State3();
-                        break;
+                    switch (idState)
+                    {
+                        case 1:
+                            State1();
+                            break;
+
+                        case 2:
+                            State2();
+                            break;
+
+                        case 3:
+                            State3();
+                            break;
+                    }
+                }
+
+                else
+                {
+                    //Je dois faire la bonne animation pour revenir a ma state normale
+
+                    switch (idState)
+                    {
+                        case 1:
+                            Debug.Log("J'etais dans la state 1");
+                            animationTransitionAtkUp();
+                            break;
+
+                        case 2:
+                            Debug.Log("J'etais dans la state 2");
+                            animationTransitionAtkCenter();
+                            break;
+
+                        case 3:
+                            Debug.Log("J'etais dans la state 3");
+                            animationTransitionAtkDown();
+                            break;
+                    }
+
+                    idState = 0;
+                    State0();
                 }
             }
+        }
 
-            else
-            {
-                idState = 0;
-                State0();
-            }
+        else
+        {
+            //Le personnage est mort alors on boucle l'animation du idle
+            animationIdle();
         }
 
 	}
@@ -103,12 +165,13 @@ public class monstre1 : MonoBehaviour {
     {
         //  Debug.Log("State : 0");
 
-        monAnimator.SetInteger("idState", 0);
+        //monAnimator.SetInteger("idState", 0);
 
         tempsEntreChaqueState = DeciderCombienDeTempsEntreChaqueState(); //ICICICICICICIC fonction a chancger selon le code d'antoine sur la vie
 
         //Le monstre n'est pas touchable par le joueur pendant qu'il est dans la state 0
         maBoxCollider.enabled = false;
+        PrefabDuShield.SetActive(true);
 
         if (UneAttaqueEstPrete == true)
         {
@@ -121,7 +184,7 @@ public class monstre1 : MonoBehaviour {
 
     public void State1()
     {
-        // Debug.Log("State : 1");
+         Debug.Log("State : 1");
 
         monAnimator.SetInteger("idState", 1);
 
@@ -130,12 +193,13 @@ public class monstre1 : MonoBehaviour {
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        PrefabDuShield.SetActive(false);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 8.5f, gameObject.transform.position.y + 6), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[1], new Vector2(gameObject.transform.position.x - 8.5f, gameObject.transform.position.y + 4), Quaternion.Euler(0,0,90));
 
             UneAttaqueEstPrete = true;
             sensProjectile = 2;
@@ -144,7 +208,7 @@ public class monstre1 : MonoBehaviour {
 
     public void State2()
     {
-        // Debug.Log("State : 2");
+         Debug.Log("State : 2");
 
         monAnimator.SetInteger("idState", 2);
 
@@ -153,12 +217,13 @@ public class monstre1 : MonoBehaviour {
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        PrefabDuShield.SetActive(false);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y + 1), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[2], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 0.15f), Quaternion.identity);
 
             sensProjectile = 1;
             UneAttaqueEstPrete = true;
@@ -167,26 +232,27 @@ public class monstre1 : MonoBehaviour {
 
     public void State3()
     {
-        //  Debug.Log("State : 3");
+          Debug.Log("State : 3");
 
         monAnimator.SetInteger("idState", 3);
 
         //Ici j'avais le code pour changer la position du collider selon la state
 
         //Reactiver le boxCollider2D
+        PrefabDuShield.SetActive(false);
         maBoxCollider.enabled = true;
 
         if (UneAttaqueEstPrete == false)
         {
             //Instantiate le projectIle
-            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 1), Quaternion.identity);
+            leProjectile = (GameObject) Instantiate(listeProjectile[0], new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y - 1.5f), Quaternion.identity);
 
             UneAttaqueEstPrete = true;
             sensProjectile = 1;
         }
     }
 
-    /*void OnMouseDown()
+    void OnMouseDown()
     {
         //Debug.Log("Monstre1 OnMouseDown");
 
@@ -199,26 +265,37 @@ public class monstre1 : MonoBehaviour {
         }
         else
         {
+
             vieCourante = vieCourante - attaqueJoueur;
 
+            if(vieCourante < 0)
+            {
+                vieCourante = 0;
+            }
             //Ajuster la bar de vie du monstre
 
-            vieAEnvoyer = vieCourante / vieMaximum;
 
-            progresBarVieMonstreScript.setFillAmount(vieAEnvoyer);
-
-
+            HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
 
             //Si le monstre est mort
             if (vieCourante == 0)
             {
-                gameManagerCombatScript.leMonstreEstMort();
+                if(leProjectile != null)
+                {
+                    //Destroy(leProjectile);
+                }
+                //PrefabDuShield.SetActive(false);
+                animationMort();
+                //gameManagerCombatScript.leMonstreEstMort();
             }
+           
         }
+    }
 
-        //  Debug.Log(vieCourante);
-
-    }*/
+    public void mort()
+    {
+        gameManagerCombatScript.leMonstreEstMort();
+    }
 
     //CETTE FONCTION NE MARCHE PAS AVEC LE CAODE D'ANTOINE, je dois savoir si il y a maniere de savoir c'est quoi la vie courante du monstre avec le system de vie a antoine
     //
@@ -266,11 +343,65 @@ public class monstre1 : MonoBehaviour {
                     else
                     {
                         //Le monstre est mort (ne devrait jamais aller dans se cas la.
-                        tempsARetourner = 0;
+                        tempsARetourner = 100;
                     }
                 }
             }
         }
         return tempsARetourner;
     }
+
+    void initialiserStatDuMonstre()
+    {
+        //Selon l'etage, le monstre a plus de vie      
+        vieMaximum = 50 + (GameManager.instance.floor * Random.Range(1, 20));
+
+        //Affecter la valeur de la variable de la vie courant
+        vieCourante = vieMaximum;
+
+        attaqueDuMonstre = 25 + (GameManager.instance.floor * Random.Range(1, 5));
+    }
+
+    public void animationIdle()
+    {
+        monAnimator.SetInteger("idState", 0);
+    }
+
+    public void animationTransitionAtkUp()
+    {
+        monAnimator.SetInteger("idState", 4);
+    }
+
+    public void animationBoucleAtkUp()
+    {
+        monAnimator.SetInteger("idState", 5);
+    }
+
+    public void animationTransitionAtkDown()
+    {
+        monAnimator.SetInteger("idState", 6);
+    }
+
+    public void animationBoucleAtkDown()
+    {
+        monAnimator.SetInteger("idState", 7);
+    }
+
+    public void animationTransitionAtkCenter()
+    {
+        monAnimator.SetInteger("idState", 8);
+    }
+
+    public void animationBoucleAtkCenter()
+    {
+        monAnimator.SetInteger("idState", 9);
+    }
+
+    public void animationMort()
+    {
+        monAnimator.SetInteger("idState", 10);
+        PrefabDuShield.SetActive(false);
+    }
 }
+
+

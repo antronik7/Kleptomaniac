@@ -17,7 +17,7 @@ public class GoUpFloor : MonoBehaviour {
     {
         GameManager.instance.StopTime = false;
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Battle");
 
         GameManager.instance.floor = GameManager.instance.floor + 1;
     }
