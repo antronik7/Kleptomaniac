@@ -39,7 +39,7 @@ public class rotatorController : MonoBehaviour {
 
             if(previousAngle > transform.eulerAngles.z)
             {
-                coffre.transform.Translate(Vector2.up / 20);
+                coffre.transform.Translate(Vector2.up / 10);
             }
 
             previousAngle = transform.eulerAngles.z;
