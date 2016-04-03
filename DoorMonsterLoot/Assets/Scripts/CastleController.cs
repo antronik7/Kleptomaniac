@@ -19,7 +19,7 @@ public class CastleController : MonoBehaviour {
 
         if(Camera.main.orthographicSize == 2.5f && Camera.main.transform.position.x == transform.position.x && Camera.main.transform.position.y == transform.position.y)
         {
-            Debug.Log("Je suis dans le if");
+            //Debug.Log("Je suis dans le if");
             JeVeuxZoomer = false;
         }
 

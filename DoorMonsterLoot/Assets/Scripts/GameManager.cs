@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public  GameObject[] DoorArray;
 
     public GameObject OpenStairs;
+    int globalScore;
 
     public GameObject PosDoor1Object;
     public GameObject PosDoor2Object;
@@ -281,7 +282,6 @@ public class GameManager : MonoBehaviour {
 
     public void LooseGame()
     {
-        Debug.Log("wtf");
         //Trouver la bonne animation a faire quand le joueur perd. 1 = combat
         switch (idScene)
         {
@@ -291,6 +291,7 @@ public class GameManager : MonoBehaviour {
                 idScene = 0;
                 break;
             case 0:
+                SauvegarderProgressionPartie();
                 UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
                 Application.LoadLevel("GameOver");
                 break;
@@ -336,5 +337,15 @@ public class GameManager : MonoBehaviour {
     void loaderLeVolume()
     {
         volumeGeneral = PlayerPrefs.GetFloat("Volume");
+    }
+
+    public void SauvegarderProgressionPartie()
+    {
+        globalScore = PlayerPrefs.GetInt("ScoreGlobal");
+        globalScore += ScoreManager.score;
+
+        Debug.Log(globalScore);
+
+        PlayerPrefs.SetInt("ScoreGlobal", globalScore);
     }
 }

@@ -4,6 +4,9 @@ using System.Collections;
 public class CameraDrag : MonoBehaviour
 {
 
+    public GameObject ScoreGlobal;
+    TextMesh SGtext;
+
     private Vector2 previousPosition;
     private Vector2 distanceBetWeenDrag;
 
@@ -12,6 +15,18 @@ public class CameraDrag : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SGtext = ScoreGlobal.GetComponent<TextMesh>();
+
+        if (PlayerPrefs.HasKey("ScoreGlobal"))
+        {
+            Debug.Log(PlayerPrefs.GetInt("ScoreGlobal"));
+            SGtext.text = PlayerPrefs.GetInt("ScoreGlobal").ToString();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ScoreGlobal", 0);
+            SGtext.text = "0";
+        }
 
     }
 
@@ -24,7 +39,7 @@ public class CameraDrag : MonoBehaviour
             JeVeuxDezoomer = false;
         }
 
-        if(JeVeuxDezoomer)
+        if (JeVeuxDezoomer)
         {
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 5.0f, 50 * Time.deltaTime);
         }
