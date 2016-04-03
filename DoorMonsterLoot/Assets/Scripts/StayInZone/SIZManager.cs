@@ -29,6 +29,8 @@ public class SIZManager : MonoBehaviour
     public float x = 0.75F;
     public Vector3 transformation;
 
+    int difficulter;
+
     // Use this for initialization
     void Start()
     {
@@ -47,6 +49,8 @@ public class SIZManager : MonoBehaviour
         Btrans = boulder.GetComponent<Transform>();
 
         gameObject.GetComponent<AudioSource>().volume = GameManager.instance.volumeGeneral;
+
+        getDifficulter();
     }
 
     // Update is called once per frame
@@ -86,7 +90,7 @@ public class SIZManager : MonoBehaviour
                 break;
             case 2:
                 inZone = true;
-                transformation.x = x * 1.5F;
+                transformation.x = x * 1.75F;
                 move();
                 break;
         }
@@ -145,4 +149,23 @@ public class SIZManager : MonoBehaviour
         }
     }
 
+
+    void getDifficulter()
+    {
+        difficulter = GameManager.instance.floor % 3;
+
+        switch (difficulter)
+        {
+            case 1:
+                x = 0.75f;
+                break;
+            case 2:
+                x = 0.675f;
+                break;
+            case 0:
+                x = 0.6f;
+                break;
+        }
+
+    }
 }

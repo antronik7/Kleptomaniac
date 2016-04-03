@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 60b328650e76db24086d3d10a4ec874d
-timeCreated: 1458674147
+timeCreated: 1459703107
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -50,6 +50,7 @@ TextureImporter:
     21300086: three
     21300088: spriteSheet1_15
     21300090: spriteSheet1_16
+    21300092: spriteSheet1_17
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -600,6 +601,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 423
+        y: 352
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: spriteSheet1_17
+      rect:
+        serializedVersion: 2
+        x: 446
         y: 352
         width: 9
         height: 12
