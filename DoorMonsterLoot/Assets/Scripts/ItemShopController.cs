@@ -5,14 +5,21 @@ public class ItemShopController : MonoBehaviour {
 
     public int prix;
     public GameObject item;
+    public GameObject shopManager;
 
 	// Use this for initialization
 	void Start () {
+
         GetComponent<TextMesh>().text = "" + prix + " $";
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
+        shopManager = GameObject.FindGameObjectWithTag("ShopManager");
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	    
 	}
 
@@ -22,12 +29,15 @@ public class ItemShopController : MonoBehaviour {
         {
             ScoreManager.score -= prix;
             IventoryManager.instance.addToInventory(item);
+
+            shopManager.GetComponent<ShopController>().sonAchat();
+
             Destroy(gameObject);
 
         }
         else
         {
-            //p-e faire un son pour dire que le joueur peut pas acheter
+            gameObject.GetComponent<AudioSource>().Play();
         }
 
         

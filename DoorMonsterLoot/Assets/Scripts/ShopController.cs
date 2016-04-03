@@ -35,10 +35,17 @@ public class ShopController : MonoBehaviour {
 
         Instantiate(ShopItemsArray[randomDoorIndex], PosItem3, Quaternion.identity);
 
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
+
+    public void sonAchat()
+    {
+        gameObject.GetComponent<AudioSource>().Play();
+    }
 }
