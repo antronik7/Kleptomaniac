@@ -7,6 +7,7 @@ public class projectile : MonoBehaviour {
     public bool gogogo = false;
     public int sens = 0;
     public int dommageSiLeJoueurEstTouche = 0;
+    bool jouerSon = false;
     //public monstre1 scriptDuMonstre;
 
 	// Use this for initialization
@@ -14,13 +15,22 @@ public class projectile : MonoBehaviour {
 
         setValeurDommage();
 
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	
         if(gogogo == true)
         {
+            if(jouerSon == false)
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                jouerSon = true;
+            }
+
             if (sens == 1)
             {
                 gameObject.transform.position = new Vector2(gameObject.transform.position.x - Time.deltaTime * 20, gameObject.transform.position.y);
