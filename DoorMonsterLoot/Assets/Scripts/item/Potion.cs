@@ -10,8 +10,11 @@ public class Potion : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        GameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
-        scriptGM = GameManagerCombat.GetComponent<gameManagerCombat>();
+        if (GameManager.instance.idScene == 1)
+        {
+            GameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
+            scriptGM = GameManagerCombat.GetComponent<gameManagerCombat>();
+        }
     }
 	
 	// Update is called once per frame
@@ -21,8 +24,11 @@ public class Potion : MonoBehaviour {
 
     void OnMouseDown()
     {
-        scriptGM.PotionVie();
-        IventoryManager.instance.removeFromInventory(index);
-        Destroy(gameObject);
+        if (GameManager.instance.idScene == 1)
+        {
+            scriptGM.PotionVie();
+            IventoryManager.instance.removeFromInventory(index);
+            Destroy(gameObject);
+        }
     }
 }
