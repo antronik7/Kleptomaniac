@@ -47,14 +47,18 @@ public class DDManager : MonoBehaviour {
     {
         for (int i = 0; i < nbrDoorASpawner; i++)
         {
-            tableauDeDoors[difficuty].GetComponentInChildren<DDHealthBar>().setDmg(percentDMG);
+            tableauDeDoors[i].GetComponentInChildren<DDHealthBar>().setDmg(percentDMG);
         }
     }
 
     void getDifficulte()
     {
         //Fonction pour aller chercher la difficulte voulu
-        difficuty = 1;
+        if (GameManager.instance.floor > 3)
+        {
+            percentDMG = 0.035f;
+        }
+        difficuty = GameManager.instance.floor % 3;
     }
 
     void initialiseDoors()
@@ -74,7 +78,7 @@ public class DDManager : MonoBehaviour {
                 break;
 
             //Hard
-            case 3:
+            case 0:
                 nbrDoorASpawner = 4;
                 break;
         }
