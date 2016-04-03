@@ -183,6 +183,7 @@ public class gameManagerCombat : MonoBehaviour {
         barDeVieMonstre.SetActive(false);
         lePanelGameOver.SetActive(true);
         hudComplet.SetActive(false);
+        GameManager.instance.SauvegarderProgressionPartie();
     }
 
 
