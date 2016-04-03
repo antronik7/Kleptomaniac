@@ -8,12 +8,13 @@ public class BoutonSave : MonoBehaviour {
     public GameObject panelPourLesOptions;
     public GameObject leSliderVolume;
     public GameObject pourGarderLeVolume;
+    public GameObject pourJouerLeSon;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
-	}
+    }
 
 
     void OnEnable()
@@ -31,6 +32,10 @@ public class BoutonSave : MonoBehaviour {
     void OnMouseDown()
     {
 
+        pourGarderLeVolume.GetComponent<GarderLeVolume>().EnregistrerLeVolume();
+
+        pourJouerLeSon.GetComponent<PourLeSonDesBoutons>().JouerLeSon();
+
         boutonStart.SetActive(true);
 
         boutonStart.GetComponent<Animator>().enabled = false;
@@ -45,7 +50,7 @@ public class BoutonSave : MonoBehaviour {
 
         leSliderVolume.SetActive(false);
 
-        pourGarderLeVolume.GetComponent<GarderLeVolume>().EnregistrerLeVolume();
+
 
 
     }
