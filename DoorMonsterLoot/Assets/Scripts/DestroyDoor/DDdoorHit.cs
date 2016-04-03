@@ -10,11 +10,12 @@ public class DDdoorHit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         hbScript = healthbar.GetComponent<DDHealthBar>();
-        gameObject.GetComponent<AudioSource>().volume = GameManager.instance.volumeGeneral;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
