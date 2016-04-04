@@ -7,16 +7,20 @@ public class SIZWin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        gameObject.GetComponent<AudioSource>().Play();
         GameManager.instance.spawnRewardScreen();
         canvas.SetActive(false);
     }

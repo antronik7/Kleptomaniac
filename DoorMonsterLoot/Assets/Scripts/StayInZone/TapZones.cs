@@ -20,6 +20,7 @@ public class TapZones : MonoBehaviour {
 
     void OnMouseDown()
     {
+        gameObject.GetComponent<AudioSource>().Play();
         manager.FromButton();
     }
 }

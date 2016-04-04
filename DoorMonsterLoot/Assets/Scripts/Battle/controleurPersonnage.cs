@@ -88,9 +88,12 @@ public class controleurPersonnage : MonoBehaviour {
         //Trouver le Sprite renderer
         mySpriteRenderer = GetComponent<SpriteRenderer>();
 
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
+
     }
-	
-	// Update is called once per frame
+
+    // Update is called once per frame
     void Update()
     {
 
@@ -218,6 +221,9 @@ public class controleurPersonnage : MonoBehaviour {
         {
             if (!shieldAvtivated)
             {
+                gameObject.GetComponent<AudioSource>().Play();
+
+
                 dommageRecu = other.GetComponent<projectile>().retournerValeurDeDommage();
 
                 Destroy(other.gameObject);

@@ -68,6 +68,9 @@ public class monstre1 : MonoBehaviour {
 
         //Initialiser les stats du monstre
         initialiserStatDuMonstre();
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
     }
 	
 	// Update is called once per frame
@@ -258,6 +261,8 @@ public class monstre1 : MonoBehaviour {
 
         //Call de fonction pour aller calculer mes points de vie restant (Fonction int) selon les int je peux changer ma "state")
         attaqueJoueur = gameManagerCombatScript.leJoueurABlesserLeMonstre() - defense;
+
+        gameObject.GetComponent<AudioSource>().Play();
 
         if (attaqueJoueur < 1)
         {
