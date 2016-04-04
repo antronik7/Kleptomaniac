@@ -20,5 +20,6 @@ public class GoUpFloor : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Battle");
 
         GameManager.instance.floor = GameManager.instance.floor + 1;
+        GameManager.instance.setPrixFloor();
     }
 }

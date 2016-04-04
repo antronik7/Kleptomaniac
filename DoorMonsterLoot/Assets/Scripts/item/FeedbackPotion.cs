@@ -13,7 +13,10 @@ public class FeedbackPotion : MonoBehaviour {
 	void Start () {
         textMesh = text.GetComponent<TextMesh>();
         imageSprite = image.GetComponent<SpriteRenderer>();
-	}
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+        gameObject.GetComponent<AudioSource>().Play();
+    }
 	
 	// Update is called once per frame
 	void Update () {
