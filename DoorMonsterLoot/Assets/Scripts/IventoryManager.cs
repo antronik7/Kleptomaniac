@@ -37,6 +37,7 @@ public class IventoryManager : MonoBehaviour {
         {
             inventoryArray[2] = item;
         }
+
     }
 
     public void removeFromInventory(int index)
@@ -59,5 +60,14 @@ public class IventoryManager : MonoBehaviour {
     public GameObject getItem(int index)
     {
         return inventoryArray[index];
+    }
+
+    public bool canAddItem()
+    {
+        if (inventoryArray[2] == null)
+        {
+            return true;
+        }
+        return false;
     }
 }

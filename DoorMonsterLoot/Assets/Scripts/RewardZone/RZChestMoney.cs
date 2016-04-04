@@ -27,6 +27,7 @@ public class RZChestMoney : MonoBehaviour {
 
     int RewardInChest()
     {
+        //return 3000;
         return 100 * GameManager.instance.floor + Random.Range(-25, 101);
     }
 }
