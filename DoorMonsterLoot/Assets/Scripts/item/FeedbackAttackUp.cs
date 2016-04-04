@@ -17,7 +17,11 @@ public class FeedbackAttackUp : MonoBehaviour {
         scriptGM = GameManagerCombat.GetComponent<gameManagerCombat>();
 
         TotalScale = barreDeVie.transform.localScale.x;
-        ScaleAEnlever = (TotalScale * Time.deltaTime) / nbSecondeBuff; 
+        ScaleAEnlever = (TotalScale * Time.deltaTime) / nbSecondeBuff;
+
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+        gameObject.GetComponent<AudioSource>().Play();
     }
 	
 	// Update is called once per frame
