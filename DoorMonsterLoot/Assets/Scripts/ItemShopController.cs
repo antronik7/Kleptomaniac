@@ -39,7 +39,10 @@ public class ItemShopController : MonoBehaviour {
         {
             gameObject.GetComponent<AudioSource>().Play();
         }
+    }
 
-        
+    public void setLePrix(int lePrixRecu)
+    {
+        prix = lePrixRecu;
     }
 }
