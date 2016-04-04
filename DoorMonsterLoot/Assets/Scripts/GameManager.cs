@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour {
 
     public int nbrAAvoir = 1;
 
+    string nomChateau;
+
     //Variable pour savoir si on est en combat ou autre scene. Course = 0, Combat = 1, sinon autre valeur a rajouter
     public int idScene = 0;
 
@@ -344,7 +346,24 @@ public class GameManager : MonoBehaviour {
         globalScore = PlayerPrefs.GetInt("ScoreGlobal");
         globalScore += ScoreManager.score;
 
-        Debug.Log(globalScore);
+        nomChateau = PlayerPrefs.GetString("ChateauActuel");
+
+        if (ScoreManager.score > PlayerPrefs.GetInt(nomChateau + "BestScore"))
+        {
+            PlayerPrefs.SetInt(nomChateau + "BestScore", ScoreManager.score);
+        }
+
+        if (floor > PlayerPrefs.GetInt(nomChateau + "BestFloor"))
+        {
+            PlayerPrefs.SetInt(nomChateau + "BestFloor", floor);
+        }
+        
+
+        if (ScoreManager.scoreDoors > PlayerPrefs.GetInt(nomChateau + "BestDoor"))
+        {
+            PlayerPrefs.SetInt(nomChateau + "BestDoor", ScoreManager.scoreDoors);
+        }
+
 
         PlayerPrefs.SetInt("ScoreGlobal", globalScore);
     }
