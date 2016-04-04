@@ -13,6 +13,8 @@ public class ShopController : MonoBehaviour {
     public Vector3 PosItem2;
     public Vector3 PosItem3;
 
+    GameObject vientEtreSpawner;
+    int prixTemporaire = 0;
 
 
     // Use this for initialization
@@ -23,19 +25,25 @@ public class ShopController : MonoBehaviour {
 
         int randomDoorIndex;
 
+        //Premier item
         randomDoorIndex = Random.Range(0, ShopItemsArray.Length);
+        vientEtreSpawner = (GameObject) Instantiate(ShopItemsArray[randomDoorIndex], PosItem1, Quaternion.identity);
+        envoyerLePrix(randomDoorIndex);
 
-        Instantiate(ShopItemsArray[randomDoorIndex], PosItem1, Quaternion.identity);
-
+        //Deuxieme Item
         randomDoorIndex = Random.Range(0, ShopItemsArray.Length);
+        vientEtreSpawner = (GameObject)Instantiate(ShopItemsArray[randomDoorIndex], PosItem2, Quaternion.identity);
+        envoyerLePrix(randomDoorIndex);
 
-        Instantiate(ShopItemsArray[randomDoorIndex], PosItem2, Quaternion.identity);
-
+        //Troisieme item
         randomDoorIndex = Random.Range(0, ShopItemsArray.Length);
+        vientEtreSpawner = (GameObject)Instantiate(ShopItemsArray[randomDoorIndex], PosItem3, Quaternion.identity);
+        envoyerLePrix(randomDoorIndex);
 
-        Instantiate(ShopItemsArray[randomDoorIndex], PosItem3, Quaternion.identity);
+        vientEtreSpawner = null;
 
-        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+       //Ajuster le son
+       gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
 
     }
 
@@ -47,5 +55,34 @@ public class ShopController : MonoBehaviour {
     public void sonAchat()
     {
         gameObject.GetComponent<AudioSource>().Play();
+    }
+
+    public void envoyerLePrix(int typeItem)
+    {
+        switch (typeItem)
+        {
+            //Shield
+            case 0:
+                prixTemporaire = 900 * GameManager.instance.floor + Random.Range((GameManager.instance.floor - 1) * 50, GameManager.instance.floor * 50);
+                break;
+
+            //Atk Up
+            case 1:
+                prixTemporaire = 1000 * GameManager.instance.floor + Random.Range((GameManager.instance.floor - 1) * 150, GameManager.instance.floor * 150);
+                break;
+
+            //Potion
+            case 2:
+                prixTemporaire = 800 * GameManager.instance.floor + Random.Range((GameManager.instance.floor - 1) * 100, GameManager.instance.floor * 100);
+                break;
+
+            default:
+                prixTemporaire = 1;
+                break;
+        }
+
+        vientEtreSpawner.GetComponent<ItemShopController>().setLePrix(prixTemporaire);
+        prixTemporaire = 0;
+
     }
 }

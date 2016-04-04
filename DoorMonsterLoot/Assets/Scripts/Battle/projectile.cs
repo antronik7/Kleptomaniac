@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class projectile : MonoBehaviour {
+public class projectile : MonoBehaviour
+{
 
 
     public bool gogogo = false;
@@ -10,8 +11,9 @@ public class projectile : MonoBehaviour {
     bool jouerSon = false;
     //public monstre1 scriptDuMonstre;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         setValeurDommage();
 
@@ -21,11 +23,12 @@ public class projectile : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-	
-        if(gogogo == true)
+    void Update()
+    {
+
+        if (gogogo == true)
         {
-            if(jouerSon == false)
+            if (jouerSon == false)
             {
                 gameObject.GetComponent<AudioSource>().Play();
                 jouerSon = true;
@@ -46,7 +49,7 @@ public class projectile : MonoBehaviour {
             Debug.Log("Je suis deleter" + Time.time);
             Destroy(gameObject);
         }
-	}
+    }
 
     public int retournerValeurDeDommage()
     {
@@ -57,5 +60,13 @@ public class projectile : MonoBehaviour {
     {
         dommageSiLeJoueurEstTouche = GameObject.FindGameObjectWithTag("Monstre").GetComponent<monstre1>().attaqueDuMonstre;
         Debug.Log("Atk du monstre :" + dommageSiLeJoueurEstTouche);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "ShieldItemFeedBack")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
