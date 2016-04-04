@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
     public int CurrentHealth = 100;
 
     public int floor = 1;
+    public int prixFloor = 0;
 
     public bool StopTime = false;
 
@@ -91,6 +92,8 @@ public class GameManager : MonoBehaviour {
         PosStairs2 = PosStairs2Object.transform.position;
 
         InstantiateDoors();
+
+        setPrixFloor();
 
         currentTime = startTime;
 
@@ -218,7 +221,7 @@ public class GameManager : MonoBehaviour {
             isDoorOpen3 = false;
         }
 
-        if(ScoreManager.score > nbrAAvoir * floor)
+        if(ScoreManager.score >= prixFloor)
         {
             Instantiate(OpenStairs, PosStairs1, Quaternion.identity);
             Instantiate(OpenStairs, PosStairs2, Quaternion.identity);
@@ -366,5 +369,10 @@ public class GameManager : MonoBehaviour {
 
 
         PlayerPrefs.SetInt("ScoreGlobal", globalScore);
+    }
+
+    public void setPrixFloor()
+    {
+        prixFloor = 1000 * floor;
     }
 }
