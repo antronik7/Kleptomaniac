@@ -25,15 +25,22 @@ public class ItemShopController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if (ScoreManager.score >= prix)
+        if (IventoryManager.instance.canAddItem())
         {
-            ScoreManager.score -= prix;
-            IventoryManager.instance.addToInventory(item);
+            if (ScoreManager.score >= prix)
+            {
+                ScoreManager.score -= prix;
+                IventoryManager.instance.addToInventory(item);
 
-            shopManager.GetComponent<ShopController>().sonAchat();
+                shopManager.GetComponent<ShopController>().sonAchat();
 
-            Destroy(gameObject);
+                Destroy(gameObject);
 
+            }
+            else
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+            }
         }
         else
         {
