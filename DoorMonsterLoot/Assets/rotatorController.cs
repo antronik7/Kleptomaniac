@@ -4,6 +4,7 @@ using System.Collections;
 public class rotatorController : MonoBehaviour {
 
     public GameObject coffre;
+    public GameObject fleche;
 
     Vector2 GesturePoint;
     float OriginalRotAng;
@@ -12,6 +13,7 @@ public class rotatorController : MonoBehaviour {
     float previousAngle;
 
     bool FiniLaBase = false;
+    bool flecheVisible = true;
 
     public float difficulty = 10;
 
@@ -68,6 +70,13 @@ public class rotatorController : MonoBehaviour {
 
     void OnMouseDown()
     {
+
+        if(flecheVisible)
+        {
+            fleche.SetActive(false);
+            flecheVisible = false;
+        }
+
         Vector2 SpinnerScreenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         //OriginalRotAng = (Mathf.Atan2(SpinnerScreenPoint.y, SpinnerScreenPoint.x) * Mathf.Rad2Deg - 90);
         OriginalRotAng = transform.eulerAngles.z;
