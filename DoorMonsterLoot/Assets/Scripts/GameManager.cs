@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
     string nomChateau;
 
-    //Variable pour savoir si on est en combat ou autre scene. Course = 0, Combat = 1, sinon autre valeur a rajouter
+    //Variable pour savoir si on est en combat ou autre scene. Course = 0, Combat = 1, Mini-jeux = 2
     public int idScene = 0;
 
     //Variable pour le gameManagerCombat. On s'en sert seulment pour caller la fin quand on manque de temps
@@ -240,6 +240,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
@@ -255,10 +256,12 @@ public class GameManager : MonoBehaviour {
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Close") child.gameObject.SetActive(false);
+                
             }
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
@@ -274,10 +277,12 @@ public class GameManager : MonoBehaviour {
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Close") child.gameObject.SetActive(false);
+                
             }
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
@@ -290,12 +295,12 @@ public class GameManager : MonoBehaviour {
         //Trouver la bonne animation a faire quand le joueur perd. 1 = combat
         switch (idScene)
         {
-            case 1:
+            case 1: //combat
                 leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
                 leGameManagerCombat.GetComponent<gameManagerCombat>().partiePerduManqueDeTemps();
                 idScene = 0;
                 break;
-            case 0:
+            default: //meme chose pour tous sauf pour combat
                 SauvegarderProgressionPartie();
                 UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
                 Application.LoadLevel("GameOver");
@@ -311,6 +316,8 @@ public class GameManager : MonoBehaviour {
         StopTime = true;
 
         RS = (GameObject)Instantiate(RewardScreen, new Vector3(0, 0, 0), Quaternion.identity);
+
+        idScene = 0;
 
         Vector3[] tab = RS.GetComponent<RZManager>().getPosition();
 
