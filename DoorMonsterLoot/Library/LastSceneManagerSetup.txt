@@ -1,12 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/WorldMap.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/AnimationDebut.unity
-=======
-- path: Assets/Scenes/WorldMap.unity
->>>>>>> 7f43feddfa77ee3ae961a2932a162e7d9b066e02
->>>>>>> 5d607408ebef4e58c8dff1d12d6a9f41e93ac021
+- path: Assets/Scenes/RotationMiniGame.unity
   isLoaded: 1
   isActive: 1
