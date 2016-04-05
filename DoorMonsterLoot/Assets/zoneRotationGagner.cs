@@ -4,6 +4,9 @@ using System.Collections;
 public class zoneRotationGagner : MonoBehaviour {
 
     int compteur = 0;
+    public GameObject premierCoffre;
+    public GameObject deuxiemeCoffre;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,8 +17,13 @@ public class zoneRotationGagner : MonoBehaviour {
 	    
         if(compteur > 1)
         {
+            premierCoffre.GetComponent<Rigidbody2D>().isKinematic = true;
+            deuxiemeCoffre.GetComponent<Rigidbody2D>().isKinematic = true;
+
             GameManager.instance.spawnRewardScreen();
             compteur = -1000;
+
+            Debug.Log("Gagner");
         }
 	}
 

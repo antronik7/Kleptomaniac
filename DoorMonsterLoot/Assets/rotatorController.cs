@@ -22,11 +22,13 @@ public class rotatorController : MonoBehaviour {
 
         setDifficulty();
 
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if(FiniLaBase)
         {
             gameObject.transform.rotation = Quaternion.AngleAxis(RotationAngle, Vector3.forward);
@@ -45,10 +47,17 @@ public class rotatorController : MonoBehaviour {
             float newRot = Mathf.Atan2(SpinnerScreenPoint.y, SpinnerScreenPoint.x) * Mathf.Rad2Deg - 90;
             RotationAngle = OriginalRotAng + newRot - OriginalTouchAng;
 
+
             if(idDeLaRoue == 1)
             {
                 if (previousAngle > transform.eulerAngles.z)
                 {
+
+                    if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                    {
+                        gameObject.GetComponent<AudioSource>().Play();
+
+                    }
                     coffre.transform.Translate(Vector2.up / difficulty);
 
                 }
@@ -57,6 +66,13 @@ public class rotatorController : MonoBehaviour {
             {
                 if (previousAngle < transform.eulerAngles.z)
                 {
+
+                    if (!gameObject.GetComponent<AudioSource>().isPlaying)
+                    {
+                        gameObject.GetComponent<AudioSource>().Play();
+
+                    }
+
                     coffre.transform.Translate(Vector2.up / difficulty);
 
                 }
