@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f9f760e5edf1f0d4eb1204fe85dfb563
-timeCreated: 1459877947
+timeCreated: 1459892221
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -58,6 +58,7 @@ TextureImporter:
     21300102: UIpackSheet_transparent_26
     21300104: UIpackSheet_transparent_27
     21300106: UIpackSheet_transparent_28
+    21300108: UIpackSheet_transparent_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -699,6 +700,17 @@ TextureImporter:
         y: 145
         width: 14
         height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: UIpackSheet_transparent_29
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 419
+        width: 8
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -30,6 +30,10 @@ public class CastleController : MonoBehaviour {
 
     public GameObject laMap;
 
+    Vector2 directionZoom;
+
+    public float maValeurEnX;
+
     // Use this for initialization
     void Start () {
 
@@ -76,8 +80,10 @@ public class CastleController : MonoBehaviour {
 
         if(JeVeuxZoomer && Camera.main.transform.position != transform.position)
         {
-            
 
+            directionZoom = (laMap.transform.position - transform.position);
+
+            laMap.transform.position = Vector3.MoveTowards(laMap.transform.position, new Vector3(directionZoom.x, directionZoom.y, 0), 20 * Time.deltaTime);
             //Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z), 20 * Time.deltaTime);
         }
 
@@ -90,11 +96,12 @@ public class CastleController : MonoBehaviour {
                 if (unlocked)
                 {
                     lescorebord = (GameObject)Instantiate(ScoreBoard, PosScoreBoard.transform.position, Quaternion.identity);
+                lescorebord.transform.SetParent(gameObject.transform);
                     lescorebord.GetComponent<ScoreBoardController>().setText(bestScore, bestFloor, bestDoor);
                 }
                     JeVeuxZoomer = true;
                     anciennePositionCam = Camera.main.transform.position;
-                    Debug.Log(anciennePositionCam);
+                    laMap.GetComponent<CameraDrag>().XAAller(maValeurEnX);
                     zommer.Play();
             }
             else if (!unlocked)

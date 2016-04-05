@@ -56,7 +56,10 @@ public class DDManager : MonoBehaviour {
         //Fonction pour aller chercher la difficulte voulu
         if (GameManager.instance.floor > 3)
         {
-            percentDMG = 0.035f;
+            for (int i = 0; i < GameManager.instance.floor / 3; i++)
+            {
+                percentDMG *= 0.75f;
+            }
         }
         difficuty = GameManager.instance.floor % 3;
     }

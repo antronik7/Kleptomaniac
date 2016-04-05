@@ -1,4 +1,8 @@
 sceneSetups:
-- path: Assets/Scenes/Main.unity
+<<<<<<< HEAD
+- path: Assets/Scenes/LabyrithMiniGame.unity
+=======
+- path: Assets/Scenes/RotationMiniGame.unity
+>>>>>>> 40ed20273f317e29df33d499efdec34bc6b69010
   isLoaded: 1
   isActive: 1
