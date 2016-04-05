@@ -22,8 +22,16 @@ public class CastleController : MonoBehaviour {
 
     bool JeVeuxZoomer = false;
 
-	// Use this for initialization
-	void Start () {
+    public AudioSource peuPasAcheter;
+    public AudioSource acheterChateau;
+    public AudioSource zommer;
+
+    Vector3 anciennePositionCam;
+
+    public GameObject laMap;
+
+    // Use this for initialization
+    void Start () {
 
         prix = int.Parse(textPrix.GetComponent<TextMesh>().text);
 
@@ -42,56 +50,68 @@ public class CastleController : MonoBehaviour {
                 bestFloor = 0;
                 bestDoor = 0;
             }
-        
-	    
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        peuPasAcheter.volume = peuPasAcheter.volume * PlayerPrefs.GetFloat("Volume");
+        acheterChateau.volume = acheterChateau.volume * PlayerPrefs.GetFloat("Volume");
+        zommer.volume = zommer.volume * PlayerPrefs.GetFloat("Volume");
 
 
-        
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         if (Camera.main.orthographicSize == 2.5f && Camera.main.transform.position.x == transform.position.x && Camera.main.transform.position.y == transform.position.y)
         {
-            //Debug.Log("Je suis dans le if");
             JeVeuxZoomer = false;
+
+            Debug.Log("Cam pos : " + Camera.main.transform.position.x);
+            Debug.Log("trans pos : " + transform.position.x);   
         }
 
-        if(JeVeuxZoomer && Camera.main.orthographicSize != 2.5)
+        if (JeVeuxZoomer && Camera.main.orthographicSize != 2.5)
         {
             Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, 2.5f, 10 * Time.deltaTime);
         }
 
         if(JeVeuxZoomer && Camera.main.transform.position != transform.position)
         {
-            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z), 20 * Time.deltaTime);
+            
+
+            //Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z), 20 * Time.deltaTime);
         }
 
 	}
 
     void OnMouseDown()
     {
-       
-            if (Camera.main.orthographicSize != 2.5)
-            {
-                lescorebord = (GameObject)Instantiate(ScoreBoard, PosScoreBoard.transform.position, Quaternion.identity);
-                lescorebord.GetComponent<ScoreBoardController>().setText(bestScore, bestFloor, bestDoor);
-                JeVeuxZoomer = true;
+        if (Camera.main.orthographicSize != 2.5)
+        {
+                if (unlocked)
+                {
+                    lescorebord = (GameObject)Instantiate(ScoreBoard, PosScoreBoard.transform.position, Quaternion.identity);
+                    lescorebord.GetComponent<ScoreBoardController>().setText(bestScore, bestFloor, bestDoor);
+                }
+                    JeVeuxZoomer = true;
+                    anciennePositionCam = Camera.main.transform.position;
+                    Debug.Log(anciennePositionCam);
+                    zommer.Play();
             }
             else if (!unlocked)
             {
-            Debug.Log(prix);
                 //Acheter le chateau
                 if (PlayerPrefs.GetInt("ScoreGlobal") >= prix)
                 {
                     PlayerPrefs.SetInt("ScoreGlobal", PlayerPrefs.GetInt("ScoreGlobal") - prix);
                     setUnlocked(nomChateau + "Unlocked");
+                
                     //Ajouter un son pour oui je l'ai ahceter
+                    acheterChateau.Play();
                 }
                 else
                 {
                     //Ajouter un son pour fuck jpeux as acheter jai pas assez de gold
+                    peuPasAcheter.Play();
                 }
             }
             else

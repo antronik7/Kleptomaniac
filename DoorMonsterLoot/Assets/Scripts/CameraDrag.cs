@@ -12,6 +12,9 @@ public class CameraDrag : MonoBehaviour
 
     bool JeVeuxDezoomer = false;
 
+    Vector3 anciennePositionCam;
+
+
     // Use this for initialization
     void Start()
     {
@@ -42,6 +45,9 @@ public class CameraDrag : MonoBehaviour
         if (JeVeuxDezoomer)
         {
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 5.0f, 50 * Time.deltaTime);
+
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -4, transform.position.z), 50 * Time.deltaTime);
+            Debug.Log("Log");
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -61,10 +67,15 @@ public class CameraDrag : MonoBehaviour
         transform.position = new Vector2(Mathf.Clamp(transform.position.x + distanceBetWeenDrag.x, -15, 4), transform.position.y);
 
         previousPosition = objPosition;
+
+        anciennePositionCam = Camera.main.transform.position;
     }
 
     void OnMouseDown()
     {
+
+        Debug.Log("Ici");
+
         if (Camera.main.orthographicSize == 2.5f)
         {
             JeVeuxDezoomer = true;
