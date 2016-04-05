@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/RotationMiniGame.unity
+=======
 - path: Assets/Scenes/DestroyDoor.unity
+>>>>>>> f759873d460bdbd116fc2ccde5c132b3b3eec913
   isLoaded: 1
   isActive: 1

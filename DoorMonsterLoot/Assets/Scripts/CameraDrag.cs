@@ -12,8 +12,9 @@ public class CameraDrag : MonoBehaviour
 
     bool JeVeuxDezoomer = false;
 
-    Vector3 anciennePositionCam;
+    float xPourDezoomer = 0;
 
+    bool remmetreCamPasZoomer = false;
 
     // Use this for initialization
     void Start()
@@ -37,7 +38,7 @@ public class CameraDrag : MonoBehaviour
     void Update()
     {
 
-        if (Camera.main.orthographicSize > 4.95f)
+        if (Camera.main.orthographicSize > 4.99f && transform.position.x == xPourDezoomer && transform.position.y == -4 )
         {
             JeVeuxDezoomer = false;
         }
@@ -46,7 +47,17 @@ public class CameraDrag : MonoBehaviour
         {
             Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 5.0f, 50 * Time.deltaTime);
 
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -4, transform.position.z), 50 * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -4, transform.position.z), 50 * Time.deltaTime);
+            //Camera.main.orthographicSize = 5f;
+
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(xPourDezoomer, -4, transform.position.z), 50 * Time.deltaTime);
+
+            //transform.position = Vector3.MoveTowards(transform.position, new Vector3(anciennePositionMap.x, anciennePositionMap.y, transform.position.z), 50 * Time.deltaTime);
+
+
+            //Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 5.0f, 50 * Time.deltaTime);
+
+            
             Debug.Log("Log");
         }
 
@@ -68,7 +79,6 @@ public class CameraDrag : MonoBehaviour
 
         previousPosition = objPosition;
 
-        anciennePositionCam = Camera.main.transform.position;
     }
 
     void OnMouseDown()
@@ -79,6 +89,15 @@ public class CameraDrag : MonoBehaviour
         if (Camera.main.orthographicSize == 2.5f)
         {
             JeVeuxDezoomer = true;
+            /*Debug.Log("la postion en x : " +transform.position.x);
+            Debug.Log("xPourDezoom avant calcul : " + xPourDezoomer);
+            xPourDezoomer = transform.position.x + xPourDezoomer;
+            Debug.Log("Xpourdezoom : " + xPourDezoomer);*/
         }
+    }
+
+    public void XAAller(float leVieuX)
+    {
+        xPourDezoomer = leVieuX;
     }
 }
