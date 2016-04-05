@@ -6,9 +6,12 @@ public class zoneRotationGagner : MonoBehaviour {
     int compteur = 0;
     public GameObject premierCoffre;
     public GameObject deuxiemeCoffre;
+    public GameObject premierRotator;
+    public GameObject deuxiemeRotator;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -19,6 +22,10 @@ public class zoneRotationGagner : MonoBehaviour {
         {
             premierCoffre.GetComponent<Rigidbody2D>().isKinematic = true;
             deuxiemeCoffre.GetComponent<Rigidbody2D>().isKinematic = true;
+
+            premierRotator.GetComponent<CircleCollider2D>().enabled = false;
+            deuxiemeRotator.GetComponent<CircleCollider2D>().enabled = false;
+
 
             GameManager.instance.spawnRewardScreen();
             compteur = -1000;
