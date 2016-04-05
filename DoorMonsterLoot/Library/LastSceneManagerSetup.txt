@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/GameOver.unity
+=======
 - path: Assets/Scenes/RotationMiniGame.unity
+>>>>>>> 66da1d7a90646e9feb35d0f5f18207e3c7b9d4bd
   isLoaded: 1
   isActive: 1
