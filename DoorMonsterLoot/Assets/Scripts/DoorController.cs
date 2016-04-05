@@ -18,10 +18,9 @@ public class DoorController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nomScene);
-        //Application.LoadLevel(nomScene);
-
         GameManager.instance.idScene = 2;
         GameManager.instance.idDoorClicked = idDoor;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(nomScene);
+        //Application.LoadLevel(nomScene); 
     }
 }

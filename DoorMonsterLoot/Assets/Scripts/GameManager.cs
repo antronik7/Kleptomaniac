@@ -240,6 +240,7 @@ public class GameManager : MonoBehaviour {
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
@@ -255,10 +256,12 @@ public class GameManager : MonoBehaviour {
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Close") child.gameObject.SetActive(false);
+                
             }
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
@@ -274,10 +277,12 @@ public class GameManager : MonoBehaviour {
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Close") child.gameObject.SetActive(false);
+                
             }
         }
         else
         {
+            myDoor.GetComponent<BoxCollider2D>().enabled = false;
             foreach (Transform child in myDoor.transform)
             {
                 if (child.name == "Open") child.gameObject.SetActive(false);
