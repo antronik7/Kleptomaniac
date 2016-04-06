@@ -45,12 +45,15 @@ public class monstre1 : MonoBehaviour {
     public HealthBarMonstreController HealthBarMonstreControllerScript;
     /************************************************/
 
+    bool jeSuisMort = false;
     
 
 
     
     // Use this for initialization
     void Start () {
+
+        jeSuisMort = false;
 
         leGameManagerCombat = GameObject.FindGameObjectWithTag("GameManagerCombat");
 
@@ -77,89 +80,103 @@ public class monstre1 : MonoBehaviour {
 	void Update () {
 
 
-        if (gameManagerCombatScript.personnageMort == false)
-        {
-
-            //Initialisation de la healthBar pour le monstre
-            HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
-
-            HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
-
-
-
-
-            //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
-            tempsAccumule = tempsAccumule + (Time.deltaTime);
-
-            //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
-            if (UneAttaqueEstPrete == true)
+            if (gameManagerCombatScript.personnageMort == false)
             {
-                alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
-                //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
-                leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
-            }
 
-            if (tempsAccumule >= tempsEntreChaqueState)
-            {
-                tempsAccumule = 0;
+                //Initialisation de la healthBar pour le monstre
+                HealthBarMonstreControllerScript = maHealthBar.GetComponent<HealthBarMonstreController>();
 
-                //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
-                if (idState == 0)
+                HealthBarMonstreControllerScript.UpdateMaHealthBar(vieCourante, vieMaximum);
+
+
+
+
+                //Ici dans le update on va avoir un timer qui va faire changer de state le monstre
+                tempsAccumule = tempsAccumule + (Time.deltaTime);
+
+                //Si j'ai un attaque de prete (en cours) alors la faire changer de couleur pour donne du feed back (c'est l'alpha pour le moment)
+                if (UneAttaqueEstPrete == true)
                 {
-                    //Change de state
-                    //On fait un random pour trouver dans quel state je vais etre
-                    idState = Random.Range(1, 4);
-
-
-                    switch (idState)
-                    {
-                        case 1:
-                            State1();
-                            break;
-
-                        case 2:
-                            State2();
-                            break;
-
-                        case 3:
-                            State3();
-                            break;
-                    }
+                    alphaPourFeedBackAttaque = tempsAccumule / tempsEntreChaqueState;
+                    //leProjectile.GetComponent<SpriteRenderer>().color = new Color(1- colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque, 1 - colorPourFeedBackAttaque);
+                    leProjectile.GetComponent<SpriteRenderer>().color = new Color(alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque, alphaPourFeedBackAttaque);
                 }
 
-                else
+                if (tempsAccumule >= tempsEntreChaqueState)
                 {
-                    //Je dois faire la bonne animation pour revenir a ma state normale
+                    tempsAccumule = 0;
 
-                    switch (idState)
+                    //Je verifie si je ne suis pas en transition (Si transition alors on fait une nouvelle animation, sinon on veux faire l'animation d'attaque et ensuite faire la transition)
+                    if (idState == 0)
                     {
-                        case 1:
-                            Debug.Log("J'etais dans la state 1");
-                            animationTransitionAtkUp();
-                            break;
+                        //Change de state
+                        //On fait un random pour trouver dans quel state je vais etre
+                        idState = Random.Range(1, 4);
 
-                        case 2:
-                            Debug.Log("J'etais dans la state 2");
-                            animationTransitionAtkCenter();
-                            break;
 
-                        case 3:
-                            Debug.Log("J'etais dans la state 3");
-                            animationTransitionAtkDown();
-                            break;
+                        switch (idState)
+                        {
+                            case 1:
+                                State1();
+                                break;
+
+                            case 2:
+                                State2();
+                                break;
+
+                            case 3:
+                                State3();
+                                break;
+                            case 4:
+                                State4();
+                                break;
+                        }
                     }
 
-                    idState = 0;
-                    State0();
+                    else
+                    {
+                        //Je dois faire la bonne animation pour revenir a ma state normale
+
+                        switch (idState)
+                        {
+                            case 1:
+                                Debug.Log("J'etais dans la state 1");
+                                animationTransitionAtkUp();
+                                break;
+
+                            case 2:
+                                Debug.Log("J'etais dans la state 2");
+                                animationTransitionAtkCenter();
+                                break;
+
+                            case 3:
+                                Debug.Log("J'etais dans la state 3");
+                                animationTransitionAtkDown();
+                                break;
+                        }
+
+
+                        if(idState != 4)
+                        {
+                            idState = 0;
+                            State0();
+                        }
+                        else
+                        {
+                            State4();
+                        }
+
+
+                    }
                 }
             }
-        }
 
-        else
-        {
-            //Le personnage est mort alors on boucle l'animation du idle
-            animationIdle();
-        }
+            else
+            {
+                //Le personnage est mort alors on boucle l'animation du idle
+                animationIdle();
+            }
+        
 
 	}
 
@@ -235,7 +252,7 @@ public class monstre1 : MonoBehaviour {
 
     public void State3()
     {
-          Debug.Log("State : 3");
+        Debug.Log("State : 3");
 
         monAnimator.SetInteger("idState", 3);
 
@@ -253,6 +270,14 @@ public class monstre1 : MonoBehaviour {
             UneAttaqueEstPrete = true;
             sensProjectile = 1;
         }
+    }
+
+    //State mort
+    public void State4()
+    {
+        PrefabDuShield.SetActive(false);
+        maBoxCollider.enabled = false;
+        UneAttaqueEstPrete = false;
     }
 
     void OnMouseDown()
@@ -285,13 +310,13 @@ public class monstre1 : MonoBehaviour {
             //Si le monstre est mort
             if (vieCourante == 0)
             {
-                if(leProjectile != null)
-                {
-                    //Destroy(leProjectile);
-                }
-                //PrefabDuShield.SetActive(false);
+                idState = 4;
+                jeSuisMort = true;
+                UneAttaqueEstPrete = false;
+                Destroy(GameObject.FindGameObjectWithTag("Projectile"));
+                PrefabDuShield.SetActive(false);
                 animationMort();
-                //gameManagerCombatScript.leMonstreEstMort();
+               
             }
            
         }
@@ -299,6 +324,7 @@ public class monstre1 : MonoBehaviour {
 
     public void mort()
     {
+        
         gameManagerCombatScript.leMonstreEstMort();
     }
 
@@ -404,7 +430,8 @@ public class monstre1 : MonoBehaviour {
 
     public void animationMort()
     {
-        monAnimator.SetInteger("idState", 10);
+        monAnimator.SetTrigger("New Trigger");
+        //monAnimator.SetInteger("idState", 10);
         PrefabDuShield.SetActive(false);
     }
 }

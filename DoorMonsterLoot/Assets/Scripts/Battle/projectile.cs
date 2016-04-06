@@ -9,6 +9,7 @@ public class projectile : MonoBehaviour
     public int sens = 0;
     public int dommageSiLeJoueurEstTouche = 0;
     bool jouerSon = false;
+    public float vitesseProjectile = 15;
     //public monstre1 scriptDuMonstre;
 
     // Use this for initialization
@@ -36,11 +37,11 @@ public class projectile : MonoBehaviour
 
             if (sens == 1)
             {
-                gameObject.transform.position = new Vector2(gameObject.transform.position.x - Time.deltaTime * 20, gameObject.transform.position.y);
+                gameObject.transform.position = new Vector2(gameObject.transform.position.x - Time.deltaTime * vitesseProjectile, gameObject.transform.position.y);
             }
             else
             {
-                gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - Time.deltaTime * 20);
+                gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y - Time.deltaTime * vitesseProjectile);
             }
         }
 
