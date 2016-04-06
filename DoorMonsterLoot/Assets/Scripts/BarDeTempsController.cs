@@ -41,15 +41,15 @@ public class BarDeTempsController : MonoBehaviour {
             {
                 if (GameManager.instance.currentTime < GameManager.instance.startTime)
                 {
-                    barreDeTemps.transform.localScale += new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
-                    guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                    barreDeTemps.transform.localScale += new Vector3(((15 * Camera.main.transform.localScale.x) * (Time.deltaTime * 5)) / GameManager.instance.startTime, 0, 0);
+                    guard.transform.position -= new Vector3(((11.5f * Camera.main.transform.localScale.x) * (Time.deltaTime * 5)) / GameManager.instance.startTime, 0, 0);
                 }
 
                 GameManager.instance.currentTime += Time.deltaTime * 5;
             }
             else
             {
-                barreDeTemps.transform.localScale -= new Vector3((15 * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
+                barreDeTemps.transform.localScale -= new Vector3(((15 * Camera.main.transform.localScale.x) * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
                 guard.transform.position += new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
 
                 GameManager.instance.currentTime -= Time.deltaTime;

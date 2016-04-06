@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
 
         setPrixFloor();
 
-        currentTime = 50;
+        currentTime = 110;
 
         loaderLeVolume();
 
