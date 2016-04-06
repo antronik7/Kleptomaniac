@@ -16,17 +16,24 @@ public class ArrowController : MonoBehaviour {
 
     void OnMouseDown()
     {
-        PlayerController other = (PlayerController)Player.GetComponent<PlayerController>();
-        other.StartRunning();
+        if(GameManager.instance.distanceEnd <= 0)
+        {
+            Application.LoadLevel("GameOver");
+        }
+        else
+        {
+            PlayerController other = (PlayerController)Player.GetComponent<PlayerController>();
+            other.StartRunning();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
 
-        GameManager.instance.InstantiateNextDoors();
+            GameManager.instance.InstantiateNextDoors();
 
-        GameManager.instance.isDoorOpen1 = true;
-        GameManager.instance.isDoorOpen2 = true;
-        GameManager.instance.isDoorOpen3 = true;
+            GameManager.instance.isDoorOpen1 = true;
+            GameManager.instance.isDoorOpen2 = true;
+            GameManager.instance.isDoorOpen3 = true;
 
-        BarDeTempsController.StartAddTime();
+            BarDeTempsController.StartAddTime();
+        }
     }
 }

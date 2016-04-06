@@ -17,6 +17,8 @@ public class StairController : MonoBehaviour {
     {
         GameManager.instance.StopTime = true;
 
+        GameManager.instance.distanceEnd = 1100;
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
 
         //Application.LoadLevel(nomScene);

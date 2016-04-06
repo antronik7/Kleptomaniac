@@ -22,4 +22,9 @@ public class AnimGuardsDebut : MonoBehaviour {
         g3.GetComponent<Animator>().SetBool("Run", true);
         Debug.Log("Je suis ici");
     }
+
+    public void changeMain()
+    {
+        Application.LoadLevel("Main");
+    }
 }

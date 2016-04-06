@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CastleController : MonoBehaviour {
 
+    public string nomScene;
     public GameObject ScoreBoard;
     public GameObject PosScoreBoard;
     public GameObject Cadenas;
@@ -125,7 +126,7 @@ public class CastleController : MonoBehaviour {
             {
                 //Enregistrer dans les players pref le chateau dans lequel le joueur va jouer
                 PlayerPrefs.SetString("ChateauActuel", nomChateau);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nomScene);
             }
     }
 
