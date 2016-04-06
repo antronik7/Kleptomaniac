@@ -6,8 +6,13 @@ public class AnimGuardsDebut : MonoBehaviour {
     public GameObject g2;
     public GameObject g3;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject wtf1;
+    public GameObject wtf2;
+    public GameObject wtf3;
+
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -26,5 +31,21 @@ public class AnimGuardsDebut : MonoBehaviour {
     public void changeMain()
     {
         Application.LoadLevel("Main");
+    }
+
+    public void activerWtf()
+    {
+        wtf1.SetActive(true);
+        wtf2.SetActive(true);
+        wtf3.SetActive(true);
+
+    }
+
+    public void nopeWtf()
+    {
+        wtf1.SetActive(false);
+        wtf2.SetActive(false);
+        wtf3.SetActive(false);
+
     }
 }
