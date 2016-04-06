@@ -99,15 +99,16 @@ public class gameManagerCombat : MonoBehaviour {
     //Fonctoin qui supprime le monstre apres qu'il soit mort. C'est le monstre qui call cette fonction. Elle supprime aussi le projectile s'il en n'a un
     public void leMonstreEstMort()
     {
-        Destroy(GameObject.FindGameObjectWithTag("Monstre"));
+        //Destroy(GameObject.FindGameObjectWithTag("Monstre"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
-
+        leJoueurCombat.GetComponent<controleurPersonnage>().animationFiniDeTuerLeMonstre();
+        //Debug.Log("a");
         //hudComplet.SetActive(false);
         //hudNoInventory.SetActive(true);
         //GameManager.instance.spawnRewardScreen();
         GameManager.instance.currentTime = 110;
         GameManager.instance.idScene = 0;
-        Application.LoadLevel("Main");
+        //Application.LoadLevel("Main");
     }
 
 

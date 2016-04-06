@@ -63,6 +63,8 @@ public class controleurPersonnage : MonoBehaviour {
 
     //  public TimeBar progresBarVieJoueurScript;
 
+    bool monstreEstMort = false;
+
 
     // Use this for initialization
     void Start () {
@@ -97,77 +99,77 @@ public class controleurPersonnage : MonoBehaviour {
     void Update()
     {
 
-        
-
-
-        if (faireFlasherPersonnageApresRecuDommage == true)
+        if (monstreEstMort == false)
         {
-            //On garde le temps passe
-            tempsAccumule = tempsAccumule + (Time.deltaTime);
-            if (tempsAccumule < 1)
+            if (faireFlasherPersonnageApresRecuDommage == true)
             {
-                tempsAccumele2 = tempsAccumele2 + Time.deltaTime;
-
-                if(tempsAccumele2 > 0.10)
+                //On garde le temps passe
+                tempsAccumule = tempsAccumule + (Time.deltaTime);
+                if (tempsAccumule < 1)
                 {
-                    if(mySpriteRenderer.enabled == false)
+                    tempsAccumele2 = tempsAccumele2 + Time.deltaTime;
+
+                    if (tempsAccumele2 > 0.10)
                     {
-                        mySpriteRenderer.enabled = true;
+                        if (mySpriteRenderer.enabled == false)
+                        {
+                            mySpriteRenderer.enabled = true;
+                        }
+                        else
+                        {
+                            mySpriteRenderer.enabled = false;
+                        }
+
+                        tempsAccumele2 = 0;
+
                     }
-                    else
-                    {
-                        mySpriteRenderer.enabled = false;
-                    }
-
-                    tempsAccumele2 = 0;
-
-                }
-            }
-            else
-            {
-                faireFlasherPersonnageApresRecuDommage = false;
-                mySpriteRenderer.enabled = true;
-                tempsAccumule = 0;
-
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            positionAncienClick = Input.mousePosition;
-            //Debug.Log("Position de l'ancien click : " + positionAncienClick);
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            leDeplacementEnX = Input.mousePosition.x - positionAncienClick.x;
-            leDeplacementEnY = Input.mousePosition.y - positionAncienClick.y;
-
-            if (Mathf.Abs(leDeplacementEnX) > Mathf.Abs(leDeplacementEnY) && Mathf.Abs(leDeplacementEnX) > mouvementMinimumPourCapterEsquive)
-            {
-                horizontal = leDeplacementEnX > 0 ? 1 : -1;
-
-                if (horizontal == -1)
-                {
-                    evitementGauche();
                 }
                 else
                 {
-                    //Donner le possibilite d'eviter vers la droite ??
+                    faireFlasherPersonnageApresRecuDommage = false;
+                    mySpriteRenderer.enabled = true;
+                    tempsAccumule = 0;
+
                 }
             }
-            else
+
+            if (Input.GetMouseButtonDown(0))
             {
-                if (Mathf.Abs(leDeplacementEnY) > mouvementMinimumPourCapterEsquive)
+                positionAncienClick = Input.mousePosition;
+                //Debug.Log("Position de l'ancien click : " + positionAncienClick);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                leDeplacementEnX = Input.mousePosition.x - positionAncienClick.x;
+                leDeplacementEnY = Input.mousePosition.y - positionAncienClick.y;
+
+                if (Mathf.Abs(leDeplacementEnX) > Mathf.Abs(leDeplacementEnY) && Mathf.Abs(leDeplacementEnX) > mouvementMinimumPourCapterEsquive)
                 {
-                    vertical = leDeplacementEnY > 0 ? 1 : -1;
-                    if (vertical == -1)
+                    horizontal = leDeplacementEnX > 0 ? 1 : -1;
+
+                    if (horizontal == -1)
                     {
-                        evitementBas();
+                        evitementGauche();
                     }
                     else
                     {
-                        evitementHaut();
+                        //Donner le possibilite d'eviter vers la droite ??
+                    }
+                }
+                else
+                {
+                    if (Mathf.Abs(leDeplacementEnY) > mouvementMinimumPourCapterEsquive)
+                    {
+                        vertical = leDeplacementEnY > 0 ? 1 : -1;
+                        if (vertical == -1)
+                        {
+                            evitementBas();
+                        }
+                        else
+                        {
+                            evitementHaut();
+                        }
                     }
                 }
             }
@@ -305,6 +307,23 @@ public class controleurPersonnage : MonoBehaviour {
     {
         Destroy(gameObject);
         gameManagerCombat.GetComponent<gameManagerCombat>().gameOverCombat();
+    }
+
+    public void animationFiniDeTuerLeMonstre()
+    {
+        myAnimator.SetTrigger("New Trigger");
+
+    }
+
+    public void finiDeFaireAnimationFiniDeTuerLeMonstre()
+    {
+        Application.LoadLevel("Main");
+    }
+
+    public void testAnimation()
+    {
+        Debug.Log("s");
+        monstreEstMort = true;
     }
 
     public void PotionVie()
