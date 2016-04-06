@@ -225,6 +225,8 @@ public class GameManager : MonoBehaviour {
             isDoorOpen3 = false;
         }
 
+        idDoorClicked = 0; 
+
         if(ScoreManager.score >= prixFloor)
         {
             Instantiate(OpenStairs, PosStairs1, Quaternion.identity);

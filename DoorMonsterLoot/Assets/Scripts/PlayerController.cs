@@ -28,13 +28,13 @@ public class PlayerController : MonoBehaviour {
         if(zoomer)
         {
             Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, 3.5f, smoothSpeed * Time.deltaTime);
-            Camera.main.transform.localScale = Vector3.MoveTowards(Camera.main.transform.localScale, new Vector3(0.7f, 0.7f, Camera.main.transform.localScale.z), smoothSpeed * Time.deltaTime);
+            Camera.main.transform.localScale = new Vector3(Camera.main.orthographicSize / 5, Camera.main.orthographicSize / 5, Camera.main.transform.localScale.z);
             //Camera.main.transform.localPosition = Vector3.MoveTowards(Camera.main.transform.localPosition, new Vector3(3.5f, Camera.main.transform.localPosition.y, Camera.main.transform.localPosition.z), smoothSpeed * Time.deltaTime);
         }
         else
         {
             Camera.main.orthographicSize = Mathf.MoveTowards(Camera.main.orthographicSize, 5f, smoothSpeed * Time.deltaTime);
-            Camera.main.transform.localScale = Vector3.MoveTowards(Camera.main.transform.localScale, new Vector3(1f, 1f, Camera.main.transform.localScale.z), smoothSpeed * Time.deltaTime);
+            Camera.main.transform.localScale = new Vector3(Camera.main.orthographicSize / 5, Camera.main.orthographicSize / 5, Camera.main.transform.localScale.z);
             //Camera.main.transform.localPosition = Vector3.MoveTowards(Camera.main.transform.localPosition, new Vector3(5.5f, Camera.main.transform.localPosition.y, Camera.main.transform.localPosition.z), smoothSpeed * Time.deltaTime);
         }
     }
