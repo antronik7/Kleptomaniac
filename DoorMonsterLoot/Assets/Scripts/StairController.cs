@@ -18,6 +18,9 @@ public class StairController : MonoBehaviour {
         GameManager.instance.StopTime = true;
 
         GameManager.instance.distanceEnd = 1100;
+        GameManager.instance.isDoorOpen1 = true;
+        GameManager.instance.isDoorOpen2 = true;
+        GameManager.instance.isDoorOpen3 = true;
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Shop");
 
