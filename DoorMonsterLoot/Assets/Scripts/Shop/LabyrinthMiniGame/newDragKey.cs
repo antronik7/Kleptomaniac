@@ -24,7 +24,7 @@ public class newDragKey : MonoBehaviour {
         hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 0, layermask);
         Debug.Log(hit.collider);
 
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             if (hit.collider != null)
             {
@@ -42,11 +42,13 @@ public class newDragKey : MonoBehaviour {
         if(Input.GetMouseButtonUp(0))
         {
             OnKey = false;
-        }
+        }*/
 
 
         if (hit.collider != null)
         {
+
+
             if (Input.GetMouseButton(0))
             {  // if left mouse button pressed...
                // cast a ray from the mouse pointer

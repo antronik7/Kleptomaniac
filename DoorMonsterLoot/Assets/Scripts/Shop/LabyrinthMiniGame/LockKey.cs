@@ -5,16 +5,20 @@ public class LockKey : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        GameManager.instance.spawnRewardScreen();
+
+       gameObject.GetComponent<AudioSource>().Play();
+
+       GameManager.instance.spawnRewardScreen();
     }
 }
