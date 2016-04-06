@@ -102,10 +102,12 @@ public class gameManagerCombat : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Monstre"));
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
-        hudComplet.SetActive(false);
-        hudNoInventory.SetActive(true);
-        GameManager.instance.spawnRewardScreen();
-        //Application.LoadLevel("Main");
+        //hudComplet.SetActive(false);
+        //hudNoInventory.SetActive(true);
+        //GameManager.instance.spawnRewardScreen();
+        GameManager.instance.currentTime = 110;
+        GameManager.instance.idScene = 0;
+        Application.LoadLevel("Main");
     }
 
 
