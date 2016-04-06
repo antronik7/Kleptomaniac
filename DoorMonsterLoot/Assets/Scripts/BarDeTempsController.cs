@@ -45,7 +45,7 @@ public class BarDeTempsController : MonoBehaviour {
                     guard.transform.position -= new Vector3((11.5f * Time.deltaTime) / GameManager.instance.startTime, 0, 0);
                 }
 
-                GameManager.instance.currentTime += Time.deltaTime;
+                GameManager.instance.currentTime += Time.deltaTime * 5;
             }
             else
             {

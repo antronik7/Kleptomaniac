@@ -13,18 +13,11 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D myRigidbody;
     private bool zoomer = false;
 
-    public bool startRunning;
-
     // Use this for initialization
     void Start () {
         myAnimator = GetComponent<Animator>();
 
         myRigidbody = gameObject.transform.parent.GetComponent<Rigidbody2D>();
-
-        if(startRunning)
-        {
-            StartRunning();
-        }
     }
 	
 	// Update is called once per frame
@@ -48,11 +41,17 @@ public class PlayerController : MonoBehaviour {
 
     public void StartRunning()
     {
+        GameManager.instance.StopTime = false;
+
+        BarDeTempsController.StartLooseTime();
+
         zoomer = true;
         moveSpeed = 30;
 
         GameObject monSkull = Instantiate(skull, posSkull.transform.position, Quaternion.identity) as GameObject;
         monSkull.transform.SetParent(transform);
+
+        BarDeTempsController.StartAddTime();
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -3,7 +3,9 @@ using System.Collections;
 
 public class ShopController : MonoBehaviour {
 
+    public GameObject player;
     public GameObject[] ShopItemsArray;
+
 
     public GameObject PosItem1Object;
     public GameObject PosItem2Object;
@@ -18,7 +20,7 @@ public class ShopController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         PosItem1 = PosItem1Object.transform.position;
         PosItem2 = PosItem2Object.transform.position;
         PosItem3 = PosItem3Object.transform.position;
@@ -27,7 +29,7 @@ public class ShopController : MonoBehaviour {
 
         //Premier item
         randomDoorIndex = Random.Range(0, ShopItemsArray.Length);
-        vientEtreSpawner = (GameObject) Instantiate(ShopItemsArray[randomDoorIndex], PosItem1, Quaternion.identity);
+        vientEtreSpawner = (GameObject)Instantiate(ShopItemsArray[randomDoorIndex], PosItem1, Quaternion.identity);
         envoyerLePrix(randomDoorIndex);
 
         //Deuxieme Item
@@ -42,9 +44,10 @@ public class ShopController : MonoBehaviour {
 
         vientEtreSpawner = null;
 
-       //Ajuster le son
-       gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
+        //Ajuster le son
+        gameObject.GetComponent<AudioSource>().volume = gameObject.GetComponent<AudioSource>().volume * GameManager.instance.volumeGeneral;
 
+        player.GetComponent<PlayerController>().moveSpeed = 10;
     }
 
     // Update is called once per frame

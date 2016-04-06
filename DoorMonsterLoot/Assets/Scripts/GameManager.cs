@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
     public int floor = 1;
     public int prixFloor = 0;
 
-    public bool StopTime = false;
+    public bool StopTime = true;
 
     public int characterDmg = 2;
     public int characterDef = 1;
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour {
 
     //La variable qui concerve le volume choisi par le joueur
     public float volumeGeneral = 0;
+
+    public float distanceEnd;
 
     // Use this for initialization
     void Awake () {
@@ -95,9 +97,11 @@ public class GameManager : MonoBehaviour {
 
         setPrixFloor();
 
-        currentTime = startTime;
+        currentTime = 50;
 
         loaderLeVolume();
+
+        distanceEnd = 1100;
     }
 	
 	// Update is called once per frame
