@@ -15,7 +15,7 @@ public class LabyManager : MonoBehaviour {
 
     bool okPlacer = false;
 
-    int difficuty = 50;
+    public int difficuty = 35;
 
     int randomChange = 0;
    
@@ -58,31 +58,37 @@ public class LabyManager : MonoBehaviour {
                         if (!spawner1Btn.GetComponent<lesSpawner>().getDejaChoisi())
                         {
                             lesBouton[i].transform.position = spawner1Btn.transform.position;
-
+                            spawner1Btn.GetComponent<lesSpawner>().Choisir();
                             okPlacer = true;
                         }
                         break;
 
                     case 1:
-                        if (!spawner1Btn.GetComponent<lesSpawner>().getDejaChoisi())
+                        if (!spawner2Btn.GetComponent<lesSpawner>().getDejaChoisi())
                         {
                             lesBouton[i].transform.position = spawner2Btn.transform.position;
+                            spawner2Btn.GetComponent<lesSpawner>().Choisir();
+
                             okPlacer = true;
                         }
                         break;
 
                     case 2:
-                        if (!spawner1Btn.GetComponent<lesSpawner>().getDejaChoisi())
+                        if (!spawner3Btn.GetComponent<lesSpawner>().getDejaChoisi())
                         {
                             lesBouton[i].transform.position = spawner3Btn.transform.position;
+                            spawner3Btn.GetComponent<lesSpawner>().Choisir();
+
                             okPlacer = true;
                         }
                         break;
 
                     case 3:
-                        if (!spawner1Btn.GetComponent<lesSpawner>().getDejaChoisi())
+                        if (!spawner4Btn.GetComponent<lesSpawner>().getDejaChoisi())
                         {
                             lesBouton[i].transform.position = spawner4Btn.transform.position;
+                            spawner4Btn.GetComponent<lesSpawner>().Choisir();
+
                             okPlacer = true;
                         }
                         break;
@@ -110,10 +116,10 @@ public class LabyManager : MonoBehaviour {
     {
         randomChange = UnityEngine.Random.Range(0, 100);
 
-        if(randomChange >= difficuty)
+        if(randomChange <= difficuty)
         {
             initialiserUnePartie();
-        }
 
+        }
     }
 }
