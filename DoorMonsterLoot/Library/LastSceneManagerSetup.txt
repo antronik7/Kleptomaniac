@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/WorldMap.unity
+=======
+- path: Assets/Scenes/TitleScreen.unity
+>>>>>>> 23666628f71321e16393d896a5b1467ba7d61857
   isLoaded: 1
   isActive: 1
